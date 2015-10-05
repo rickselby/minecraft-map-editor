@@ -1,0 +1,75 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "1a9fe265c12a694cd56cc77e01021dc2",
+    "content-hash": "96d7c6c87ee266248a7556d59b1fd350",
+    "packages": [
+        {
+            "name": "rickselby/php-nbt-decoder-encoder",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rickselby/PHP-NBT-Decoder-Encoder",
+                "reference": "a4e221047cb3adc585aa162c75eb67f107155058"
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Nbt": "lib/"
+                }
+            },
+            "license": [
+                "GNU"
+            ],
+            "authors": [
+                {
+                    "name": "Justin Martin",
+                    "email": "frozenfire@thefrozenfire.com",
+                    "homepage": "https://github.com/TheFrozenFire",
+                    "role": "Developer"
+                },
+                {
+                    "name": "James Lowe",
+                    "homepage": "https://github.com/jegol",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Kevin Andrews",
+                    "email": "kevin@zvps.co.uk",
+                    "homepage": "https://github.com/Caffe1neAdd1ct",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Rick Selby",
+                    "homepage": "https://github.com/rickselby",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP-based NBT format decoder and encoder, for the Minecraft NBT format.",
+            "homepage": "https://github.com/rickselby/PHP-NBT-Decoder-Encoder",
+            "keywords": [
+                "NBT",
+                "binary",
+                "decode",
+                "encode"
+            ],
+            "time": "2015-10-05 14:27:47"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.5.0"
+    },
+    "platform-dev": []
+}
