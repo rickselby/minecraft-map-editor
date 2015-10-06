@@ -31,7 +31,7 @@ class Region
         }
 
         // Load in some basic info about the region file & its chunks
-        $this->fPtr = fopen($this->filePath, 'r');
+        $this->fPtr = fopen($this->filePath, 'rb');
         $this->chunkInfo = [];
 
         // First, parse the headers. Get the offsets and sector counts
@@ -203,7 +203,7 @@ class Region
             // Close the original region file
             fclose($this->fPtr);
             // Open the file again for writing (and truncate it)
-            $outputFilePtr = fopen($this->filePath, 'w+');
+            $outputFilePtr = fopen($this->filePath, 'wb');
             // back to the start of the temporary file
             rewind($fTemp);
             // copy the temporary file to the region file

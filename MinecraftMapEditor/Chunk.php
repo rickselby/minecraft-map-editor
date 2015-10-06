@@ -18,7 +18,7 @@ class Chunk
         if ($nbtString != null) {
             // The NBT class reads from files, so we write the nbtString to a
             // pointer to memory
-            $stream = fopen('php://memory', 'w+');
+            $stream = fopen('php://memory', 'r+b');
             fwrite($stream, $nbtString);
             rewind($stream);
 
@@ -40,7 +40,7 @@ class Chunk
         // I'd like to do this with php://memory, but not sure how to read
         // back to a string efficiently
         $tmpFile = tempnam('/tmp', 'minecraft-map-editor');
-        $stream = fopen($tmpFile, 'w+');
+        $stream = fopen($tmpFile, 'wb');
         $this->nbt->writeFile($stream, null);
         fclose($stream);
         $nbtString = file_get_contents($tmpFile);
