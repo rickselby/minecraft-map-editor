@@ -16,15 +16,8 @@ class Chunk
     public function __construct($nbtString)
     {
         if ($nbtString != null) {
-            // The NBT class reads from files, so we write the nbtString to a
-            // pointer to memory
-            $stream = fopen('php://memory', 'r+b');
-            fwrite($stream, $nbtString);
-            rewind($stream);
-
             $this->nbt = new \Nbt\Service();
-            $this->nbt->loadFile($stream, null);
-            fclose($stream);
+            $this->nbt->readString($nbtString);
         }
     }
 
@@ -35,18 +28,7 @@ class Chunk
      */
     public function getNBTstring()
     {
-        // Again, the NBT class wants to write to a file, so set up a temporary
-        // file so we can read it back in
-        // I'd like to do this with php://memory, but not sure how to read
-        // back to a string efficiently
-        $tmpFile = tempnam('/tmp', 'minecraft-map-editor');
-        $stream = fopen($tmpFile, 'wb');
-        $this->nbt->writeFile($stream, null);
-        fclose($stream);
-        $nbtString = file_get_contents($tmpFile);
-        unlink($tmpFile);
-
-        return $nbtString;
+        return $this->nbt->writeString();
     }
 
     /**
