@@ -11,7 +11,7 @@ class ChunkCoords extends XYZCoords
      */
     public function getSectionRef()
     {
-        return floor($this->y / 16);
+        return (int) floor($this->y / 16);
     }
 
     /**

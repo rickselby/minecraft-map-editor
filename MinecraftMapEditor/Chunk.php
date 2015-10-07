@@ -46,7 +46,7 @@ class Chunk
 
         // Get the block ID
         $blocks = &$this->findtag($section, 'Blocks');
-        $blockRef = ($chunkCoords->y * 16 * 16) + ($chunkCoords->z * 16) + $chunkCoords->x;
+        $blockRef = ($chunkCoords->getSectionY() * 16 * 16) + ($chunkCoords->z * 16) + $chunkCoords->x;
 
         if ($block['blockID'] <= 255) {
             if ($blocks['value'][$blockRef] != $block['blockID']) {
