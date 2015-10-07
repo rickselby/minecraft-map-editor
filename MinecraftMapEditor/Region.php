@@ -139,6 +139,8 @@ class Region
 
                 // We can now get rid of the chunk
                 unset($this->chunk[$ref]);
+                // And update the timestamp to show this chunk was just updated
+                $this->chunkInfo[$ref]['timestamp'] = time();
             }
         }
 
