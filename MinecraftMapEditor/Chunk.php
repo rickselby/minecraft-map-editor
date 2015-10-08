@@ -203,7 +203,7 @@ class Chunk
         // Get the current value, blocking out the value we want to copy in
         $curValue = $array[$arrayRef] & ($blockRef % 2 == 0 ? 0xF0 : 0x0F);
         // Add the nibble we want to the correct side of the byte
-        $newValue = $curValue & ($blockRef % 2 == 0 ? $value : ($value << 4));
+        $newValue = $curValue | ($blockRef % 2 == 0 ? $value : ($value << 4));
         // and set the value in the array
         $array[$arrayRef] = $newValue;
 

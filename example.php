@@ -4,10 +4,10 @@ include('vendor'.DIRECTORY_SEPARATOR.'autoload.php');
 
 use \MinecraftMapEditor\Coords\BlockCoords;
 
-$world = new \MinecraftMapEditor\World('/local/sda7/rs506/mc/.minecraft/saves/Desert/');
+$world = new \MinecraftMapEditor\World('/path/to/minecraft/world/');
 
-var_dump($world->getBlock(new BlockCoords(5, 63, 5)));
+var_dump($world->getBlock(new BlockCoords(5, 5, 5)));
 
-$world->setBlock(new BlockCoords(5, 63, 5), ['blockID' => 7, 'blockData' => 0]);
+$world->setBlock(new BlockCoords(5, 5, 5), ['blockID' => 5, 'blockData' => 1]);
 
 $world->save();

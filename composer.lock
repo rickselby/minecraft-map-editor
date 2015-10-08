@@ -45,11 +45,11 @@
         },
         {
             "name": "rickselby/php-nbt-decoder-encoder",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rickselby/PHP-NBT-Decoder-Encoder",
-                "reference": "8528dd5ed9bc91a9691c0b7479505010774f1a53"
+                "reference": "224c6fdd32c3d77c1149d3e6af8630fb68317466"
             },
             "require": {
                 "nicmart/tree": "~0.2",
@@ -97,7 +97,7 @@
                 "decode",
                 "encode"
             ],
-            "time": "2015-10-08 14:03:45"
+            "time": "2015-10-08 18:49:56"
         }
     ],
     "packages-dev": [],
