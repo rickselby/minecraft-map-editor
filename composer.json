@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "rickselby/PHP-NBT-Decoder-Encoder": "3.0.*"
+        "rickselby/PHP-NBT-Decoder-Encoder": "dev-tags"
     },
     "autoload": {
         "psr-4": {

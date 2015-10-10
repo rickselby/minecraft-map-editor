@@ -20,7 +20,7 @@ class Chunk
     public function __construct($nbtString)
     {
         if ($nbtString != null) {
-            $this->nbtNode = (new \Nbt\Service)->readString($nbtString);
+            $this->nbtNode = (new \Nbt\Service())->readString($nbtString);
         }
     }
 
@@ -31,7 +31,7 @@ class Chunk
      */
     public function getNBTstring()
     {
-        return (new \Nbt\Service)->writeString($this->nbtNode);
+        return (new \Nbt\Service())->writeString($this->nbtNode);
     }
 
     /**
@@ -51,12 +51,12 @@ class Chunk
         $blocks = $this->findTag($section, 'Blocks');
         $blockRef = ($chunkCoords->getSectionY() * 16 * 16) + ($chunkCoords->z * 16) + $chunkCoords->x;
 
-        $blockIDList = $blocks->getKey('value');
+        $blockIDList = $blocks->getValue();
         if ($block['blockID'] <= 255) {
             if ($blockIDList[$blockRef] != $block['blockID']) {
                 $blockIDList[$blockRef] = $block['blockID'];
                 $this->changed = true;
-                $blocks->setKey('value', $blockIDList);
+                $blocks->setValue($blockIDList);
             }
         } else {
             // TODO: This bit
@@ -92,7 +92,7 @@ class Chunk
         // Get the block ID
         $blocks = $this->findtag($section, 'Blocks');
         $blockRef = ($chunkCoords->getSectionY() * 16 * 16) + ($chunkCoords->z * 16) + $chunkCoords->x;
-        $blockID = $blocks->getKey('value')[$blockRef];
+        $blockID = $blocks->getValue()[$blockRef];
 
         // check if there's an Add field
         $add = $this->findtag($section, 'Add');
@@ -109,7 +109,7 @@ class Chunk
         // Get the block data from within the section
         $blockData = $this->findTag($section, 'Data');
         // Get the nibble for this block
-        $thisBlockData = $this->getNibbleFrom($blockData->getKey('value'), $blockRef);
+        $thisBlockData = $this->getNibbleFrom($blockData->getValue(), $blockRef);
 
         return ['blockID' => $blockID, 'blockData' => $thisBlockData];
     }
@@ -124,15 +124,14 @@ class Chunk
      */
     private function findTag($node, $tag)
     {
-        if ($node->getKey('name') == $tag) {
+        if ($node->getName() == $tag) {
             return $node;
         }
-#        echo 'Not '.$node->getKey('name').PHP_EOL;
 
         // A list of Compound tags has no data associated with it...
         // so just check for children.
         if (!$node->isLeaf()) {
-            foreach($node->getChildren() AS $childNode) {
+            foreach ($node->getChildren() as $childNode) {
                 $node = $this->findTag($childNode, $tag);
                 if ($node) {
                     return $node;
@@ -146,29 +145,35 @@ class Chunk
     /**
      * Get the correct section from within the Sections tag (based on Y index).
      *
-     * @param \Nbt\Node $data
-     * @param int    $yRef
+     * @param \Nbt\Node $node
+     * @param int       $yRef
      *
      * @return \Nbt\Node
      */
     private function getSection($node, $yRef)
     {
-        foreach($node->getChildren() AS $childNode) {
+        foreach ($node->getChildren() as $childNode) {
             $yNode = $this->findTag($childNode, 'Y');
-            if ($yNode->getKey('value') == $yRef)
-            {
+            if ($yNode->getValue() == $yRef) {
                 return $childNode;
             }
         }
 
-        // if we didn't find one, we need to make one...
-        // because it'll be all air
+        // If we didn't find one, we must create one
 
-        // yikes!
+        // Doesn't need a name, it's part of a list
+        $newY = \Nbt\Tag::tagCompound('', [
+            \Nbt\Tag::tagByte('Y', $yRef),
+            \Nbt\Tag::tagByteArray('Blocks',     array_fill(0, 4096, 0x0)),
+            \Nbt\Tag::tagByteArray('Data',       array_fill(0, 2048, 0x0)),
+            \Nbt\Tag::tagByteArray('BlockLight', array_fill(0, 2048, 0x0)),
+            \Nbt\Tag::tagByteArray('SkyLight',   array_fill(0, 2048, 0x0)),
+        ]);
 
-        // I think creation of NBT tags should be done elsewhere...
-        // Like in the NBT class...
+        // Add it to the list
+        $node->addChild($newY);
 
+        return $newY;
     }
 
     /**
@@ -197,7 +202,7 @@ class Chunk
      */
     private function setNibbleIn($node, $blockRef, $value)
     {
-        $array = $node->getKey('value');
+        $array = $node->getValue();
 
         $arrayRef = floor($blockRef / 2);
         // Get the current value, blocking out the value we want to copy in
@@ -207,6 +212,6 @@ class Chunk
         // and set the value in the array
         $array[$arrayRef] = $newValue;
 
-        $node->setKey('value', $array);
+        $node->setValue($array);
     }
 }
