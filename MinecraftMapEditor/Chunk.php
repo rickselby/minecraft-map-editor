@@ -59,17 +59,13 @@ class Chunk
                 $blocks->setValue($blockIDList);
             }
         } else {
-            // TODO: This bit
-            // the 'ADD' record
-            // needs to be considered if the 'ADD' record exists in the NBT data
-            // at all, not just if this block ID is greater than 255
+            // No vanilla blocks above ID 255 yet (10th October 2015, 1.9 snapshots)
+            trigger_error('Block ID larger than 255 requested. This is not supported yet.', E_ERROR);
         }
 
         // set block data
         $blockData = $this->findTag($section, 'Data');
         $this->setNibbleIn($blockData, $blockRef, $block['blockData']);
-
-        // TODO: update height map too
     }
 
     /**
@@ -97,12 +93,8 @@ class Chunk
         // check if there's an Add field
         $add = $this->findtag($section, 'Add');
         if ($add !== false) {
-            // TODO: this bit
-            // $thisAddData = $this->getNibbleFrom($add['value'], $blockRef);
-            // now do something with this to the block ID?
-            // probably bit shifting stuff
-            // doesn't seem to be implemented at the moment (no block IDs above 255)
-            // so no rush...
+            // No vanilla blocks above ID 255 yet (10th October 2015, 1.9 snapshots)
+            trigger_error('This chunk has block IDs above 255. This is not supported yet.', E_ERROR);
         }
 
         // Block Data
