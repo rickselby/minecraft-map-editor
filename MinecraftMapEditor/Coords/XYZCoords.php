@@ -29,4 +29,14 @@ abstract class XYZCoords extends RefCoords
     {
         return $this->x.'-'.$this->y.'-'.$this->z;
     }
+
+    /**
+     * Get the ZX value for these co-ordinates.
+     *
+     * @return int
+     */
+    public function getZX()
+    {
+        return ($this->z * 16) + ($this->x);
+    }
 }

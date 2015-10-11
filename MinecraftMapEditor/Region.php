@@ -35,14 +35,14 @@ class Region
         $this->chunkInfo = [];
 
         // First, parse the headers. Get the offsets and sector counts
-        foreach ($this->listOfChunks() as $chunkRef) {
+        foreach (Coords\ChunkRef::zxList(32) as $chunkRef) {
             // Read the first three bytes as the offset (add 4th byte at start for padding for unpack)
             $this->chunkInfo[$chunkRef->toKey()]['offset'] = unpack('N', "\x00".fread($this->fPtr, 3))[1];
             // Then get the 'sector count' (single byte)
             $this->chunkInfo[$chunkRef->toKey()]['sectorCount'] = unpack('C', fread($this->fPtr, 1))[1];
         }
         // Next, read the timestamps
-        foreach ($this->listOfChunks() as $chunkRef) {
+        foreach (Coords\ChunkRef::zxList(32) as $chunkRef) {
             $this->chunkInfo[$chunkRef->toKey()]['timestamp'] = unpack('N', fread($this->fPtr, 4))[1];
         }
     }
@@ -58,7 +58,7 @@ class Region
         // Get the chunk reference from the block co-ordinates
         $chunkRef = $coords->toChunkRef();
         $this->initChunk($chunkRef);
-        $this->chunks[$chunkRef->toKey()]->setBlock($coords, $block);
+        $this->chunks[$chunkRef->toKey()]->setBlock($coords->toChunkCoords(), $block);
     }
 
     /**
@@ -73,7 +73,7 @@ class Region
         $chunkRef = $coords->toChunkRef();
         $this->initChunk($chunkRef);
 
-        return $this->chunks[$chunkRef->toKey()]->getBlock($coords);
+        return $this->chunks[$chunkRef->toKey()]->getBlock($coords->toChunkCoords());
     }
 
     /**
@@ -128,6 +128,8 @@ class Region
             if ($chunk->changed) {
                 // We have a changed chunk
                 $doSave = true;
+                // Update the height map
+                $chunk->updateHeightMap();
                 // Get the compressed chunk data
                 $compressedStr = gzcompress($chunk->getNBTstring());
 
@@ -152,7 +154,7 @@ class Region
             fseek($fTemp, 8192);
             $offset = 2;
 
-            foreach ($this->listOfChunks() as $chunkRef) {
+            foreach (Coords\ChunkRef::zxList(32) as $chunkRef) {
                 // Chunks with zero offsets haven't yet been created
                 if (!($this->chunkInfo[$chunkRef->toKey()]['offset'] == 0
                     && $this->chunkInfo[$chunkRef->toKey()]['sectorCount'] == 0)) {
@@ -190,14 +192,14 @@ class Region
 
             // Now we know the offsets, we can go back and write the headers
             fseek($fTemp, 0);
-            foreach ($this->listOfChunks() as $chunkRef) {
+            foreach (Coords\ChunkRef::zxList(32) as $chunkRef) {
                 // First 3 bytes are the offset (so use substr to get rid of the 1st byte)
                 fwrite($fTemp, substr(pack('N', $this->chunkInfo[$chunkRef->toKey()]['offset']), 1));
                 // Next byte is the sector count
                 fwrite($fTemp, pack('C', $this->chunkInfo[$chunkRef->toKey()]['sectorCount']));
             }
             // and the timestamps
-            foreach ($this->listOfChunks() as $chunkRef) {
+            foreach (Coords\ChunkRef::zxList(32) as $chunkRef) {
                 // 4 bytes of timestamp
                 fwrite($fTemp, pack('N', $this->chunkInfo[$chunkRef->toKey()]['timestamp']));
             }
@@ -213,18 +215,6 @@ class Region
             // close both files
             fclose($outputFilePtr);
             fclose($fTemp);
-        }
-    }
-
-    /**
-     * Generator to give a list of chunks, in the correct order.
-     */
-    private function listOfChunks()
-    {
-        for ($z = 0; $z < 32; ++$z) {
-            for ($x = 0; $x < 32; ++$x) {
-                yield new Coords\ChunkRef($x, $z);
-            }
         }
     }
 }

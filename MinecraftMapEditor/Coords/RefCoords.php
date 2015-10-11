@@ -30,4 +30,16 @@ abstract class RefCoords
     {
         return $this->x.'-'.$this->z;
     }
+
+    /**
+     * Generator to give a list of chunks, in the correct order.
+     */
+    public static function zxList($amount)
+    {
+        for ($z = 0; $z < $amount; ++$z) {
+            for ($x = 0; $x < $amount; ++$x) {
+                yield new static($x, $z);
+            }
+        }
+    }
 }

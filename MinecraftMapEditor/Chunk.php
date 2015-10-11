@@ -10,7 +10,17 @@ class Chunk
     /** @var bool Flag if the chunk has been changed **/
     public $changed = false;
 
-    /** @var nbt
+    /** @var \Nbt\Node Node for the sections tag **/
+    private $sectionsTag;
+
+    /** @var \Nbt\Node[] Array of nodes for each section within the sections tag **/
+    private $sectionsList;
+
+    /** @var Array[] Array of cached section information for each section **/
+    private $sectionParts = [];
+
+    /** @var Int[] Array of affected zx coords **/
+    private $affected = [];
 
     /**
      * Initialise a chunk based on NBT data.
@@ -20,7 +30,9 @@ class Chunk
     public function __construct($nbtString)
     {
         if ($nbtString != null) {
-            $this->nbtNode = (new \Nbt\Service())->readString($nbtString);
+            $this->nbtNode = (new \Nbt\Service())->readString($nbtString);#
+            // Cache the sections tag so we don't need to look for it every time
+            $this->sectionsTag = $this->findTag($this->nbtNode, 'Sections');
         }
     }
 
@@ -37,25 +49,22 @@ class Chunk
     /**
      * Set a block in the world. Will overwrite a block if one exists at the co-ordinates.
      *
-     * @param Coords\BlockCoords $coords Co-ordinates of the block
+     * @param Coords\ChunkCoords $coords Co-ordinates of the block
      * @param array              $block  Information about the new block
      */
-    public function setBlock($coords, $block)
+    public function setBlock($chunkCoords, $block)
     {
-        $chunkCoords = $coords->toChunkCoords();
-
-        $sections = $this->findTag($this->nbtNode, 'Sections');
-        $section = $this->getSection($sections, $chunkCoords->getSectionRef());
+        $yRef = $chunkCoords->getSectionRef();
 
         // Get the block ID
-        $blocks = $this->findTag($section, 'Blocks');
-        $blockRef = ($chunkCoords->getSectionY() * 16 * 16) + ($chunkCoords->z * 16) + $chunkCoords->x;
+        $blocks = $this->getSectionPart($yRef, 'Blocks');
+        $blockRef = $chunkCoords->getSectionYZX();
 
         $blockIDList = $blocks->getValue();
         if ($block['blockID'] <= 255) {
             if ($blockIDList[$blockRef] != $block['blockID']) {
                 $blockIDList[$blockRef] = $block['blockID'];
-                $this->changed = true;
+                $this->setChanged($chunkCoords);
                 $blocks->setValue($blockIDList);
             }
         } else {
@@ -64,34 +73,29 @@ class Chunk
         }
 
         // set block data
-        $blockData = $this->findTag($section, 'Data');
+        $blockData = $this->getSectionPart($yRef, 'Data');
         $this->setNibbleIn($blockData, $blockRef, $block['blockData']);
     }
 
     /**
      * Get information about a block.
      *
-     * @param Coords\BlockCoords $coords
+     * @param Coords\ChunkCoords $coords
      *
      * @return array
      */
-    public function getBlock($coords)
+    public function getBlock($chunkCoords)
     {
-        // Get the coordinates within this chunk (0-15 on x & z)
-        $chunkCoords = $coords->toChunkCoords();
-
-        // Get the 'Sections' tag from the NBT data
-        $sections = $this->findTag($this->nbtNode, 'Sections');
-        // Then get the correct section for these co-ordinates
-        $section = $this->getSection($sections, $chunkCoords->getSectionRef());
+        // Get the correct section for these co-ordinates
+        $yRef = $chunkCoords->getSectionRef();
 
         // Get the block ID
-        $blocks = $this->findtag($section, 'Blocks');
-        $blockRef = ($chunkCoords->getSectionY() * 16 * 16) + ($chunkCoords->z * 16) + $chunkCoords->x;
+        $blocks = $this->getSectionPart($yRef, 'Blocks');
+        $blockRef = $chunkCoords->getSectionYZX();
         $blockID = $blocks->getValue()[$blockRef];
 
         // check if there's an Add field
-        $add = $this->findtag($section, 'Add');
+        $add = $this->getSectionPart($yRef, 'Add');
         if ($add !== false) {
             // No vanilla blocks above ID 255 yet (10th October 2015, 1.9 snapshots)
             trigger_error('This chunk has block IDs above 255. This is not supported yet.', E_ERROR);
@@ -99,7 +103,7 @@ class Chunk
 
         // Block Data
         // Get the block data from within the section
-        $blockData = $this->findTag($section, 'Data');
+        $blockData = $this->getSectionPart($yRef, 'Data');
         // Get the nibble for this block
         $thisBlockData = $this->getNibbleFrom($blockData->getValue(), $blockRef);
 
@@ -135,6 +139,27 @@ class Chunk
     }
 
     /**
+     * Get a specific tag from a section (which is then cached).
+     *
+     * @param int    $yRef
+     * @param string $name
+     *
+     * @return \Nbt\Node
+     */
+    private function getSectionPart($yRef, $name)
+    {
+        if (!isset($this->sectionParts[$yRef][$name])) {
+            $this->sectionParts[$yRef][$name] =
+                $this->findTag(
+                    $this->getSection($yRef),
+                    $name
+                );
+        }
+
+        return $this->sectionParts[$yRef][$name];
+    }
+
+    /**
      * Get the correct section from within the Sections tag (based on Y index).
      *
      * @param \Nbt\Node $node
@@ -142,11 +167,17 @@ class Chunk
      *
      * @return \Nbt\Node
      */
-    private function getSection($node, $yRef)
+    private function getSection($yRef)
     {
-        foreach ($node->getChildren() as $childNode) {
+        if (isset($this->sectionsList[$yRef])) {
+            return $this->sectionsList[$yRef];
+        }
+
+        foreach ($this->sectionsTag->getChildren() as $childNode) {
             $yNode = $this->findTag($childNode, 'Y');
             if ($yNode->getValue() == $yRef) {
+                $this->sectionsList[$yRef] = $childNode;
+
                 return $childNode;
             }
         }
@@ -163,7 +194,8 @@ class Chunk
         ]);
 
         // Add it to the list
-        $node->addChild($newY);
+        $this->sectionsTag->addChild($newY);
+        $this->sectionsList[$yRef] = $newY;
 
         return $newY;
     }
@@ -194,6 +226,8 @@ class Chunk
      */
     private function setNibbleIn($node, $blockRef, $value)
     {
+        // This function should check if it's changing anything, and call setChanged if it does
+
         $array = $node->getValue();
 
         $arrayRef = floor($blockRef / 2);
@@ -205,5 +239,53 @@ class Chunk
         $array[$arrayRef] = $newValue;
 
         $node->setValue($array);
+    }
+
+    /**
+     * Update the height map before saving.
+     */
+    public function updateHeightMap()
+    {
+        if (count($this->affected)) {
+            // Get the keys for y sections, to work out the largest y value to work from
+            $yRefs = [];
+            foreach ($this->sectionsTag->getChildren() as $subSection) {
+                $yRefs[] = $this->findTag($subSection, 'Y')->getValue();
+            }
+
+            // Get the current height map
+            $heightMapTag = $this->findTag($this->nbtNode, 'HeightMap');
+            $heightMapArray = $heightMapTag->getValue();
+
+            // Step through each affected z-x pair
+            foreach ($this->affected as $zxVal) {
+                $zxRef = Coords\FlatCoordRef::fromZXval($zxVal);
+                $heightMapArray[$zxVal] = 0;
+                for ($y = (max($yRefs) * 16) + 15; $y >= 0; --$y) {
+                    $block = $this->getBlock(new Coords\ChunkCoords($zxRef->x, $y, $zxRef->z));
+                    if ($block['blockID'] != 0x00) {
+                        $heightMapArray[$zxVal] = $y;
+                        break;
+                    }
+                }
+            }
+
+            // Write the height map back
+            $heightMapTag->setValue($heightMapArray);
+        }
+    }
+
+    /**
+     * Mark that this chunk has been changed, and record the ZX value of the block changed.
+     *
+     * @param Coords\ChunkCoords $coords
+     */
+    private function setChanged($coords)
+    {
+        $this->changed = true;
+
+        // Set that this zx pair was changed, so we need to recalcuate the height map on it
+        $this->affected[] = $coords->getZX();
+        $this->affected = array_unique($this->affected);
     }
 }

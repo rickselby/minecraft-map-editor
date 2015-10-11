@@ -24,4 +24,14 @@ class ChunkCoords extends XYZCoords
         // y will never be negative so nothing clever required here
         return $this->y % 16;
     }
+
+    /**
+     * Get the YZX value for these co-ordinates.
+     *
+     * @return int
+     */
+    public function getSectionYZX()
+    {
+        return ($this->getSectionY() * 16 * 16) + ($this->z * 16) + $this->x;
+    }
 }
