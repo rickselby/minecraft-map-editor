@@ -14,7 +14,6 @@ But with the saving code working, more functionality can be implemented...
 ## What's the plan?
 
 Firstly, to complete the functionality:
-* recalculating height map when a block is changed
 * reset lightpopulated to 0 after update, to allow minecraft to recalculate lighting
 * reading and writing block entity data
 * reading and writing entities

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c4dbe2db6872ff6a294114bb999cb576",
-    "content-hash": "47ac311ca37dbcc07ab411089ddd9b7a",
+    "hash": "63d13fa2a83cfb317ff21202e2c67a48",
+    "content-hash": "6382e3ccb525626b669843e2b3e9a18d",
     "packages": [
         {
             "name": "nicmart/tree",
@@ -45,11 +45,11 @@
         },
         {
             "name": "rickselby/php-nbt-decoder-encoder",
-            "version": "dev-tags",
+            "version": "3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rickselby/PHP-NBT-Decoder-Encoder",
-                "reference": "4a16ea376c34dd1eb8534d99703b32775ce07ab7"
+                "reference": "7abaaa95050b04e4f124f82051380e6b2dbe6a1e"
             },
             "require": {
                 "nicmart/tree": "~0.2",
@@ -97,15 +97,13 @@
                 "decode",
                 "encode"
             ],
-            "time": "2015-10-11 11:34:53"
+            "time": "2015-10-11 15:07:42"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "rickselby/php-nbt-decoder-encoder": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
