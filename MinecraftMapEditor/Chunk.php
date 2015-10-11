@@ -32,7 +32,7 @@ class Chunk
         if ($nbtString != null) {
             $this->nbtNode = (new \Nbt\Service())->readString($nbtString);#
             // Cache the sections tag so we don't need to look for it every time
-            $this->sectionsTag = $this->findTag($this->nbtNode, 'Sections');
+            $this->sectionsTag = $this->nbtNode->findChildByName('Sections');
         }
     }
 
@@ -111,34 +111,6 @@ class Chunk
     }
 
     /**
-     * Find a tag within a tree of NBT data.
-     *
-     * @param \Nbt\Node $node
-     * @param string    $tag
-     *
-     * @return \Nbt\Node|false
-     */
-    private function findTag($node, $tag)
-    {
-        if ($node->getName() == $tag) {
-            return $node;
-        }
-
-        // A list of Compound tags has no data associated with it...
-        // so just check for children.
-        if (!$node->isLeaf()) {
-            foreach ($node->getChildren() as $childNode) {
-                $node = $this->findTag($childNode, $tag);
-                if ($node) {
-                    return $node;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * Get a specific tag from a section (which is then cached).
      *
      * @param int    $yRef
@@ -150,10 +122,7 @@ class Chunk
     {
         if (!isset($this->sectionParts[$yRef][$name])) {
             $this->sectionParts[$yRef][$name] =
-                $this->findTag(
-                    $this->getSection($yRef),
-                    $name
-                );
+                $this->getSection($yRef)->findChildByName($name);
         }
 
         return $this->sectionParts[$yRef][$name];
@@ -174,8 +143,7 @@ class Chunk
         }
 
         foreach ($this->sectionsTag->getChildren() as $childNode) {
-            $yNode = $this->findTag($childNode, 'Y');
-            if ($yNode->getValue() == $yRef) {
+            if ($childNode->findChildByName('Y')->getValue() == $yRef) {
                 $this->sectionsList[$yRef] = $childNode;
 
                 return $childNode;
@@ -250,11 +218,11 @@ class Chunk
             // Get the keys for y sections, to work out the largest y value to work from
             $yRefs = [];
             foreach ($this->sectionsTag->getChildren() as $subSection) {
-                $yRefs[] = $this->findTag($subSection, 'Y')->getValue();
+                $yRefs[] = $subSection->findChildByName('Y')->getValue();
             }
 
             // Get the current height map
-            $heightMapTag = $this->findTag($this->nbtNode, 'HeightMap');
+            $heightMapTag = $this->nbtNode->findChildByName('HeightMap');
             $heightMapArray = $heightMapTag->getValue();
 
             // Step through each affected z-x pair

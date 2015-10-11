@@ -49,7 +49,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rickselby/PHP-NBT-Decoder-Encoder",
-                "reference": "65f9392057a198e40773c1a2b128e2c51c1c83bf"
+                "reference": "4a16ea376c34dd1eb8534d99703b32775ce07ab7"
             },
             "require": {
                 "nicmart/tree": "~0.2",
@@ -97,7 +97,7 @@
                 "decode",
                 "encode"
             ],
-            "time": "2015-10-09 12:17:33"
+            "time": "2015-10-11 11:34:53"
         }
     ],
     "packages-dev": [],
