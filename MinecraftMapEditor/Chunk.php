@@ -210,9 +210,22 @@ class Chunk
     }
 
     /**
+     * Do tasks required before saving
+     */
+    public function prepareForSaving()
+    {
+        // Set Lightpopulated to zero to force a lighting update
+        $this->nbtNode->findChildByName('LightPopulated')->setValue(0x00);
+        // Set the last update time
+        $this->nbtNode->findChildByName('LastUpdate')->setValue(time());
+        // Update the height map
+        $this->updateHeightMap();
+    }
+
+    /**
      * Update the height map before saving.
      */
-    public function updateHeightMap()
+    private function updateHeightMap()
     {
         if (count($this->affected)) {
             // Get the keys for y sections, to work out the largest y value to work from

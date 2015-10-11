@@ -129,7 +129,7 @@ class Region
                 // We have a changed chunk
                 $doSave = true;
                 // Update the height map
-                $chunk->updateHeightMap();
+                $chunk->prepareForSaving();
                 // Get the compressed chunk data
                 $compressedStr = gzcompress($chunk->getNBTstring());
 
