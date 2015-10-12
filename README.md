@@ -14,8 +14,6 @@ But with the saving code working, more functionality can be implemented...
 ## What's the plan?
 
 Firstly, to complete the functionality:
-* reset lightpopulated to 0 after update, to allow minecraft to recalculate lighting
-* reading and writing block entity data
 * reading and writing entities
 
 Secondly, to make using the library easier:
