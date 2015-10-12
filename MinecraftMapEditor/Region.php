@@ -58,7 +58,7 @@ class Region
         // Get the chunk reference from the block co-ordinates
         $chunkRef = $coords->toChunkRef();
         $this->initChunk($chunkRef);
-        $this->chunks[$chunkRef->toKey()]->setBlock($coords->toChunkCoords(), $block);
+        $this->chunks[$chunkRef->toKey()]->setBlock($coords, $block);
     }
 
     /**
@@ -73,7 +73,7 @@ class Region
         $chunkRef = $coords->toChunkRef();
         $this->initChunk($chunkRef);
 
-        return $this->chunks[$chunkRef->toKey()]->getBlock($coords->toChunkCoords());
+        return $this->chunks[$chunkRef->toKey()]->getBlock($coords);
     }
 
     /**
