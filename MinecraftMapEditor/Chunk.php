@@ -190,6 +190,7 @@ class Chunk
 
         foreach ($this->sectionsTag->getChildren() as $childNode) {
             if ($childNode->findChildByName('Y')->getValue() == $yRef) {
+                $this->prepareSection($childNode);
                 $this->sectionsList[$yRef] = $childNode;
 
                 return $childNode;
@@ -212,6 +213,19 @@ class Chunk
         $this->sectionsList[$yRef] = $newY;
 
         return $newY;
+    }
+
+    /**
+     * Prepare a section node when first accessing it.
+     *
+     * @param \Nbt\Node $node
+     */
+    private function prepareSection($node)
+    {
+        // Alter the block data to be unsigned bytes
+        $this->signedToUnsignedByteValue(
+            $node->findChildByName('Blocks')
+        );
     }
 
     /**
@@ -380,5 +394,37 @@ class Chunk
                 $this->blockEntitiesTag->addChild($blockEntity);
             }
         }
+    }
+
+    /**
+     * Convert a signed value to an unsigned value.
+     * The NBT spec calls for signed values, but some bytes should be unsigned,
+     * so we need to fiddle them.
+     *
+     * @param \Nbt\Node $node
+     */
+    private function signedToUnsignedByteValue($node)
+    {
+        $value = $node->getValue();
+        if (is_array($value)) {
+            array_walk($value, function (&$byte) {
+                $byte = $this->signedToUnsigedByte($byte);
+            });
+            $node->setValue($value);
+        } else {
+            $node->setValue($this->signedToUnsigedByte($value));
+        }
+    }
+
+    /**
+     * Convert a signed byte to an unsigned byte.
+     *
+     * @param int $value
+     *
+     * @return int
+     */
+    private function signedToUnsigedByte($value)
+    {
+        return unpack('C', pack('c', $value))[1];
     }
 }
