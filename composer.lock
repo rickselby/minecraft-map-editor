@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "63d13fa2a83cfb317ff21202e2c67a48",
-    "content-hash": "6382e3ccb525626b669843e2b3e9a18d",
+    "hash": "5dd858164520d4bcfe3b2257a0d93713",
+    "content-hash": "695246c656a64776eb68a023a29fad52",
     "packages": [
         {
             "name": "nicmart/tree",
@@ -44,25 +44,77 @@
             "time": "2015-08-20 20:50:35"
         },
         {
-            "name": "rickselby/php-nbt-decoder-encoder",
-            "version": "3.1",
+            "name": "rickselby/consthelpers",
+            "version": "1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/rickselby/PHP-NBT-Decoder-Encoder",
-                "reference": "7abaaa95050b04e4f124f82051380e6b2dbe6a1e"
+                "url": "https://github.com/rickselby/consthelpers.git",
+                "reference": "cbfb8a4a1036f409dbafeb20109723d64e9d2456"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rickselby/consthelpers/zipball/cbfb8a4a1036f409dbafeb20109723d64e9d2456",
+                "reference": "cbfb8a4a1036f409dbafeb20109723d64e9d2456",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ConstHelpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rick Selby",
+                    "email": "rick@selby-family.co.uk",
+                    "homepage": "https://github.com/rickselby",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/rickselby/consthelpers",
+            "keywords": [
+                "constants"
+            ],
+            "time": "2015-10-17 11:03:56"
+        },
+        {
+            "name": "rickselby/nbt",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rickselby/NBT.git",
+                "reference": "c11ec81e984429d8fc7c32d3fd8de37ff4a4142f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rickselby/NBT/zipball/c11ec81e984429d8fc7c32d3fd8de37ff4a4142f",
+                "reference": "c11ec81e984429d8fc7c32d3fd8de37ff4a4142f",
+                "shasum": ""
             },
             "require": {
                 "nicmart/tree": "~0.2",
                 "php": ">=5.4.0"
             },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6.0"
+            },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Nbt": "lib/"
+                "psr-4": {
+                    "Nbt\\": "src/",
+                    "Nbt\\Tests\\": "tests/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GNU"
+                "MIT"
             ],
             "authors": [
                 {
@@ -89,15 +141,15 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A PHP-based NBT format decoder and encoder, for the Minecraft NBT format.",
-            "homepage": "https://github.com/rickselby/PHP-NBT-Decoder-Encoder",
+            "description": "Parser/Writer for the NBT file format",
+            "homepage": "https://github.com/rickselby/NBT",
             "keywords": [
                 "NBT",
                 "binary",
                 "decode",
                 "encode"
             ],
-            "time": "2015-10-11 15:07:42"
+            "time": "2015-12-16 15:40:51"
         }
     ],
     "packages-dev": [],

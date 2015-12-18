@@ -8,19 +8,14 @@
             "role": "Developer"
         }
     ],
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/rickselby/PHP-NBT-Decoder-Encoder"
-        }
-    ],
     "require": {
         "php": ">=5.5.0",
-        "rickselby/PHP-NBT-Decoder-Encoder": "~3.1"
+        "rickselby/NBT": "~4.0",
+        "rickselby/consthelpers": "~1.0"
     },
     "autoload": {
         "psr-4": {
-            "MinecraftMapEditor\\": "MinecraftMapEditor/"
+            "MinecraftMapEditor\\": "src/"
         }
     }
 }
