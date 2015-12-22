@@ -15,7 +15,7 @@ class DoubleSlab extends \MinecraftMapEditor\Block
      * @param bool $topTexture [Optional] Use the top texture on all sides?
      *                         One of the TEXTURE_ class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $topTexture = self::TEXTURE_NORMAL)
     {

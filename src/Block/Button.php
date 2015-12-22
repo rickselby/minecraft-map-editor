@@ -21,7 +21,7 @@ class Button extends \MinecraftMapEditor\Block
      * @param int $position The position of the button; one of the POSITION_ class constants
      * @param int $active   Either Button::INACTIVE or Button::ACTIVE
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $position, $active)
     {

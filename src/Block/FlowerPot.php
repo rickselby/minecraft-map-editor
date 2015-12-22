@@ -7,9 +7,12 @@ class FlowerPot extends \MinecraftMapEditor\Block
 
     public function __construct()
     {
+        // This is going to define the plant in the tile entity data
+        // - which is to be done...
+
         # $block = self::checkBlock($blockRef, Ref::getStartsWith(''));
-        # $block = IDs::$list[];
-        # parent::__construct($block[0], $block[1]);
+        $block = IDs::$list[Ref::FLOWER_POT];
+        parent::__construct($block[0], $block[1]);
     }
 
 }

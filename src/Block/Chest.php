@@ -15,7 +15,7 @@ class Chest extends \MinecraftMapEditor\Block
      * @param int $blockRef  Chest block reference
      * @param int $direction Direction the chest is facing; one of the class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $direction)
     {

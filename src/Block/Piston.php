@@ -18,7 +18,7 @@ class Piston extends \MinecraftMapEditor\Block
      * @param int $direction The direction the piston head is pointing; one of the class constants
      * @param bool $extended [optional] Is the piston extended? TODO CHANGE THIS TO A CONST VALUE
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $direction, $extended = false)
     {

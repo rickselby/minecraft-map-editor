@@ -15,7 +15,7 @@ class Wood extends \MinecraftMapEditor\Block
      * @param int $blockRef    Block reference from Block\Ref
      * @param int $orientation Orientation of the wood; one of the class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $orientation)
     {

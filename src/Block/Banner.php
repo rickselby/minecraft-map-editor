@@ -27,7 +27,7 @@ class Banner extends \MinecraftMapEditor\Block
      * @param int $blockRef    One of the BANNER_ blockRefs
      * @param int $orientation Orientation of the banner; one of the class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $orientation)
     {

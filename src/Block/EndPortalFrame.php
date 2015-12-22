@@ -18,7 +18,7 @@ class EndPortalFrame extends \MinecraftMapEditor\Block
      * @param int  $direction Direction the block is facing
      * @param int $filled    [Optional] Is there an eye of ender in the block?
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($direction, $filled = self::NOT_FILLED)
     {

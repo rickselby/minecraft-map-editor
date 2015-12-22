@@ -32,7 +32,7 @@ class Door extends \MinecraftMapEditor\Block
      * @param int $facing   Which direction the door faces when closed; one of the FACING_ class constants
      * @param int $power    Whether the door is powered or not; one of the POWER_ class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $half, $hinge, $state, $facing, $power)
     {

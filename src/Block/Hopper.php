@@ -4,12 +4,30 @@ namespace MinecraftMapEditor\Block;
 
 class Hopper extends \MinecraftMapEditor\Block
 {
+    const OUTPUT_DOWN = 0x0;
+    const OUTPUT_NORTH = 0x2;
+    const OUTPUT_SOUTH = 0x3;
+    const OUTPUT_WEST = 0x4;
+    const OUTPUT_EAST = 0x5;
 
-    public function __construct()
+    const ACTIVE = 0b0000;
+    const DISABLED = 0b1000;
+
+    /**
+     * Get a hopper, with the output in the given direction.
+     *
+     * @param int $output Output direction; one of the OUTPUT_ class constants
+     * @param int $active [Optional] Either Hopper::ACTIVE or Hopper::DISABLED
+     *
+     * @throws \Exception
+     */
+    public function __construct($output, $active = self::ACTIVE)
     {
-        # $block = self::checkBlock($blockRef, Ref::getStartsWith(''));
-        # $block = IDs::$list[];
-        # parent::__construct($block[0], $block[1]);
-    }
+        $block = IDs::$list[Ref::HOPPER];
 
+        self::checkDataRefValidStartWith($output, 'OUTPUT', 'Invalid output reference for hopper');
+        self::checkInList($active, [self::ACTIVE, self::DISABLED], 'Invalid active reference for hopper');
+
+        parent::__construct($block[0], $output | $active);
+    }
 }

@@ -18,7 +18,7 @@ class Bed extends \MinecraftMapEditor\Block
      * @param int $direction The direction the head of the bed is facing; one of the DIRECTION_ class constants
      * @param int $part      The part of the bed; one of the PART_ class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($direction, $part)
     {

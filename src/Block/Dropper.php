@@ -21,7 +21,7 @@ class Dropper extends \MinecraftMapEditor\Block
      * @param int  $direction Direction the block is facing; one of the class consants
      * @param int $activated [Optional] Either Dropper:INACTIVE or Dropper::ACTIVE
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $direction, $activated = self::INACTIVE)
     {

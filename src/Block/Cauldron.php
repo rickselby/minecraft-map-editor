@@ -14,7 +14,7 @@ class Cauldron extends \MinecraftMapEditor\Block
      *
      * @param int $fill Fill level; one of the class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($fill)
     {

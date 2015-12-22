@@ -19,7 +19,7 @@ class Cocoa extends \MinecraftMapEditor\Block
      * @param int $attached One of the ATTACHED_ class constants
      * @param int $stage    One of the STAGE_ class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($attached, $stage)
     {

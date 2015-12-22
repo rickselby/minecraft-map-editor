@@ -19,7 +19,7 @@ class FenceGate extends \MinecraftMapEditor\Block
      * @param int $direction Direction the gate is facing; one of the FACING_ class constants
      * @param int $open      Either FenceGate::CLOSED or FenceGate::OPEN
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $direction, $open)
     {

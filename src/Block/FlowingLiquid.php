@@ -11,7 +11,7 @@ class FlowingLiquid extends \MinecraftMapEditor\Block
      * @param int $blockRef Block reference
      * @param int $level    Level of liquid
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $level)
     {

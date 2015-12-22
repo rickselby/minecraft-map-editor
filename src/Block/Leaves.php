@@ -13,7 +13,7 @@ class Leaves extends \MinecraftMapEditor\Block
      * @param int  $blockRef Block reference from Block\Ref
      * @param bool $decay    [optional] Should the leaves decay?
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $decay = self::NO_DECAY)
     {

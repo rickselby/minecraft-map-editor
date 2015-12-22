@@ -11,7 +11,7 @@ class Simple extends \MinecraftMapEditor\Block
      *
      * @return \self
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef)
     {

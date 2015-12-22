@@ -13,7 +13,7 @@ class Slab extends \MinecraftMapEditor\Block
      * @param int $blockRef Block reference from Block\Ref
      * @param int $position Position of slab; one of the class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($blockRef, $position)
     {

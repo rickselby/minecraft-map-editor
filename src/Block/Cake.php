@@ -9,7 +9,7 @@ class Cake extends \MinecraftMapEditor\Block
      *
      * @param int $slicesEaten 0-6
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($slicesEaten)
     {

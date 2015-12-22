@@ -19,7 +19,7 @@ class Anvil extends \MinecraftMapEditor\Block
      * @param int $damage    The damage setting of the anvil; one of the DAMAGE_ class constants
      * @param int $direction The direction of the anvil; one of the DIRECTION_ class constants
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($damage, $direction)
     {

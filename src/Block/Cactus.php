@@ -10,7 +10,7 @@ class Cactus extends \MinecraftMapEditor\Block
      *
      * @param int $age Age of the cactus
      *
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($age)
     {

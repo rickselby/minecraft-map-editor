@@ -4,12 +4,17 @@ namespace MinecraftMapEditor\Block;
 
 class Jukebox extends \MinecraftMapEditor\Block
 {
-
-    public function __construct()
+    /**
+     * Get a jukebox, optionally with the given disc inserted.
+     *
+     * @param ? $disc [optional]
+     */
+    public function __construct($disc = null)
     {
-        # $block = self::checkBlock($blockRef, Ref::getStartsWith(''));
-        # $block = IDs::$list[];
-        # parent::__construct($block[0], $block[1]);
-    }
+        $data = $disc ? 0x1 : 0x0;
 
+        $block = IDs::$list[Ref::JUKEBOX];
+
+        parent::__construct($block[0], $data);
+    }
 }
