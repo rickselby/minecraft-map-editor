@@ -45,16 +45,16 @@
         },
         {
             "name": "rickselby/consthelpers",
-            "version": "1.0",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rickselby/consthelpers.git",
-                "reference": "cbfb8a4a1036f409dbafeb20109723d64e9d2456"
+                "reference": "71fe6b251c4a2427be4aacf0e998e7bd9c36ff58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rickselby/consthelpers/zipball/cbfb8a4a1036f409dbafeb20109723d64e9d2456",
-                "reference": "cbfb8a4a1036f409dbafeb20109723d64e9d2456",
+                "url": "https://api.github.com/repos/rickselby/consthelpers/zipball/71fe6b251c4a2427be4aacf0e998e7bd9c36ff58",
+                "reference": "71fe6b251c4a2427be4aacf0e998e7bd9c36ff58",
                 "shasum": ""
             },
             "require": {
@@ -82,7 +82,7 @@
             "keywords": [
                 "constants"
             ],
-            "time": "2015-10-17 11:03:56"
+            "time": "2015-12-22 09:46:26"
         },
         {
             "name": "rickselby/nbt",
