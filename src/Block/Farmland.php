@@ -18,9 +18,5 @@ class Farmland extends \MinecraftMapEditor\Block
         $block = IDs::$list[Ref::FARMLAND];
 
         parent::__construct($block[0], $wetness);
-
-        # $block = self::checkBlock($blockRef, Ref::getStartsWith(''));
-        # $block = IDs::$list[];
-        # parent::__construct($block[0], $block[1]);
     }
 }

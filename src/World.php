@@ -40,7 +40,7 @@ class World
      * @param Coords\BlockCoords $coords Co-ordinates of the block
      * @param array              $block  Information about the new block
      */
-    public function setBlock($coords, $block)
+    public function setBlock(Coords\BlockCoords $coords, $block)
     {
         // Get the region reference from the block co-ordinates
         $regionRef = $coords->toRegionRef();
@@ -55,7 +55,7 @@ class World
      *
      * @return array Information about the block
      */
-    public function getBlock($coords)
+    public function getBlock(Coords\BlockCoords $coords)
     {
         $regionRef = $coords->toRegionRef();
         $this->initRegion($regionRef);
@@ -68,7 +68,7 @@ class World
      *
      * @param Coords\RegionRef $regionRef
      */
-    private function initRegion($regionRef)
+    private function initRegion(Coords\RegionRef $regionRef)
     {
         if (!isset($this->regions[$regionRef->toKey()])) {
             $this->regions[$regionRef->toKey()] = new Region($regionRef, $this->path);

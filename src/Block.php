@@ -24,36 +24,15 @@ class Block
     /**
      * Create a block to pass around.
      *
-     * @param type $id
-     * @param type $data
-     * @param type $entity
+     * @param int $id
+     * @param int $data
+     * @param \Nbt\Node|null $entity
      */
-    public function __construct($id, $data = 0x00, $entity = null)
+    public function __construct($id, $data = 0x00, \Nbt\Node $entity = null)
     {
         $this->id = $id;
         $this->data = $data;
         $this->entity = $entity;
-    }
-
-    /**
-     * Get a simple block - one with no fancy settings.
-     *
-     * @param int $blockRef Block reference - one of the BlockRef class constants.
-     *
-     * @return \self
-     *
-     * @throws Exception
-     */
-    public static function getBlock($blockRef)
-    {
-        // The 3rd value in the array shows if it's a simple block or not.
-        // Here, we're only dealing with simple blocks.
-        $block = Block\IDs::$list[$blockRef];
-        if (!isset($block[2]) || !$block[2]) {
-            return new self($block[0], $block[1]);
-        } else {
-            throw new \Exception('Cannot declare a complex block in getBlock()', E_ERROR);
-        }
     }
 
     /**********************************************************
@@ -78,10 +57,9 @@ class Block
     }
 
     /**
-     * Check if the given value is in a list of data references.
+     * Check if the given value is in any of the class constants
      *
      * @param int    $ref        Data reference (from Block\DataRef)
-     * @param string $constStart The start of the constant names
      * @param string $error      Error string for exception if $ref is invalid
      *
      * @return true

@@ -1,6 +1,7 @@
 {
     "name": "rickselby/minecraft-map-editor",
     "description": "Minecraft Map Editor",
+    "licence": "MIT",
     "authors": [
         {
             "name": "Rick Selby",

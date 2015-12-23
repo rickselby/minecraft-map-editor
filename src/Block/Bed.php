@@ -25,7 +25,7 @@ class Bed extends \MinecraftMapEditor\Block
         self::checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for bed');
         self::checkDataRefValidStartWith($part, 'PART_', 'Invalid part for bed');
 
-        $block = IDs::$list[Block\Ref::BED];
+        $block = IDs::$list[Ref::BED];
 
         parent::__construct($block[0], $direction | $part);
     }

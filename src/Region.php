@@ -19,9 +19,10 @@ class Region
     /**
      * Initialise a specific region file given the identifiers of the file.
      *
-     * @param Coords\RegionRef $coords The reference to the region file
+     * @param Coords\RegionRef $regionRef The reference to the region file
+     * @param string           $path      Path to the minecraft save
      */
-    public function __construct($regionRef, $path)
+    public function __construct(Coords\RegionRef $regionRef, $path)
     {
         // Set the file path
         $this->filePath = $path.'region'.DIRECTORY_SEPARATOR.'r.'.$regionRef->x.'.'.$regionRef->z.'.mca';
@@ -53,7 +54,7 @@ class Region
      * @param Coords\BlockCoords $coords Co-ordinates of the block
      * @param array              $block  Information about the new block
      */
-    public function setBlock($coords, $block)
+    public function setBlock(Coords\BlockCoords $coords, $block)
     {
         // Get the chunk reference from the block co-ordinates
         $chunkRef = $coords->toChunkRef();
@@ -68,7 +69,7 @@ class Region
      *
      * @return array Information about the block
      */
-    public function getBlock($coords)
+    public function getBlock(Coords\BlockCoords $coords)
     {
         $chunkRef = $coords->toChunkRef();
         $this->initChunk($chunkRef);
@@ -79,17 +80,14 @@ class Region
     /**
      * Initialise a chunk (or check that it is initialised).
      *
-     * @param Coords\ChunkCoords $chunkRef
+     * @param Coords\ChunkRef $chunkRef
      */
-    private function initChunk($chunkRef)
+    private function initChunk(Coords\ChunkRef $chunkRef)
     {
         if (!isset($this->chunks[$chunkRef->toKey()])) {
             // If the offset is zero, this chunk does not yet exist. ARGH
             if ($this->chunkInfo[$chunkRef->toKey()]['offset'] == 0) {
                 // Do nothing, for now
-                var_dump($chunkRef);
-                var_dump($this->filePath);
-                var_dump($this->chunkInfo[$chunkRef->toKey()]);
                 throw new \Exception('Chunks must exist to be edited');
             } else {
                 // Seek through the region file to the offset for the requested chunk
