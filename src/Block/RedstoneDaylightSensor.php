@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class RedstoneDaylightSensor extends \MinecraftMapEditor\Block\Shared\BasicValue
+class RedstoneDaylightSensor extends Shared\BasicValue
 {
+    use Shared\Create;
+
     /**
      * Get a daylight sensor (regular or inverted) with the given power.
      *

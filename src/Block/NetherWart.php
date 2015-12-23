@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class NetherWart extends \MinecraftMapEditor\Block\Shared\BasicValue
+class NetherWart extends Shared\BasicValue
 {
     /**
      * Get Nether Wart at the given stage of growth.

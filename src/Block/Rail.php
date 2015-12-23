@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Rail extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const NORTH_SOUTH = 0x0;
     const EAST_WEST = 0x1;
     const SLOPED_EAST = 0x2;

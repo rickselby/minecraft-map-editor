@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Stem extends \MinecraftMapEditor\Block\Shared\BasicValue
+class Stem extends Shared\BasicValue
 {
+    use Shared\Create;
+
     /**
      * Get a stem with the given growth setting (7 = ready to spawn item).
      *

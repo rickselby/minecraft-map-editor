@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class FlowingLiquid extends \MinecraftMapEditor\Block\Shared\BasicValue
+class FlowingLiquid extends Shared\BasicValue
 {
+    use Shared\Create;
+
     /**
      * Flowing water or lava. Set the level - 0x0 is the highest, to 0x7 the lowest.
      * If level is 0x8, then it's a full block that is falling and only spreads downwards.

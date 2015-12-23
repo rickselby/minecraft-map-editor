@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Vines extends \MinecraftMapEditor\Block\Shared\BasicValue
+class Vines extends Shared\BasicValue
 {
     const SOUTH = 0b0001;
     const WEST  = 0b0010;

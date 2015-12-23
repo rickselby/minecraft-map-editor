@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class PressurePlate extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const INACTIVE = 0x0;
     const ACTIVE = 0x1;
 

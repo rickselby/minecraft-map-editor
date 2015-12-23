@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Cocoa extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const ATTACHED_NORTH = 0x0;
     const ATTACHED_SOUTH = 0x1;
     const ATTACHED_EAST  = 0x2;

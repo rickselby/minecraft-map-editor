@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class SugarCane extends \MinecraftMapEditor\Block\Shared\BasicValue
+class SugarCane extends Shared\BasicValue
 {
     /**
      * Get a sugar cane with a given age. When the age is 15, it'll grow a new

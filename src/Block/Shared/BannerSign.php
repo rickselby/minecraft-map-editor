@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block\Shared;
 
 abstract class BannerSign extends \MinecraftMapEditor\Block
 {
+    use Create;
+
     const SOUTH          = 0x00;
     const SOUTHSOUTHWEST = 0x01;
     const SOUTHWEST      = 0x02;
@@ -29,7 +31,7 @@ abstract class BannerSign extends \MinecraftMapEditor\Block
      *
      * @throws \Exception
      */
-    public function __construct($blockRef, $orientation, $standingBlock, $wallBlock)
+    public function __construct($blockRef, $orientation, $standingBlock, $wallBlock, $entityData)
     {
         // We still call checkBlock to throw an exception if required
         // and to get the block information
@@ -44,7 +46,7 @@ abstract class BannerSign extends \MinecraftMapEditor\Block
                 break;
         }
 
-        parent::__construct($block[0], $orientation);
+        parent::__construct($block[0], $orientation, $entityData);
     }
 
     /**
@@ -54,7 +56,7 @@ abstract class BannerSign extends \MinecraftMapEditor\Block
      */
     protected function checkStanding(&$orientation)
     {
-        self::checkDataRefValidAll($orientation, 'Invalid orientation for standing item');
+        $this->checkDataRefValidAll($orientation, 'Invalid orientation for standing item');
     }
 
     /**

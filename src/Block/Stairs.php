@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Stairs extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const ORIENT_EAST  = 0x0;
     const ORIENT_WEST  = 0x1;
     const ORIENT_SOUTH = 0x2;

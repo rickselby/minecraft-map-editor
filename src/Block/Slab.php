@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Slab extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const BOTTOM = 0x0;
     const TOP = 0x8;
 

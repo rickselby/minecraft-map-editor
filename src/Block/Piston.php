@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Piston extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const UP = 0x1;
     const DOWN = 0x0;
     const NORTH = 0x2;

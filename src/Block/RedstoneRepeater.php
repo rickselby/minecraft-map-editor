@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class RedstoneRepeater extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const FACING_NORTH = 0x0;
     const FACING_EAST  = 0x1;
     const FACING_SOUTH = 0x2;

@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class RedstoneWire extends \MinecraftMapEditor\Block\Shared\BasicValue
+class RedstoneWire extends Shared\BasicValue
 {
     /**
      * Get redstone wire with the given power.

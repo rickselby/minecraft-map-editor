@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Crops extends \MinecraftMapEditor\Block\Shared\BasicValue
+class Crops extends Shared\BasicValue
 {
+    use Shared\Create;
+
     /**
      * Get a crop (wheat, carrots, potatoes) at the given growth.
      *

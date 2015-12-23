@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Lever extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const SIDE_BOTTOM_EAST  = 0x0;
     const SIDE_EAST         = 0x1;
     const SIDE_WEST         = 0x2;

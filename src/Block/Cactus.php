@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Cactus extends \MinecraftMapEditor\Block\Shared\BasicValue
+class Cactus extends Shared\BasicValue
 {
     /**
      * Get a cactus with a given age. When the age is 15, it'll grow a new cactus

@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Tripwire extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const INACTIVE = 0b0000;
     const ACTIVE   = 0b0001;
 

@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Torch extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const WEST = 0x1;
     const EAST = 0x2;
     const NORTH = 0x3;

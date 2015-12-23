@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class RedstoneRail extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const ORIENT_NORTH_SOUTH = 0x0;
     const ORIENT_EAST_WEST = 0x1;
     const ORIENT_SLOPED_EAST = 0x2;

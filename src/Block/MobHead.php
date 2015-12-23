@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class MobHead extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const FLOOR = 0x1;
     const WALL_NORTH = 0x2;
     const WALL_SOUTH = 0x3;
@@ -13,7 +15,7 @@ class MobHead extends \MinecraftMapEditor\Block
     /**
      * Get a mob head, with the given placement.
      * (Which head it is will be in tile entity, to be implemented).
-     * 
+     *
      * @param int $placement One of the class constants
      *
      * @throws \Exception

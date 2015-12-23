@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Banner extends \MinecraftMapEditor\Block\Shared\BannerSign
+class Banner extends Shared\BannerSign
 {
     /**
      * Get a banner, with the given orientation.
@@ -18,7 +18,8 @@ class Banner extends \MinecraftMapEditor\Block\Shared\BannerSign
             $blockRef,
             $orientation,
             Ref::BANNER_STANDING,
-            Ref::BANNER_WALL
+            Ref::BANNER_WALL,
+            null
         );
     }
 }

@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class FenceGate extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const FACING_SOUTH = 0x0;
     const FACING_WEST = 0x1;
     const FACING_NORTH = 0x2;

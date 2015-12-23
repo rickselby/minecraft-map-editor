@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Anvil extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const DAMAGE_NONE   = 0b0000;
     const DAMAGE_SLIGHT = 0b0100;
     const DAMAGE_VERY   = 0b1000;

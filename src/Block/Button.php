@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Button extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const POSITION_DOWN  = 0x0;
     const POSITION_EAST  = 0x1;
     const POSITION_WEST  = 0x2;

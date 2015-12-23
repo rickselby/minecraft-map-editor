@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class DoubleSlab extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const TEXTURE_NORMAL = 0b0000;
     const TEXTURE_TOP = 0b1000;
 

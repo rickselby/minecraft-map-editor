@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Cauldron extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const FILL_EMPTY = 0x0;
     const FILL_THIRD = 0x1;
     const FILL_TWO_THIRDS = 0x2;

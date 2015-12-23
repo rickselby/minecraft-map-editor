@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Trapdoor extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const HINGE_SOUTH = 0x0;
     const HINGE_NORTH = 0x1;
     const HINGE_EAST  = 0x2;

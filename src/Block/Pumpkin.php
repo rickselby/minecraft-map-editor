@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Pumpkin extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const SOUTH = 0x0;
     const WEST = 0x1;
     const NORTH = 0x2;

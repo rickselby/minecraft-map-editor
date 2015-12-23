@@ -52,9 +52,9 @@ class Region
      * Set a block in the world. Will overwrite a block if one exists at the co-ordinates.
      *
      * @param Coords\BlockCoords $coords Co-ordinates of the block
-     * @param array              $block  Information about the new block
+     * @param Block              $block  Information about the new block
      */
-    public function setBlock(Coords\BlockCoords $coords, $block)
+    public function setBlock(Coords\BlockCoords $coords, Block $block)
     {
         // Get the chunk reference from the block co-ordinates
         $chunkRef = $coords->toChunkRef();
@@ -67,7 +67,7 @@ class Region
      *
      * @param Coords\BlockCoords $coords Co-ordinates of the block
      *
-     * @return array Information about the block
+     * @return Block Information about the block
      */
     public function getBlock(Coords\BlockCoords $coords)
     {

@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Fire extends \MinecraftMapEditor\Block\Shared\BasicValue
+class Fire extends Shared\BasicValue
 {
     /**
      * Get FIRE! Set the age. If fire is given age 15 and is above a flammable

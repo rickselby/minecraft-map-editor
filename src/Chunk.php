@@ -80,9 +80,9 @@ class Chunk
      * Set a block in the world. Will overwrite a block if one exists at the co-ordinates.
      *
      * @param Coords\BlockCoords $blockCoords Co-ordinates of the block
-     * @param array              $block       Information about the new block
+     * @param Block              $block       Information about the new block
      */
-    public function setBlock(Coords\BlockCoords $blockCoords, $block)
+    public function setBlock(Coords\BlockCoords $blockCoords, Block $block)
     {
         $chunkCoords = $blockCoords->toChunkCoords();
         $yRef = $chunkCoords->getSectionRef();
@@ -92,9 +92,9 @@ class Chunk
         $blockRef = $chunkCoords->getSectionYZX();
 
         $blockIDList = $blocks->getValue();
-        if ($block['blockID'] <= 255) {
-            if ($blockIDList[$blockRef] != $block['blockID']) {
-                $blockIDList[$blockRef] = $block['blockID'];
+        if ($block->id <= 255) {
+            if ($blockIDList[$blockRef] != $block->id) {
+                $blockIDList[$blockRef] = $block->id;
                 $this->setChanged($blockCoords);
                 $blocks->setValue($blockIDList);
             }
@@ -105,13 +105,10 @@ class Chunk
 
         // set block data
         $blockData = $this->getSectionPart($yRef, 'Data');
-        $this->setNibbleIn($blockData, $blockCoords, $block['blockData']);
+        $this->setNibbleIn($blockData, $blockCoords, $block->data);
 
         // set block entity data
-        $this->updateBlockEntity(
-            $blockCoords,
-            isset($block['blockEntity']) ? $block['blockEntity'] : null
-        );
+        $this->updateBlockEntity($blockCoords, $block->entity);
     }
 
     /**
@@ -130,7 +127,7 @@ class Chunk
 
         // Block Data
         // Get the nibble for this block
-        $thisBlockData = $this->getNibbleFrom(
+        $blockData = $this->getNibbleFrom(
             $this->getSectionPart($chunkCoords->getSectionRef(), 'Data')->getValue(),
             $chunkCoords->getSectionYZX()
         );
@@ -140,11 +137,7 @@ class Chunk
                 ? $this->blockEntities[$blockCoords->toKey()]
                 : null;
 
-        return [
-            'blockID' => $blockID,
-            'blockData' => $thisBlockData,
-            'blockEntity' => $blockEntity,
-            ];
+        return new Block($blockID, $blockData, $blockEntity);
     }
 
     public function getBlockID(Coords\ChunkCoords $chunkCoords)
@@ -182,7 +175,7 @@ class Chunk
     /**
      * Get the correct section from within the Sections tag (based on Y index).
      *
-     * @param int       $yRef
+     * @param int $yRef
      *
      * @return \Nbt\Node
      */
@@ -351,7 +344,7 @@ class Chunk
      * @param Coords\BlockCoords $blockCoords
      * @param \Nbt\Node|null     $blockEntity
      */
-    public function updateBlockEntity(Coords\BlockCoords $blockCoords, \Nbt\Node $blockEntity)
+    public function updateBlockEntity(Coords\BlockCoords $blockCoords, $blockEntity)
     {
         if ($blockEntity === null) {
             if (isset($this->blockEntities[$blockCoords->toKey()])) {
@@ -361,23 +354,28 @@ class Chunk
         } else {
             $this->setChanged($blockCoords);
             // Add the co-ordinates to the block entity
-            if ($blockEntity->findChildByName('x')) {
-                $blockEntity->findChildByName('x')->setValue($blockCoords->x);
-            } else {
-                $blockEntity->addChild(\Nbt\Tag::tagInt('x', $blockCoords->x));
-            }
-            if ($blockEntity->findChildByName('y')) {
-                $blockEntity->findChildByName('y')->setValue($blockCoords->y);
-            } else {
-                $blockEntity->addChild(\Nbt\Tag::tagInt('y', $blockCoords->y));
-            }
-            if ($blockEntity->findChildByName('z')) {
-                $blockEntity->findChildByName('z')->setValue($blockCoords->z);
-            } else {
-                $blockEntity->addChild(\Nbt\Tag::tagInt('z', $blockCoords->z));
-            }
+            $this->updateChildOrCreateInt($blockEntity, 'x', $blockCoords->x);
+            $this->updateChildOrCreateInt($blockEntity, 'y', $blockCoords->y);
+            $this->updateChildOrCreateInt($blockEntity, 'z', $blockCoords->z);
 
             $this->blockEntities[$blockCoords->toKey()] = $blockEntity;
+        }
+    }
+
+    /**
+     * Try to update a child value of a node; if it doesn't exist, create it.
+     *
+     * @param \Nbt\Node $parent
+     * @param string    $childName
+     * @param int       $newValue
+     */
+    private function updateChildOrCreateInt(\Nbt\Node $parent, $childName, $newValue)
+    {
+        $child = $parent->findChildByName($childName);
+        if ($child) {
+            $child->setValue($newValue);
+        } else {
+            $parent->addChild(\Nbt\Tag::tagInt($childName, $newValue));
         }
     }
 

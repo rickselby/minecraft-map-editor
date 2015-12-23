@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Hopper extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const OUTPUT_DOWN = 0x0;
     const OUTPUT_NORTH = 0x2;
     const OUTPUT_SOUTH = 0x3;

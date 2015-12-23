@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Mushroom extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const ALL_PORES = 0x0;
     const CAP_TOP_WEST_NORTH = 0x1;
     const CAP_TOP_NORTH = 0x2;

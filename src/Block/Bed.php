@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Bed extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const DIRECTION_SOUTH = 0x0;
     const DIRECTION_WEST  = 0x1;
     const DIRECTION_NORTH = 0x2;

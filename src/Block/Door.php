@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Door extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const HALF_BOTTOM = 0b0000;
     const HALF_TOP    = 0b1000;
 

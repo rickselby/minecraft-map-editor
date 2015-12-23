@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Farmland extends \MinecraftMapEditor\Block\Shared\BasicValue
+class Farmland extends Shared\BasicValue
 {
     /**
      * Get a farmland block, with the given wetness.

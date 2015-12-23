@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Dropper extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const DIRECTION_DOWN = 0x0;
     const DIRECTION_UP = 0x1;
     const DIRECTION_NORTH = 0x2;

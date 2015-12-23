@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Leaves extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const NO_DECAY = 0b0000;
     const DECAY    = 0b0100;
 

@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Wood extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const UP_DOWN     = 0b0000;
     const EAST_WEST   = 0b0100;
     const NORTH_SOUTH = 0b1000;

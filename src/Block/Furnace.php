@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Furnace extends \MinecraftMapEditor\Block
 {
+    use Shared\Create;
+
     const NORTH = 0x2;
     const SOUTH = 0x3;
     const WEST = 0x4;

@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class SnowLayer extends \MinecraftMapEditor\Block\Shared\BasicValue
+class SnowLayer extends Shared\BasicValue
 {
     /**
      * Get snow layers, with the given number of layers.

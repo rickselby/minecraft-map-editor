@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Cake extends \MinecraftMapEditor\Block\Shared\BasicValue
+class Cake extends Shared\BasicValue
 {
     /**
      * Get a cake, with the given number of slices eaten.
