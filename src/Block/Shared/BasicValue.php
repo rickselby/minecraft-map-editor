@@ -2,6 +2,8 @@
 
 namespace MinecraftMapEditor\Block\Shared;
 
+use MinecraftMapEditor\Block\IDs;
+
 abstract class BasicValue extends \MinecraftMapEditor\Block
 {
     /**
@@ -18,7 +20,7 @@ abstract class BasicValue extends \MinecraftMapEditor\Block
     public function __construct($blockRef, $value, $min, $max, $exceptionMessage)
     {
         if ($value < $min || $value > $max) {
-            throw new Exception($exceptionMessage, E_ERROR);
+            throw new \Exception($exceptionMessage, E_ERROR);
         }
 
         $block = IDs::$list[$blockRef];

@@ -56,7 +56,6 @@ trait EntityData
      */
     protected function createChildOnly(\Nbt\Node $parent, $childName, $childType, $childValue)
     {
-        $child = $parent->findChildByName($childName);
         if (!$parent->findChildByName($childName)) {
             $child = (new \Nbt\Node())
                 ->setType($childType)
