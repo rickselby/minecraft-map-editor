@@ -6,16 +6,16 @@ class Rail extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const NORTH_SOUTH = 0x0;
-    const EAST_WEST = 0x1;
-    const SLOPED_EAST = 0x2;
-    const SLOPED_WEST = 0x3;
-    const SLOPED_NORTH = 0x4;
-    const SLOPED_SOUTH = 0x5;
-    const SOUTH_EAST = 0x6;
-    const SOUTH_WEST = 0x7;
-    const NORTH_WEST = 0x8;
-    const NORTH_EAST = 0x9;
+    const NORTH_SOUTH = 0;
+    const EAST_WEST = 1;
+    const SLOPED_EAST = 2;
+    const SLOPED_WEST = 3;
+    const SLOPED_NORTH = 4;
+    const SLOPED_SOUTH = 5;
+    const SOUTH_EAST = 6;
+    const SOUTH_WEST = 7;
+    const NORTH_WEST = 8;
+    const NORTH_EAST = 9;
 
     /**
      * Get a normal rail, with the given orientation.

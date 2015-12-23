@@ -6,11 +6,11 @@ class Torch extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const WEST = 0x1;
-    const EAST = 0x2;
-    const NORTH = 0x3;
-    const SOUTH = 0x4;
-    const STANDING = 0x5;
+    const WEST = 1;
+    const EAST = 2;
+    const NORTH = 3;
+    const SOUTH = 4;
+    const STANDING = 5;
 
     /**
      * Get a torch with a given attatchment.

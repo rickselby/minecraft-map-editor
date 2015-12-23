@@ -6,10 +6,10 @@ class Bed extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const DIRECTION_SOUTH = 0x0;
-    const DIRECTION_WEST  = 0x1;
-    const DIRECTION_NORTH = 0x2;
-    const DIRECTION_EAST  = 0x3;
+    const DIRECTION_SOUTH = 0;
+    const DIRECTION_WEST  = 1;
+    const DIRECTION_NORTH = 2;
+    const DIRECTION_EAST  = 3;
 
     const PART_FOOT = 0b0000;
     const PART_HEAD = 0b1000;

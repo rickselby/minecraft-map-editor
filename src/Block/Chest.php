@@ -6,10 +6,10 @@ class Chest extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const NORTH = 0x2;
-    const SOUTH = 0x3;
-    const EAST  = 0x4;
-    const WEST  = 0x5;
+    const NORTH = 2;
+    const SOUTH = 3;
+    const EAST  = 4;
+    const WEST  = 5;
 
     /**
      * Get a chest, facing in the given direction.

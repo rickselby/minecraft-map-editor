@@ -6,12 +6,12 @@ class RedstoneRail extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const ORIENT_NORTH_SOUTH = 0x0;
-    const ORIENT_EAST_WEST = 0x1;
-    const ORIENT_SLOPED_EAST = 0x2;
-    const ORIENT_SLOPED_WEST = 0x3;
-    const ORIENT_SLOPED_NORTH = 0x4;
-    const ORIENT_SLOPED_SOUTH = 0x5;
+    const ORIENT_NORTH_SOUTH = 0;
+    const ORIENT_EAST_WEST = 1;
+    const ORIENT_SLOPED_EAST = 2;
+    const ORIENT_SLOPED_WEST = 3;
+    const ORIENT_SLOPED_NORTH = 4;
+    const ORIENT_SLOPED_SOUTH = 5;
 
     const INACTIVE = 0b0000;
     const ACTIVE   = 0b1000;

@@ -6,10 +6,10 @@ class RedstoneComparator extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const FACING_NORTH = 0x1;
-    const FACING_EAST = 0x2;
-    const FACING_SOUTH = 0x3;
-    const FACING_WEST = 0x4;
+    const FACING_NORTH = 1;
+    const FACING_EAST = 2;
+    const FACING_SOUTH = 3;
+    const FACING_WEST = 4;
 
     const MODE_NORMAL = 0b0000;
     const MODE_SUBTRACTION = 0b0100;

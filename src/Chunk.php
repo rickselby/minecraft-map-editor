@@ -199,10 +199,10 @@ class Chunk
         // Doesn't need a name, it's part of a list
         $newY = \Nbt\Tag::tagCompound('', [
             \Nbt\Tag::tagByte('Y', $yRef),
-            \Nbt\Tag::tagByteArray('Blocks',     array_fill(0, 4096, 0x0)),
-            \Nbt\Tag::tagByteArray('Data',       array_fill(0, 2048, 0x0)),
-            \Nbt\Tag::tagByteArray('BlockLight', array_fill(0, 2048, 0x0)),
-            \Nbt\Tag::tagByteArray('SkyLight',   array_fill(0, 2048, 0x0)),
+            \Nbt\Tag::tagByteArray('Blocks',     array_fill(0, 4096, 0)),
+            \Nbt\Tag::tagByteArray('Data',       array_fill(0, 2048, 0)),
+            \Nbt\Tag::tagByteArray('BlockLight', array_fill(0, 2048, 0)),
+            \Nbt\Tag::tagByteArray('SkyLight',   array_fill(0, 2048, 0)),
         ]);
 
         // Add it to the list
@@ -281,7 +281,7 @@ class Chunk
     public function prepareForSaving()
     {
         // Set Lightpopulated to zero to force a lighting update
-        $this->nbtNode->findChildByName('LightPopulated')->setValue(0x00);
+        $this->nbtNode->findChildByName('LightPopulated')->setValue(0);
         // Set the last update time
         $this->nbtNode->findChildByName('LastUpdate')->setValue(time());
         // Update the height map
@@ -312,7 +312,7 @@ class Chunk
                 $heightMapArray[$zxVal] = 0;
                 for ($y = (max($yRefs) * 16) + 15; $y >= 0; --$y) {
                     $block = $this->getBlockID(new Coords\ChunkCoords($zxRef->x, $y, $zxRef->z));
-                    if ($block != 0x00) {
+                    if ($block != 0) {
                         $heightMapArray[$zxVal] = $y;
                         break;
                     }
@@ -389,7 +389,7 @@ class Chunk
 
         if (count($this->blockEntities) == 0) {
             // When empty, lists have a zero payload type
-            $this->blockEntitiesTag->setPayloadType(0x00);
+            $this->blockEntitiesTag->setPayloadType(0);
         } else {
             $this->blockEntitiesTag->setPayloadType(\Nbt\Tag::TAG_COMPOUND);
             foreach ($this->blockEntities as $blockEntity) {

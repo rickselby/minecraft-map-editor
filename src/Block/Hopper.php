@@ -6,11 +6,11 @@ class Hopper extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const OUTPUT_DOWN = 0x0;
-    const OUTPUT_NORTH = 0x2;
-    const OUTPUT_SOUTH = 0x3;
-    const OUTPUT_WEST = 0x4;
-    const OUTPUT_EAST = 0x5;
+    const OUTPUT_DOWN = 0;
+    const OUTPUT_NORTH = 2;
+    const OUTPUT_SOUTH = 3;
+    const OUTPUT_WEST = 4;
+    const OUTPUT_EAST = 5;
 
     const ACTIVE = 0b0000;
     const DISABLED = 0b1000;

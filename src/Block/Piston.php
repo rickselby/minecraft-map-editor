@@ -6,12 +6,12 @@ class Piston extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const UP = 0x1;
-    const DOWN = 0x0;
-    const NORTH = 0x2;
-    const EAST = 0x5;
-    const SOUTH = 0x3;
-    const WEST = 0x4;
+    const UP = 1;
+    const DOWN = 0;
+    const NORTH = 2;
+    const EAST = 5;
+    const SOUTH = 3;
+    const WEST = 4;
 
     /**
      * Get a piston. If extended, this will only do the piston body, not the head
@@ -32,7 +32,7 @@ class Piston extends \MinecraftMapEditor\Block
         $this->checkDataRefValidAll($direction, 'Invalid direction for piston');
 
         if ($extended) {
-            $direction |= 0x8;
+            $direction |= 8;
         }
 
         parent::__construct($block[0], $direction);

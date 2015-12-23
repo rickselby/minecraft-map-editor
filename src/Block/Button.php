@@ -6,12 +6,12 @@ class Button extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const POSITION_DOWN  = 0x0;
-    const POSITION_EAST  = 0x1;
-    const POSITION_WEST  = 0x2;
-    const POSITION_SOUTH = 0x3;
-    const POSITION_NORTH = 0x4;
-    const POSITION_UP    = 0x5;
+    const POSITION_DOWN  = 0;
+    const POSITION_EAST  = 1;
+    const POSITION_WEST  = 2;
+    const POSITION_SOUTH = 3;
+    const POSITION_NORTH = 4;
+    const POSITION_UP    = 5;
 
     const INACTIVE = 0b0000;
     const ACTIVE   = 0b1000;

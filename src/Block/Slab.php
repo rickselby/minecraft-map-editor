@@ -6,8 +6,8 @@ class Slab extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const BOTTOM = 0x0;
-    const TOP = 0x8;
+    const BOTTOM = 0;
+    const TOP = 8;
 
     /**
      * Get a slab, positioned either top or bottom of the block.

@@ -13,15 +13,15 @@ class BrewingStand extends \MinecraftMapEditor\Block
      */
     public function __construct($eastBottle, $southWestBottle, $northWestBottle)
     {
-        $data = 0x0;
+        $data = 0;
         if ($eastBottle) {
-            $data |= 0b001;
+            $data |= 0b0001;
         }
         if ($southWestBottle) {
-            $data |= 0b010;
+            $data |= 0b0010;
         }
         if ($northWestBottle) {
-            $data |= 0b100;
+            $data |= 0b0100;
         }
 
         $block = IDs::$list[Ref::BREWING_STAND];

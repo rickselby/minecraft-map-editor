@@ -10,10 +10,10 @@ class Anvil extends \MinecraftMapEditor\Block
     const DAMAGE_SLIGHT = 0b0100;
     const DAMAGE_VERY   = 0b1000;
 
-    const DIRECTION_NORTH_SOUTH = 0x0;
-    const DIRECTION_EAST_WEST   = 0x1;
-    const DIRECTION_SOUTH_NORTH = 0x2;
-    const DIRECTION_WEST_EAST   = 0x3;
+    const DIRECTION_NORTH_SOUTH = 0;
+    const DIRECTION_EAST_WEST   = 1;
+    const DIRECTION_SOUTH_NORTH = 2;
+    const DIRECTION_WEST_EAST   = 3;
 
     /**
      * Get an anvil, with given damage setting and direction.

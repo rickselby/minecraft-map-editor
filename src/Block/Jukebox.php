@@ -11,7 +11,7 @@ class Jukebox extends \MinecraftMapEditor\Block
      */
     public function __construct($disc = null)
     {
-        $data = $disc ? 0x1 : 0x0;
+        $data = $disc ? 1 : 0;
 
         $block = IDs::$list[Ref::JUKEBOX];
 

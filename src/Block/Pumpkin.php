@@ -6,11 +6,11 @@ class Pumpkin extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const SOUTH = 0x0;
-    const WEST = 0x1;
-    const NORTH = 0x2;
-    const EAST = 0x3;
-    const NO_FACE = 0x4;
+    const SOUTH = 0;
+    const WEST = 1;
+    const NORTH = 2;
+    const EAST = 3;
+    const NO_FACE = 4;
 
     /**
      * Get a pumpkin or a jack o' lantern, facing the given direction

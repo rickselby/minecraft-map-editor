@@ -6,10 +6,10 @@ class Stairs extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const ORIENT_EAST  = 0x0;
-    const ORIENT_WEST  = 0x1;
-    const ORIENT_SOUTH = 0x2;
-    const ORIENT_NORTH = 0x3;
+    const ORIENT_EAST  = 0;
+    const ORIENT_WEST  = 1;
+    const ORIENT_SOUTH = 2;
+    const ORIENT_NORTH = 3;
 
     const RIGHT_WAY_UP = 0b0000;
     const UPSIDE_DOWN  = 0b0100;

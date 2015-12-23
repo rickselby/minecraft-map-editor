@@ -6,19 +6,19 @@ class Mushroom extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const ALL_PORES = 0x0;
-    const CAP_TOP_WEST_NORTH = 0x1;
-    const CAP_TOP_NORTH = 0x2;
-    const CAP_TOP_NORTH_EAST = 0x3;
-    const CAP_TOP_WEST = 0x4;
-    const CAP_TOP = 0x5;
-    const CAP_TOP_EAST = 0x6;
-    const CAP_TOP_SOUTH_WEST = 0x7;
-    const CAP_TOP_SOUTH = 0x8;
-    const CAP_TOP_EAST_SOUTH = 0x9;
-    const STEM_SIDES = 0x10;
-    const ALL_CAP = 0x14;
-    const ALL_STEM = 0x15;
+    const ALL_PORES = 0;
+    const CAP_TOP_WEST_NORTH = 1;
+    const CAP_TOP_NORTH = 2;
+    const CAP_TOP_NORTH_EAST = 3;
+    const CAP_TOP_WEST = 4;
+    const CAP_TOP = 5;
+    const CAP_TOP_EAST = 6;
+    const CAP_TOP_SOUTH_WEST = 7;
+    const CAP_TOP_SOUTH = 8;
+    const CAP_TOP_EAST_SOUTH = 9;
+    const STEM_SIDES = 10;
+    const ALL_CAP = 14;
+    const ALL_STEM = 15;
 
     /**
      * Get a mushroom block of the given type with the given texture layout.

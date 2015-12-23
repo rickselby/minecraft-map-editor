@@ -6,8 +6,8 @@ class PressurePlate extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const INACTIVE = 0x0;
-    const ACTIVE = 0x1;
+    const INACTIVE = 0;
+    const ACTIVE = 1;
 
     /**
      * Get the given pressure plate, active or not.

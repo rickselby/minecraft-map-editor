@@ -6,12 +6,12 @@ class PistonHead extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const DIRECTION_DOWN = 0x0;
-    const DIRECTION_UP = 0x1;
-    const DIRECTION_NORTH = 0x2;
-    const DIRECTION_SOUTH = 0x3;
-    const DIRECTION_WEST = 0x4;
-    const DIRECTION_EAST = 0x5;
+    const DIRECTION_DOWN = 0;
+    const DIRECTION_UP = 1;
+    const DIRECTION_NORTH = 2;
+    const DIRECTION_SOUTH = 3;
+    const DIRECTION_WEST = 4;
+    const DIRECTION_EAST = 5;
 
     const STICKY = 0b1000;
     const NORMAL = 0b0000;

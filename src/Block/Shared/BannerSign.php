@@ -6,22 +6,22 @@ abstract class BannerSign extends \MinecraftMapEditor\Block
 {
     use Create;
 
-    const SOUTH          = 0x00;
-    const SOUTHSOUTHWEST = 0x01;
-    const SOUTHWEST      = 0x02;
-    const WESTSOUTHWEST  = 0x03;
-    const WEST           = 0x04;
-    const WESTNORTHWEST  = 0x05;
-    const NORTHWEST      = 0x06;
-    const NORTHNORTHWEST = 0x07;
-    const NORTH          = 0x08;
-    const NORTHNORTHEAST = 0x09;
-    const NORTHEAST      = 0x10;
-    const EASTNORTHEAST  = 0x11;
-    const EAST           = 0x12;
-    const EASTSOUTHEAST  = 0x13;
-    const SOUTHEAST      = 0x14;
-    const SOUTHSOUTHEAST = 0x15;
+    const SOUTH          = 00;
+    const SOUTHSOUTHWEST = 01;
+    const SOUTHWEST      = 02;
+    const WESTSOUTHWEST  = 03;
+    const WEST           = 04;
+    const WESTNORTHWEST  = 05;
+    const NORTHWEST      = 06;
+    const NORTHNORTHWEST = 07;
+    const NORTH          = 08;
+    const NORTHNORTHEAST = 09;
+    const NORTHEAST      = 10;
+    const EASTNORTHEAST  = 11;
+    const EAST           = 12;
+    const EASTSOUTHEAST  = 13;
+    const SOUTHEAST      = 14;
+    const SOUTHSOUTHEAST = 15;
 
     /**
      * Get a banner, with the given orientation.
@@ -69,19 +69,19 @@ abstract class BannerSign extends \MinecraftMapEditor\Block
     {
         switch ($orientation) {
             case self::NORTH:
-                $orientation = 0x2;
+                $orientation = 2;
 
                 return;
             case self::SOUTH:
-                $orientation = 0x3;
+                $orientation = 3;
 
                 return;
             case self::WEST:
-                $orientation = 0x4;
+                $orientation = 4;
 
                 return;
             case self::EAST:
-                $orientation = 0x5;
+                $orientation = 5;
 
                 return;
             default:

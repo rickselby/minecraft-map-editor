@@ -6,11 +6,11 @@ class MobHead extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const FLOOR = 0x1;
-    const WALL_NORTH = 0x2;
-    const WALL_SOUTH = 0x3;
-    const WALL_EAST = 0x4;
-    const WALL_WEST = 0x5;
+    const FLOOR = 1;
+    const WALL_NORTH = 2;
+    const WALL_SOUTH = 3;
+    const WALL_EAST = 4;
+    const WALL_WEST = 5;
 
     /**
      * Get a mob head, with the given placement.

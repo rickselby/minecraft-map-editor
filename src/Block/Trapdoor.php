@@ -6,10 +6,10 @@ class Trapdoor extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const HINGE_SOUTH = 0x0;
-    const HINGE_NORTH = 0x1;
-    const HINGE_EAST  = 0x2;
-    const HINGE_WEST  = 0x3;
+    const HINGE_SOUTH = 0;
+    const HINGE_NORTH = 1;
+    const HINGE_EAST  = 2;
+    const HINGE_WEST  = 3;
 
     const DOOR_CLOSED = 0b0000;
     const DOOR_OPEN   = 0b0100;

@@ -6,13 +6,13 @@ class FenceGate extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const FACING_SOUTH = 0x0;
-    const FACING_WEST = 0x1;
-    const FACING_NORTH = 0x2;
-    const FACING_EAST = 0x3;
+    const FACING_SOUTH = 0;
+    const FACING_WEST = 1;
+    const FACING_NORTH = 2;
+    const FACING_EAST = 3;
 
-    const CLOSED = 0x00;
-    const OPEN = 0x04;
+    const CLOSED = 0b0000;
+    const OPEN   = 0b0100;
 
     /**
      * Get the given fence gate, with the given direction and state.

@@ -176,7 +176,7 @@ class Region
                     $this->chunkInfo[$chunkRef->toKey()]['data'] = str_pad(
                         $this->chunkInfo[$chunkRef->toKey()]['data'],
                         $this->chunkInfo[$chunkRef->toKey()]['sectorCount'] * 4096,
-                        0x00
+                        0
                     );
 
                     // write this chunk to the file

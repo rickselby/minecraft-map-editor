@@ -9,16 +9,16 @@ class Door extends \MinecraftMapEditor\Block
     const HALF_BOTTOM = 0b0000;
     const HALF_TOP    = 0b1000;
 
-    const HINGE_RIGHT = 0x0;
-    const HINGE_LEFT  = 0x1;
+    const HINGE_RIGHT = 0;
+    const HINGE_LEFT  = 1;
 
     const STATE_CLOSED = 0b0000;
     const STATE_OPEN   = 0b0100;
 
-    const FACING_WEST  = 0x0;
-    const FACING_NORTH = 0x1;
-    const FACING_EAST  = 0x2;
-    const FACING_SOUTH = 0x3;
+    const FACING_WEST  = 0;
+    const FACING_NORTH = 1;
+    const FACING_EAST  = 2;
+    const FACING_SOUTH = 3;
 
     const POWER_UNPOWERED = 0b0000;
     const POWER_POWERED   = 0b0010;

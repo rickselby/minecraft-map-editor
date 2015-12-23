@@ -60,13 +60,13 @@ class IDs
         Ref::IRON_ORE => [15, 0],
         Ref::COAL_ORE => [16, 0],
 
-        // Block 17: 0x4 and 0x8 specify the orientation
+        // Block 17: 4 and 8 specify the orientation
         Ref::WOOD_OAK    => [17, 0, 'Wood'],
         Ref::WOOD_SPRUCE => [17, 1, 'Wood'],
         Ref::WOOD_BIRCH  => [17, 2, 'Wood'],
         Ref::WOOD_JUNGLE => [17, 3, 'Wood'],
 
-        // Block 18: 0x4 and 0x8 specify decay values
+        // Block 18: 4 and 8 specify decay values
         Ref::LEAVES_OAK    => [18, 0, 'Leaves'],
         Ref::LEAVES_SPRUCE => [18, 1, 'Leaves'],
         Ref::LEAVES_BIRCH  => [18, 2, 'Leaves'],
@@ -252,7 +252,7 @@ class IDs
         Ref::ENCHANTMENT_TABLE    => [116, 0],
         Ref::BREWING_STAND        => [117, 0, 'BrewingStand'],
         Ref::CAULDRON             => [118, 0, 'Cauldron'],
-        Ref::END_PORTAL           => [119, 0],
+        Ref::END_PORTAL           => [119, 0, 'EndPortal'],
         Ref::END_PORTAL_FRAME     => [120, 0, 'EndPortalFrame'],
         Ref::END_STONE            => [121, 0],
         Ref::DRAGON_EGG           => [122, 0],

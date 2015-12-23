@@ -26,7 +26,7 @@ class Block
      * @param int            $data
      * @param \Nbt\Node|null $entity
      */
-    public function __construct($id, $data = 0x00, \Nbt\Node $entity = null)
+    public function __construct($id, $data = 0, \Nbt\Node $entity = null)
     {
         $this->id = $id;
         $this->data = $data;

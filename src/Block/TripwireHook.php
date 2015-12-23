@@ -6,10 +6,10 @@ class TripwireHook extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const FACING_SOUTH = 0x0;
-    const FACING_WEST  = 0x1;
-    const FACING_NORTH = 0x2;
-    const FACING_EAST  = 0x3;
+    const FACING_SOUTH = 0;
+    const FACING_WEST  = 1;
+    const FACING_NORTH = 2;
+    const FACING_EAST  = 3;
 
     const NOT_CONNECTED = 0b0000;
     const CONNECTED     = 0b0100;

@@ -6,10 +6,10 @@ class Furnace extends \MinecraftMapEditor\Block
 {
     use Shared\Create;
 
-    const NORTH = 0x2;
-    const SOUTH = 0x3;
-    const WEST = 0x4;
-    const EAST = 0x5;
+    const NORTH = 2;
+    const SOUTH = 3;
+    const WEST = 4;
+    const EAST = 5;
 
     /**
      * Get a furnace facing in the given direction.
