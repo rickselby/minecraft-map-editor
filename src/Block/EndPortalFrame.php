@@ -24,8 +24,8 @@ class EndPortalFrame extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::END_PORTAL_FRAME];
 
-        self::checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for end portal frame');
-        self::checkInList($filled, [self::NOT_FILLED, self::FILLED], 'Invalid filled setting for end portal frame');
+        $this->checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for end portal frame');
+        $this->checkInList($filled, [self::NOT_FILLED, self::FILLED], 'Invalid filled setting for end portal frame');
 
         parent::__construct($block[0], $direction | $filled);
     }

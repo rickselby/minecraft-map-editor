@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class SugarCane extends \MinecraftMapEditor\Block
+class SugarCane extends \MinecraftMapEditor\Block\Shared\BasicValue
 {
     /**
      * Get a sugar cane with a given age. When the age is 15, it'll grow a new
@@ -14,12 +14,6 @@ class SugarCane extends \MinecraftMapEditor\Block
      */
     public function __construct($age)
     {
-        if ($age < 0 || $age > 15) {
-            throw new \Exception('Invalid age for sugar cane');
-        }
-
-        $block = IDs::$list[Ref::SUGAR_CANE];
-
-        parent::__construct($block[0], $age);
+        parent::__construct(Ref::SUGAR_CANE, $age, 0, 15, 'Invalid age for sugar cane');
     }
 }

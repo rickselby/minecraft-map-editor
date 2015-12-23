@@ -26,9 +26,9 @@ class Mushroom extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $texture)
     {
-        $block = self::checkBlock($blockRef, Ref::getStartsWith('MUSHROOM_BLOCK_'));
+        $block = $this->checkBlock($blockRef, Ref::getStartsWith('MUSHROOM_BLOCK_'));
 
-        self::checkDataRefValidAll($texture, 'Invalid texture setting for mushroom block');
+        $this->checkDataRefValidAll($texture, 'Invalid texture setting for mushroom block');
 
         parent::__construct($block[0], $texture);
     }

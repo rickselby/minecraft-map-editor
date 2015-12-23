@@ -36,13 +36,13 @@ class Door extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $half, $hinge, $state, $facing, $power)
     {
-        $block = self::checkBlock($blockRef, Ref::getStartsWith('DOOR_'));
+        $block = $this->checkBlock($blockRef, Ref::getStartsWith('DOOR_'));
 
-        self::checkDataRefValidStartWith($half, 'HALF_', 'Invalid half for door');
-        self::checkDataRefValidStartWith($hinge, 'HINGE_', 'Invalid hinge for door');
-        self::checkDataRefValidStartWith($state, 'STATE_', 'Invalid state for door');
-        self::checkDataRefValidStartWith($facing, 'FACING_', 'Invalid facing for door');
-        self::checkDataRefValidStartWith($power, 'POWER_', 'Invalid power for door');
+        $this->checkDataRefValidStartWith($half, 'HALF_', 'Invalid half for door');
+        $this->checkDataRefValidStartWith($hinge, 'HINGE_', 'Invalid hinge for door');
+        $this->checkDataRefValidStartWith($state, 'STATE_', 'Invalid state for door');
+        $this->checkDataRefValidStartWith($facing, 'FACING_', 'Invalid facing for door');
+        $this->checkDataRefValidStartWith($power, 'POWER_', 'Invalid power for door');
 
         switch ($half) {
             case HALF_BOTTOM:

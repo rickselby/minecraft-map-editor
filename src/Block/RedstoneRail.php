@@ -26,10 +26,10 @@ class RedstoneRail extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $orientation, $active = self::INACTIVE)
     {
-        $block = self::checkBlock($blockRef, Ref::getStartsWith('RAIL_'));
+        $block = $this->checkBlock($blockRef, Ref::getStartsWith('RAIL_'));
 
-        self::checkDataRefValidStartWith($orientation, 'ORIENT_', 'Invalid orientation for redstone rail');
-        self::checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for redstone rail');
+        $this->checkDataRefValidStartWith($orientation, 'ORIENT_', 'Invalid orientation for redstone rail');
+        $this->checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for redstone rail');
 
         parent::__construct($block[0], $orientation | $active);
     }

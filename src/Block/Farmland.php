@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Farmland extends \MinecraftMapEditor\Block
+class Farmland extends \MinecraftMapEditor\Block\Shared\BasicValue
 {
     /**
      * Get a farmland block, with the given wetness.
@@ -11,12 +11,6 @@ class Farmland extends \MinecraftMapEditor\Block
      */
     public function __construct($wetness)
     {
-        if ($wetness < 0 || $wetness > 7) {
-            throw new \Exception('Invalid wetness for farmland');
-        }
-
-        $block = IDs::$list[Ref::FARMLAND];
-
-        parent::__construct($block[0], $wetness);
+        parent::__construct(Ref::FARMLAND, $wetness, 0, 7, 'Invalid wetness for farmland');
     }
 }

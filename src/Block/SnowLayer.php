@@ -2,23 +2,17 @@
 
 namespace MinecraftMapEditor\Block;
 
-class SnowLayer extends \MinecraftMapEditor\Block
+class SnowLayer extends \MinecraftMapEditor\Block\Shared\BasicValue
 {
     /**
      * Get snow layers, with the given number of layers.
      *
      * @param int $layers 1-8
-     * 
+     *
      * @throws \Exception
      */
     public function __construct($layers = 1)
     {
-        if ($layers < 1 || $layers > 8) {
-            throw new \Exception('Invalid power for redstone wire');
-        }
-
-        $block = IDs::$list[Ref::SNOW_LAYER];
-
-        parent::__construct($block[0], $layers - 1);
+        parent::__construct(Ref::SNOW_LAYER, $layers - 1, 0, 7, 'Invalid power for redstone wire');
     }
 }

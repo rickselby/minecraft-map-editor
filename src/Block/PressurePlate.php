@@ -17,9 +17,9 @@ class PressurePlate extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $active = self::INACTIVE)
     {
-        $block = self::checkBlock($blockRef, Ref::getStartsWith('PRESSURE_PLATE_'));
+        $block = $this->checkBlock($blockRef, Ref::getStartsWith('PRESSURE_PLATE_'));
 
-        self::checkDataRefValidAll($active, 'Invalid active setting for pressure plate');
+        $this->checkDataRefValidAll($active, 'Invalid active setting for pressure plate');
 
         parent::__construct($block[0], $active);
     }

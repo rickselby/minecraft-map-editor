@@ -34,10 +34,10 @@ class Tripwire extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::TRIPWIRE];
 
-        self::checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for tripwire');
-        self::checkInList($suspended, [self::ON_BLOCK, self::SUSPENDED_AIR], 'Invalid suspended setting for tripwire');
-        self::checkInList($circuit, [self::NO_VALID_CIRCUIT, self::VALID_CIRCUIT], 'Invalid circuit setting for tripwire');
-        self::checkInList($armed, [self::ARMED, self::DISARMED], 'Invalid armed setting for tripwire');
+        $this->checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for tripwire');
+        $this->checkInList($suspended, [self::ON_BLOCK, self::SUSPENDED_AIR], 'Invalid suspended setting for tripwire');
+        $this->checkInList($circuit, [self::NO_VALID_CIRCUIT, self::VALID_CIRCUIT], 'Invalid circuit setting for tripwire');
+        $this->checkInList($armed, [self::ARMED, self::DISARMED], 'Invalid armed setting for tripwire');
 
         parent::__construct($block[0], $active | $suspended | $circuit | $armed);
     }

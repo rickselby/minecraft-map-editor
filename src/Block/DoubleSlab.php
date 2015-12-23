@@ -19,9 +19,9 @@ class DoubleSlab extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $topTexture = self::TEXTURE_NORMAL)
     {
-        $block = self::checkBlock($blockRef, Ref::getStartsWith('DOUBLE_SLAB'));
+        $block = $this->checkBlock($blockRef, Ref::getStartsWith('DOUBLE_SLAB'));
 
-        self::checkDataRefValidStartWith($topTexture, 'TEXTURE_', 'Invalid texture setting for double slab');
+        $this->checkDataRefValidStartWith($topTexture, 'TEXTURE_', 'Invalid texture setting for double slab');
 
         parent::__construct($block[0], $block[1] | $topTexture);
     }

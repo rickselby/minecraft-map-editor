@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Cactus extends \MinecraftMapEditor\Block
+class Cactus extends \MinecraftMapEditor\Block\Shared\BasicValue
 {
     /**
      * Get a cactus with a given age. When the age is 15, it'll grow a new cactus
@@ -14,12 +14,6 @@ class Cactus extends \MinecraftMapEditor\Block
      */
     public function __construct($age)
     {
-        if ($age < 0 || $age > 15) {
-            throw new \Exception('Invalid age for cactus');
-        }
-
-        $block = IDs::$list[Ref::CACTUS];
-
-        parent::__construct($block[0], $age);
+        parent::__construct(Ref::CACTUS, $age, 0, 15, 'Invalid age for cactus');
     }
 }

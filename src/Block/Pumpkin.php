@@ -19,9 +19,9 @@ class Pumpkin extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $direction)
     {
-        $block = self::checkBlock($blockRef, [Ref::PUMPKIN, Ref::JACK_O_LANTERN]);
+        $block = $this->checkBlock($blockRef, [Ref::PUMPKIN, Ref::JACK_O_LANTERN]);
 
-        self::checkDataRefValidAll($direction, 'Invalid direction for pumpkin');
+        $this->checkDataRefValidAll($direction, 'Invalid direction for pumpkin');
 
         parent::__construct($block[0], $direction);
     }

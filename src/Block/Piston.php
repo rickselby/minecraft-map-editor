@@ -22,12 +22,12 @@ class Piston extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $direction, $extended = false)
     {
-        $block = self::checkBlock($blockRef, [
+        $block = $this->checkBlock($blockRef, [
             Ref::PISTON,
             Ref::PISTON_STICKY,
         ]);
 
-        self::checkDataRefValidAll($direction, 'Invalid direction for piston');
+        $this->checkDataRefValidAll($direction, 'Invalid direction for piston');
 
         if ($extended) {
             $direction |= 0x8;

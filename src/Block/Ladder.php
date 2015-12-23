@@ -20,7 +20,7 @@ class Ladder extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::LADDER];
 
-        self::checkDataRefValidAll($facing, 'Invalid facing value for ladder');
+        $this->checkDataRefValidAll($facing, 'Invalid facing value for ladder');
 
         parent::__construct($block[0], $facing);
     }

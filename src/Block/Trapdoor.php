@@ -27,11 +27,11 @@ class Trapdoor extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $hinge, $half, $state = self::DOOR_CLOSED)
     {
-        $block = self::checkBlock($blockRef, Ref::getStartsWith('TRAPDOOR_'));
+        $block = $this->checkBlock($blockRef, Ref::getStartsWith('TRAPDOOR_'));
 
-        self::checkDataRefValidStartWith($hinge, 'HINGE_', 'Invalid hinge setting for trapdoor');
-        self::checkDataRefValidStartWith($half, 'ON_', 'Invalid top/bottom setting for trapdoor');
-        self::checkDataRefValidStartWith($state, 'DOOR_', 'Invalid state for trapdoor');
+        $this->checkDataRefValidStartWith($hinge, 'HINGE_', 'Invalid hinge setting for trapdoor');
+        $this->checkDataRefValidStartWith($half, 'ON_', 'Invalid top/bottom setting for trapdoor');
+        $this->checkDataRefValidStartWith($state, 'DOOR_', 'Invalid state for trapdoor');
 
         parent::__construct($block[0], $hinge | $half | $state);
     }

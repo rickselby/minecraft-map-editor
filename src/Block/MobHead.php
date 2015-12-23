@@ -22,7 +22,7 @@ class MobHead extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::MOB_HEAD];
 
-        self::checkDataRefValidAll($placement, 'Invalid placement for mob head');
+        $this->checkDataRefValidAll($placement, 'Invalid placement for mob head');
 
         parent::__construct($block[0], $placement);
     }

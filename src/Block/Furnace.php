@@ -19,9 +19,9 @@ class Furnace extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $facing)
     {
-        $block = self::checkBlock($blockRef, Ref::getStartsWith('FURNACE'));
+        $block = $this->checkBlock($blockRef, Ref::getStartsWith('FURNACE'));
 
-        self::checkDataRefValidAll($facing, 'Invalid facing reference for furnace');
+        $this->checkDataRefValidAll($facing, 'Invalid facing reference for furnace');
 
         parent::__construct($block[0], $facing);
     }

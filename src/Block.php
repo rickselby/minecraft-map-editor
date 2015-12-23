@@ -24,8 +24,8 @@ class Block
     /**
      * Create a block to pass around.
      *
-     * @param int $id
-     * @param int $data
+     * @param int            $id
+     * @param int            $data
      * @param \Nbt\Node|null $entity
      */
     public function __construct($id, $data = 0x00, \Nbt\Node $entity = null)
@@ -49,24 +49,24 @@ class Block
      *
      * @throws Exception
      */
-    protected static function checkBlock($blockRef, $list)
+    protected function checkBlock($blockRef, $list)
     {
-        self::checkInList($blockRef, $list, 'Incorrect block type requested');
+        $this->checkInList($blockRef, $list, 'Incorrect block type requested');
 
         return Block\IDs::$list[$blockRef];
     }
 
     /**
-     * Check if the given value is in any of the class constants
+     * Check if the given value is in any of the class constants.
      *
-     * @param int    $ref        Data reference (from Block\DataRef)
-     * @param string $error      Error string for exception if $ref is invalid
+     * @param int    $ref   Data reference (from Block\DataRef)
+     * @param string $error Error string for exception if $ref is invalid
      *
      * @return true
      *
      * @throws Exception
      */
-    protected static function checkDataRefValidAll($ref, $error)
+    protected function checkDataRefValidAll($ref, $error)
     {
         if (!self::isValid($ref)) {
             throw new \Exception($error, E_ERROR);
@@ -86,7 +86,7 @@ class Block
      *
      * @throws Exception
      */
-    protected static function checkDataRefValidStartWith($ref, $constStart, $error)
+    protected function checkDataRefValidStartWith($ref, $constStart, $error)
     {
         if (!self::isValidStartsWith($ref, $constStart)) {
             throw new \Exception($error, E_ERROR);
@@ -107,7 +107,7 @@ class Block
      *
      * @throws Exception
      */
-    protected static function checkInList($item, $list, $errorMsg)
+    protected function checkInList($item, $list, $errorMsg)
     {
         if (!in_array($item, $list)) {
             throw new \Exception($errorMsg, E_ERROR);

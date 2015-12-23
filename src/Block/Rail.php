@@ -27,7 +27,7 @@ class Rail extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::RAIL];
 
-        self::checkDataRefValidAll($orientation, 'Invalid orientation for rail');
+        $this->checkDataRefValidAll($orientation, 'Invalid orientation for rail');
 
         parent::__construct($block[0], $orientation);
     }

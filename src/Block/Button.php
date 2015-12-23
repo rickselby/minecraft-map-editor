@@ -25,10 +25,10 @@ class Button extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $position, $active)
     {
-        $block = self::checkBlock($blockRef, Ref::getStartsWith('BUTTON_'));
+        $block = $this->checkBlock($blockRef, Ref::getStartsWith('BUTTON_'));
 
-        self::checkDataRefValidStartWith($position, 'POSITION_', 'Invalid position for button');
-        self::checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for button');
+        $this->checkDataRefValidStartWith($position, 'POSITION_', 'Invalid position for button');
+        $this->checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for button');
 
         parent::__construct($block[0], $position | $active);
     }

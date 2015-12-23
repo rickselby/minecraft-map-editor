@@ -20,14 +20,14 @@ class Torch extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $attachment)
     {
-        $block = self::checkBlock($blockRef, [
+        $block = $this->checkBlock($blockRef, [
             Ref::TORCH,
             Ref::REDSTONE_TORCH_OFF,
             Ref::REDSTONE_TORCH_ON,
         ]);
 
         // Check the orientation is valid
-        self::checkDataRefValidAll($attachment, 'Invalid attachment for torch');
+        $this->checkDataRefValidAll($attachment, 'Invalid attachment for torch');
 
         parent::__construct($block[0], $attachment);
     }

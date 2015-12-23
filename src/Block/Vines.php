@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Vines extends \MinecraftMapEditor\Block
+class Vines extends \MinecraftMapEditor\Block\Shared\BasicValue
 {
     const SOUTH = 0b0001;
     const WEST  = 0b0010;
@@ -19,14 +19,6 @@ class Vines extends \MinecraftMapEditor\Block
      */
     public function __construct($sides)
     {
-        // Hmm. Vines can be on multiple sides. It'd be nice to check against
-        // constants, but we know the following:
-        if ($sides < 1 || $sides > 15) {
-            throw new \Exception('Invalid sides for vines');
-        }
-
-        $block = IDs::$list[Ref::VINES];
-
-        parent::__construct($block[0], $sides);
+        parent::__construct(Ref::VINES, $sides, 1, 15, 'Invalid sides for vines');
     }
 }

@@ -23,8 +23,8 @@ class Anvil extends \MinecraftMapEditor\Block
      */
     public function __construct($damage, $direction)
     {
-        self::checkDataRefValidStartWith($damage, 'DAMAGE_', 'Invalid damage for anvil');
-        self::checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for anvil');
+        $this->checkDataRefValidStartWith($damage, 'DAMAGE_', 'Invalid damage for anvil');
+        $this->checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for anvil');
 
         $block = IDs::$list[Ref::ANVIL];
 

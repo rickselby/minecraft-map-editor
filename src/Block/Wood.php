@@ -19,7 +19,7 @@ class Wood extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $orientation)
     {
-        $block = self::checkBlock($blockRef, [
+        $block = $this->checkBlock($blockRef, [
             Ref::WOOD_ACACIA,
             Ref::WOOD_BIRCH,
             Ref::WOOD_DARK_OAK,
@@ -29,7 +29,7 @@ class Wood extends \MinecraftMapEditor\Block
         ]);
 
         // Check the orientation is valid
-        self::checkDataRefValidAll($orientation, 'Invalid orientation for wood');
+        $this->checkDataRefValidAll($orientation, 'Invalid orientation for wood');
 
         parent::__construct($block[0], $block[1] | $orientation);
     }

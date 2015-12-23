@@ -30,8 +30,8 @@ class Lever extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::LEVER];
 
-        self::checkDataRefValidStartWith($orientation, 'SIDE_', 'Invalid orientation for lever');
-        self::checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active status for lever');
+        $this->checkDataRefValidStartWith($orientation, 'SIDE_', 'Invalid orientation for lever');
+        $this->checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active status for lever');
 
         parent::__construct($block[0], $orientation | $active);
     }

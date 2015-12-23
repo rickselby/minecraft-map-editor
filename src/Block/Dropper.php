@@ -25,13 +25,13 @@ class Dropper extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $direction, $activated = self::INACTIVE)
     {
-        $block = self::checkBlock($blockRef, [
+        $block = $this->checkBlock($blockRef, [
             Ref::DISPENSER,
             Ref::DROPPER,
         ]);
 
-        self::checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for Dropper/Dispenser');
-        self::checkInList($activated, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for Dropper/Dispenser');
+        $this->checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for Dropper/Dispenser');
+        $this->checkInList($activated, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for Dropper/Dispenser');
 
 
         parent::__construct($block[0], $direction | $activated);

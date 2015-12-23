@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class RedstoneWire extends \MinecraftMapEditor\Block
+class RedstoneWire extends \MinecraftMapEditor\Block\Shared\BasicValue
 {
     /**
      * Get redstone wire with the given power.
@@ -13,12 +13,6 @@ class RedstoneWire extends \MinecraftMapEditor\Block
      */
     public function __construct($power)
     {
-        if ($power < 0 || $power > 15) {
-            throw new \Exception('Invalid power for redstone wire');
-        }
-
-        $block = IDs::$list[Ref::REDSTONE_WIRE];
-
-        parent::__construct($block[0], $power);
+        parent::__construct(Ref::REDSTONE_WIRE, $power, 0, 15, 'Invalid power for redstone wire');
     }
 }

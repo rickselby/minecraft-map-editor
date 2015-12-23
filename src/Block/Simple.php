@@ -22,7 +22,7 @@ class Simple extends \MinecraftMapEditor\Block
             parent::__construct($block[0], $block[1]);
         } else {
             $blockName = Ref::getNameFor($blockRef);
-            if ($blockName) {
+            if ($blockName !== false) {
                 $exceptionMessage = 'Cannot declare block '.$blockName.' in Simple; use '.$block[2].' instead';
             } else {
                 $exceptionMessage = 'Unknown block reference';

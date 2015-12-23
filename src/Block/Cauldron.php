@@ -20,7 +20,7 @@ class Cauldron extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::CAULDRON];
 
-        self::checkDataRefValidAll($fill, 'Invalid fill level for Cauldron');
+        $this->checkDataRefValidAll($fill, 'Invalid fill level for Cauldron');
 
         parent::__construct($block[0], $fill);
     }

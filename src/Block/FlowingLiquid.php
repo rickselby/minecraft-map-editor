@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class FlowingLiquid extends \MinecraftMapEditor\Block
+class FlowingLiquid extends \MinecraftMapEditor\Block\Shared\BasicValue
 {
     /**
      * Flowing water or lava. Set the level - 0x0 is the highest, to 0x7 the lowest.
@@ -15,15 +15,11 @@ class FlowingLiquid extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $level)
     {
-        $block = self::checkBlock($blockRef, [
+        $this->checkBlock($blockRef, [
             Ref::LAVA_FLOWING,
             Ref::WATER_FLOWING,
         ]);
 
-        if ($level < 0 || $level > 8) {
-            throw new \Exception('Invalid level for flowing liquid');
-        }
-
-        parent::__construct($block[0], $level);
+        parent::__construct($blockRef, $level, 0, 8, 'Invalid level for '.Ref::getNameFor($blockRef));
     }
 }

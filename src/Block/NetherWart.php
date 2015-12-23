@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class NetherWart extends \MinecraftMapEditor\Block
+class NetherWart extends \MinecraftMapEditor\Block\Shared\BasicValue
 {
     /**
      * Get Nether Wart at the given stage of growth.
@@ -13,12 +13,6 @@ class NetherWart extends \MinecraftMapEditor\Block
      */
     public function __construct($stage)
     {
-        if ($stage < 0 || $stage > 3) {
-            throw new \Exception('Invalid stage for nether wart');
-        }
-
-        $block = IDs::$list[Ref::NETHER_WART];
-
-        parent::__construct($block[0], $stage);
+        parent::__construct(Ref::NETHER_WART, $stage, 0, 3, 'Invalid stage for nether wart');
     }
 }

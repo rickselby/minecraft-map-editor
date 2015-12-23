@@ -17,7 +17,7 @@ class Leaves extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $decay = self::NO_DECAY)
     {
-        $block = self::checkBlock($blockRef, [
+        $block = $this->checkBlock($blockRef, [
             Ref::LEAVES_ACACIA,
             Ref::LEAVES_BIRCH,
             Ref::LEAVES_DARK_OAK,
@@ -26,7 +26,7 @@ class Leaves extends \MinecraftMapEditor\Block
             Ref::LEAVES_SPRUCE,
         ]);
 
-        self::checkInList($decay, [self::NO_DECAY, self::DECAY], 'Invalid decay setting for leaves');
+        $this->checkInList($decay, [self::NO_DECAY, self::DECAY], 'Invalid decay setting for leaves');
 
         parent::__construct($block[0], $block[1] | $decay);
     }

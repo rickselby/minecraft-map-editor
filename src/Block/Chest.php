@@ -19,9 +19,9 @@ class Chest extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $direction)
     {
-        $block = self::checkBlock($blockRef, Ref::getStartsWith('CHEST'));
+        $block = $this->checkBlock($blockRef, Ref::getStartsWith('CHEST'));
 
-        self::checkDataRefValidAll($direction, 'Invalid direction for chest');
+        $this->checkDataRefValidAll($direction, 'Invalid direction for chest');
 
         parent::__construct($block[0], $direction);
     }

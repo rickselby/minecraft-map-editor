@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Crops extends \MinecraftMapEditor\Block
+class Crops extends \MinecraftMapEditor\Block\Shared\BasicValue
 {
     /**
      * Get a crop (wheat, carrots, potatoes) at the given growth.
@@ -12,16 +12,12 @@ class Crops extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $growth)
     {
-        $block = self::checkBlock($blockRef, [
+        $this->checkBlock($blockRef, [
             Ref::WHEAT,
             Ref::CARROTS,
             Ref::POTATOES,
         ]);
 
-        if ($growth < 0 || $growth > 7) {
-            throw new \Exception('Invalid growth for crop');
-        }
-
-        parent::__construct($block[0], $growth);
+        parent::__construct($blockRef, $growth, 0, 7, 'Invalid growth for crop '.Ref::getNameFor($blockRef));
     }
 }
