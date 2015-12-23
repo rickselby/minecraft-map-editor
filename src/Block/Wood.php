@@ -4,10 +4,10 @@ namespace MinecraftMapEditor\Block;
 
 class Wood extends \MinecraftMapEditor\Block
 {
-    const UP_DOWN = 0x0;
-    const EAST_WEST = 0x4;
-    const NORTH_SOUTH = 0x8;
-    const BARK_ONLY = 0x12;
+    const UP_DOWN     = 0b0000;
+    const EAST_WEST   = 0b0100;
+    const NORTH_SOUTH = 0b1000;
+    const BARK_ONLY   = 0b1100;
 
     /**
      * Get a block of wood, with the given orientation.

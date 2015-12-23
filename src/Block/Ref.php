@@ -203,8 +203,8 @@ class Ref
     const IRON_BARS = 191;
     const GLASS_PANE = 192;
     const MELON = 193;
-    const PUMPKIN_STEM = 194;
-    const MELON_STEM = 195;
+    const STEM_PUMPKIN = 194;
+    const STEM_MELON = 195;
     const VINES = 196;
     const FENCE_GATE_OAK = 197;
     const STAIRS_BRICK = 198;
