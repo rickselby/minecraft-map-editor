@@ -30,8 +30,8 @@ class RedstoneComparator extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::REDSTONE_COMPARATOR];
 
-        $this->checkDataRefValidStartWith($facing, 'FACING_', 'Invalid facing status for comparator');
-        $this->checkDataRefValidStartWith($mode, 'MODE_', 'Invalid mode for comparator');
+        $this->checkDataRefValidStartsWith($facing, 'FACING_', 'Invalid facing status for comparator');
+        $this->checkDataRefValidStartsWith($mode, 'MODE_', 'Invalid mode for comparator');
         $this->checkInList($powered, [self::UNPOWERED, self::POWERED], 'Invalid powered setting for comparator');
 
         parent::__construct($block[0], $facing | $mode | $powered);

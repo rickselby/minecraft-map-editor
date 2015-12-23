@@ -29,7 +29,7 @@ class PistonHead extends \MinecraftMapEditor\Block
         $block = IDs::$list[Ref::PISTON_HEAD];
 
         $this->checkInList($type, [self::STICKY, self::NORMAL], 'Invalid type for piston head');
-        $this->checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for piston head');
+        $this->checkDataRefValidStartsWith($direction, 'DIRECTION_', 'Invalid direction for piston head');
 
         parent::__construct($block[0], $type | $direction);
     }

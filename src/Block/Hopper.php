@@ -27,7 +27,7 @@ class Hopper extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::HOPPER];
 
-        $this->checkDataRefValidStartWith($output, 'OUTPUT', 'Invalid output reference for hopper');
+        $this->checkDataRefValidStartsWith($output, 'OUTPUT', 'Invalid output reference for hopper');
         $this->checkInList($active, [self::ACTIVE, self::DISABLED], 'Invalid active reference for hopper');
 
         parent::__construct($block[0], $output | $active);

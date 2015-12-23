@@ -27,7 +27,7 @@ class FenceGate extends \MinecraftMapEditor\Block
     {
         $block = $this->checkBlock($blockRef, Ref::getRegexp('/^FENCE_GATE_/'));
 
-        $this->checkDataRefValidStartWith($direction, 'FACING_', 'Invalid facing for fence gate');
+        $this->checkDataRefValidStartsWith($direction, 'FACING_', 'Invalid facing for fence gate');
         $this->checkInList($open, [self::CLOSED, self::OPEN], 'Invalid open for fence gate');
 
         parent::__construct($block[0], $direction | $open);

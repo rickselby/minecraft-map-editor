@@ -29,8 +29,8 @@ class RedstoneRepeater extends \MinecraftMapEditor\Block
     {
         $block = $this->checkBlock($blockRef, Ref::getStartsWith('REDSTONE_REPEATER_'));
 
-        $this->checkDataRefValidStartWith($facing, 'FACING_', 'Invalid facing setting for redstone repeater');
-        $this->checkDataRefValidStartWith($delay, 'DELAY_', 'Invalid delay setting for redstone repeater');
+        $this->checkDataRefValidStartsWith($facing, 'FACING_', 'Invalid facing setting for redstone repeater');
+        $this->checkDataRefValidStartsWith($delay, 'DELAY_', 'Invalid delay setting for redstone repeater');
 
         parent::__construct($block[0], $facing | $delay);
     }

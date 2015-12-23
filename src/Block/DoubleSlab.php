@@ -23,7 +23,7 @@ class DoubleSlab extends \MinecraftMapEditor\Block
     {
         $block = $this->checkBlock($blockRef, Ref::getStartsWith('DOUBLE_SLAB'));
 
-        $this->checkDataRefValidStartWith($topTexture, 'TEXTURE_', 'Invalid texture setting for double slab');
+        $this->checkDataRefValidStartsWith($topTexture, 'TEXTURE_', 'Invalid texture setting for double slab');
 
         parent::__construct($block[0], $block[1] | $topTexture);
     }

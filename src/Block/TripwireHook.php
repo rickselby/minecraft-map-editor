@@ -28,7 +28,7 @@ class TripwireHook extends \MinecraftMapEditor\Block
     {
         $block = IDs::$list[Ref::TRIPWIRE_HOOK];
 
-        $this->checkDataRefValidStartWith($facing, 'FACING_', 'Invalid facing setting for tripwire hook');
+        $this->checkDataRefValidStartsWith($facing, 'FACING_', 'Invalid facing setting for tripwire hook');
         $this->checkInList(
             $state,
             [self::NOT_CONNECTED, self::CONNECTED, self::ACTIVATED],

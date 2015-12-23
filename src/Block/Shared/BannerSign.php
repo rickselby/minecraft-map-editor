@@ -6,28 +6,31 @@ abstract class BannerSign extends \MinecraftMapEditor\Block
 {
     use Create;
 
-    const SOUTH          = 00;
-    const SOUTHSOUTHWEST = 01;
-    const SOUTHWEST      = 02;
-    const WESTSOUTHWEST  = 03;
-    const WEST           = 04;
-    const WESTNORTHWEST  = 05;
-    const NORTHWEST      = 06;
-    const NORTHNORTHWEST = 07;
-    const NORTH          = 08;
-    const NORTHNORTHEAST = 09;
-    const NORTHEAST      = 10;
-    const EASTNORTHEAST  = 11;
-    const EAST           = 12;
-    const EASTSOUTHEAST  = 13;
-    const SOUTHEAST      = 14;
-    const SOUTHSOUTHEAST = 15;
+    const ORIENT_SOUTH          = 0;
+    const ORIENT_SOUTHSOUTHWEST = 1;
+    const ORIENT_SOUTHWEST      = 2;
+    const ORIENT_WESTSOUTHWEST  = 3;
+    const ORIENT_WEST           = 4;
+    const ORIENT_WESTNORTHWEST  = 5;
+    const ORIENT_NORTHWEST      = 6;
+    const ORIENT_NORTHNORTHWEST = 7;
+    const ORIENT_NORTH          = 8;
+    const ORIENT_NORTHNORTHEAST = 9;
+    const ORIENT_NORTHEAST      = 10;
+    const ORIENT_EASTNORTHEAST  = 11;
+    const ORIENT_EAST           = 12;
+    const ORIENT_EASTSOUTHEAST  = 13;
+    const ORIENT_SOUTHEAST      = 14;
+    const ORIENT_SOUTHSOUTHEAST = 15;
 
     /**
-     * Get a banner, with the given orientation.
+     * Get a banner or sign, with the given orientation.
      *
-     * @param int $blockRef    One of the BANNER_ blockRefs
+     * @param int $blockRef    A valid blockRef for this class
      * @param int $orientation Orientation of the banner; one of the class constants
+     * @param int $standingBlock The version of the block that is standing (changes the validation)
+     * @param int $wallBlock The version of the block that is the wall (changes the validation)
+     * @param \Nbt\Node|null $entityData Entity data for the block
      *
      * @throws \Exception
      */
@@ -56,7 +59,7 @@ abstract class BannerSign extends \MinecraftMapEditor\Block
      */
     protected function checkStanding(&$orientation)
     {
-        $this->checkDataRefValidAll($orientation, 'Invalid orientation for standing item');
+        $this->checkDataRefValidStartsWith($orientation, 'ORIENT_', 'Invalid orientation for standing item');
     }
 
     /**
@@ -68,19 +71,19 @@ abstract class BannerSign extends \MinecraftMapEditor\Block
     protected function checkWall(&$orientation)
     {
         switch ($orientation) {
-            case self::NORTH:
+            case self::ORIENT_NORTH:
                 $orientation = 2;
 
                 return;
-            case self::SOUTH:
+            case self::ORIENT_SOUTH:
                 $orientation = 3;
 
                 return;
-            case self::WEST:
+            case self::ORIENT_WEST:
                 $orientation = 4;
 
                 return;
-            case self::EAST:
+            case self::ORIENT_EAST:
                 $orientation = 5;
 
                 return;

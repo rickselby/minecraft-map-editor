@@ -16,7 +16,9 @@ trait EntityData
      */
     protected function initEntityData(&$entityData, $id)
     {
-        if ($entityData === null || get_class($entityData) !== \Nbt\Node::class) {
+        if ($entityData === null
+            || get_class($entityData) !== \Nbt\Node::class
+            || $entityData->getType() !== \Nbt\Tag::TAG_COMPOUND) {
             $entityData = \Nbt\Tag::tagCompound('', []);
         }
 

@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Colored extends Shared\Colors
+class Colored extends MinecraftMapEditor\Block implements Shared\Colors
 {
     use Shared\Create;
 

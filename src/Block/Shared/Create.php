@@ -55,7 +55,7 @@ trait Create
      *
      * @throws Exception
      */
-    protected function checkDataRefValidStartWith($ref, $constStart, $error)
+    protected function checkDataRefValidStartsWith($ref, $constStart, $error)
     {
         if (!self::isValidStartsWith($ref, $constStart)) {
             throw new \Exception($error, E_ERROR);

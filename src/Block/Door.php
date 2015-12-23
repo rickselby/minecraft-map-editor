@@ -40,11 +40,11 @@ class Door extends \MinecraftMapEditor\Block
     {
         $block = $this->checkBlock($blockRef, Ref::getStartsWith('DOOR_'));
 
-        $this->checkDataRefValidStartWith($half, 'HALF_', 'Invalid half for door');
-        $this->checkDataRefValidStartWith($hinge, 'HINGE_', 'Invalid hinge for door');
-        $this->checkDataRefValidStartWith($state, 'STATE_', 'Invalid state for door');
-        $this->checkDataRefValidStartWith($facing, 'FACING_', 'Invalid facing for door');
-        $this->checkDataRefValidStartWith($power, 'POWER_', 'Invalid power for door');
+        $this->checkDataRefValidStartsWith($half, 'HALF_', 'Invalid half for door');
+        $this->checkDataRefValidStartsWith($hinge, 'HINGE_', 'Invalid hinge for door');
+        $this->checkDataRefValidStartsWith($state, 'STATE_', 'Invalid state for door');
+        $this->checkDataRefValidStartsWith($facing, 'FACING_', 'Invalid facing for door');
+        $this->checkDataRefValidStartsWith($power, 'POWER_', 'Invalid power for door');
 
         switch ($half) {
             case HALF_BOTTOM:

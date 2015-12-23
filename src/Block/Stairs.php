@@ -25,7 +25,7 @@ class Stairs extends \MinecraftMapEditor\Block
     {
         $block = $this->checkBlock($blockRef, Ref::getStartsWith('STAIRS_'));
 
-        $this->checkDataRefValidStartWith($orientation, 'ORIENT_', 'Invalid orientation for stairs');
+        $this->checkDataRefValidStartsWith($orientation, 'ORIENT_', 'Invalid orientation for stairs');
         $this->checkInList($wayUp, [self::RIGHT_WAY_UP, self::UPSIDE_DOWN], 'Invalid way up for stairs');
 
         parent::__construct($block[0], $orientation | $wayUp);

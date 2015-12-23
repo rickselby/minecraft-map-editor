@@ -24,8 +24,8 @@ class Bed extends \MinecraftMapEditor\Block
      */
     public function __construct($direction, $part)
     {
-        $this->checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for bed');
-        $this->checkDataRefValidStartWith($part, 'PART_', 'Invalid part for bed');
+        $this->checkDataRefValidStartsWith($direction, 'DIRECTION_', 'Invalid direction for bed');
+        $this->checkDataRefValidStartsWith($part, 'PART_', 'Invalid part for bed');
 
         $block = IDs::$list[Ref::BED];
 

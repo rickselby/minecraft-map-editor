@@ -25,8 +25,8 @@ class Cocoa extends \MinecraftMapEditor\Block
      */
     public function __construct($attached, $stage)
     {
-        $this->checkDataRefValidStartWith($attached, 'ATTACHED_', 'Invalid attachment setting for Cocoa');
-        $this->checkDataRefValidStartWith($stage, 'STAGE_', 'Invalid stage setting for Cocoa');
+        $this->checkDataRefValidStartsWith($attached, 'ATTACHED_', 'Invalid attachment setting for Cocoa');
+        $this->checkDataRefValidStartsWith($stage, 'STAGE_', 'Invalid stage setting for Cocoa');
 
         $block = IDs::$list[Ref::COCOA];
 

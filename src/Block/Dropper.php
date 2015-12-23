@@ -32,7 +32,7 @@ class Dropper extends \MinecraftMapEditor\Block
             Ref::DROPPER,
         ]);
 
-        $this->checkDataRefValidStartWith($direction, 'DIRECTION_', 'Invalid direction for Dropper/Dispenser');
+        $this->checkDataRefValidStartsWith($direction, 'DIRECTION_', 'Invalid direction for Dropper/Dispenser');
         $this->checkInList($activated, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for Dropper/Dispenser');
 
 
