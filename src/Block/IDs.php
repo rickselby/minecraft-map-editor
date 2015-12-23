@@ -66,7 +66,7 @@ class IDs
         Ref::WOOD_BIRCH  => [17, 2, 'Wood'],
         Ref::WOOD_JUNGLE => [17, 3, 'Wood'],
 
-        // Block 18: 0x4 and 0x8 for decay values
+        // Block 18: 0x4 and 0x8 specify decay values
         Ref::LEAVES_OAK    => [18, 0, 'Leaves'],
         Ref::LEAVES_SPRUCE => [18, 1, 'Leaves'],
         Ref::LEAVES_BIRCH  => [18, 2, 'Leaves'],

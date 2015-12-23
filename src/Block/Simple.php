@@ -9,8 +9,6 @@ class Simple extends \MinecraftMapEditor\Block
      *
      * @param int $blockRef Block reference - one of the BlockRef class constants.
      *
-     * @return \self
-     *
      * @throws \Exception
      */
     public function __construct($blockRef)
