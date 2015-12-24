@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class FenceGate extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const FACING_SOUTH = 0;
     const FACING_WEST = 1;
@@ -12,7 +12,7 @@ class FenceGate extends \MinecraftMapEditor\Block
     const FACING_EAST = 3;
 
     const CLOSED = 0b0000;
-    const OPEN   = 0b0100;
+    const OPEN = 0b0100;
 
     /**
      * Get the given fence gate, with the given direction and state.
@@ -25,11 +25,11 @@ class FenceGate extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $direction, $open)
     {
-        $block = $this->checkBlock($blockRef, Ref::getRegexp('/^FENCE_GATE_/'));
+        $this->checkBlock($blockRef, Ref::getRegexp('/^FENCE_GATE_/'));
 
         $this->checkDataRefValidStartsWith($direction, 'FACING_', 'Invalid facing for fence gate');
         $this->checkInList($open, [self::CLOSED, self::OPEN], 'Invalid open for fence gate');
 
-        parent::__construct($block[0], $direction | $open);
+        $this->setBlockData($direction | $open);
     }
 }

@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class RedstoneComparator extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const FACING_NORTH = 1;
     const FACING_EAST = 2;
@@ -28,12 +28,12 @@ class RedstoneComparator extends \MinecraftMapEditor\Block
      */
     public function __construct($facing, $mode, $powered = self::UNPOWERED)
     {
-        $block = IDs::$list[Ref::REDSTONE_COMPARATOR];
+        $this->setBlockIDFor(Ref::REDSTONE_COMPARATOR);
 
         $this->checkDataRefValidStartsWith($facing, 'FACING_', 'Invalid facing status for comparator');
         $this->checkDataRefValidStartsWith($mode, 'MODE_', 'Invalid mode for comparator');
         $this->checkInList($powered, [self::UNPOWERED, self::POWERED], 'Invalid powered setting for comparator');
 
-        parent::__construct($block[0], $facing | $mode | $powered);
+        $this->setBlockData($facing | $mode | $powered);
     }
 }

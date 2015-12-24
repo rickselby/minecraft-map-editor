@@ -4,15 +4,15 @@ namespace MinecraftMapEditor\Block;
 
 class Stairs extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
-    const ORIENT_EAST  = 0;
-    const ORIENT_WEST  = 1;
+    const ORIENT_EAST = 0;
+    const ORIENT_WEST = 1;
     const ORIENT_SOUTH = 2;
     const ORIENT_NORTH = 3;
 
     const RIGHT_WAY_UP = 0b0000;
-    const UPSIDE_DOWN  = 0b0100;
+    const UPSIDE_DOWN = 0b0100;
 
     /**
      * Get stairs, with the given orientation and way up.
@@ -23,11 +23,11 @@ class Stairs extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $orientation, $wayUp = self::RIGHT_WAY_UP)
     {
-        $block = $this->checkBlock($blockRef, Ref::getStartsWith('STAIRS_'));
+        $this->checkBlock($blockRef, Ref::getStartsWith('STAIRS_'));
 
         $this->checkDataRefValidStartsWith($orientation, 'ORIENT_', 'Invalid orientation for stairs');
         $this->checkInList($wayUp, [self::RIGHT_WAY_UP, self::UPSIDE_DOWN], 'Invalid way up for stairs');
 
-        parent::__construct($block[0], $orientation | $wayUp);
+        $this->setBlockData($orientation | $wayUp);
     }
 }

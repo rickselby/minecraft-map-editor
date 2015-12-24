@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Slab extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const BOTTOM = 0;
     const TOP = 8;
@@ -24,6 +24,6 @@ class Slab extends \MinecraftMapEditor\Block
         // Check the orientation is valid
         $this->checkDataRefValidAll($position, 'Invalid position for slab');
 
-        parent::__construct($block[0], $block[1] | position);
+        $this->setBlockData($block[1] | $position);
     }
 }

@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Ladder extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const NORTH = 2;
     const SOUTH = 3;
@@ -20,10 +20,10 @@ class Ladder extends \MinecraftMapEditor\Block
      */
     public function __construct($facing)
     {
-        $block = IDs::$list[Ref::LADDER];
+        $this->setBlockIDFor(Ref::LADDER);
 
         $this->checkDataRefValidAll($facing, 'Invalid facing value for ladder');
 
-        parent::__construct($block[0], $facing);
+        $this->setBlockData($facing);
     }
 }

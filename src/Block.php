@@ -14,22 +14,26 @@ class Block
     public $id;
 
     /** @var int Block Data - a nibble **/
-    public $data;
+    public $data = 0;
 
-    /** @var \Nbt\Node Block Entity - an NBT Compound Tag, if it exists **/
-    public $entity;
+    /** @var \Nbt\Node|null Block Entity - an NBT Compound Tag, if it exists **/
+    public $entityData = null;
 
-    /**
-     * Create a block to pass around.
-     *
-     * @param int            $id
-     * @param int            $data
-     * @param \Nbt\Node|null $entity
-     */
-    public function __construct($id, $data = 0, \Nbt\Node $entity = null)
+    public function setBlockID($id)
     {
         $this->id = $id;
+        return $this;
+    }
+
+    public function setBlockData($data)
+    {
         $this->data = $data;
-        $this->entity = $entity;
+        return $this;
+    }
+
+    public function setEntityData($entityData)
+    {
+        $this->entityData = $entityData;
+        return $this;
     }
 }

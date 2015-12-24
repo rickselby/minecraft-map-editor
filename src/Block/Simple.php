@@ -17,7 +17,8 @@ class Simple extends \MinecraftMapEditor\Block
         // Here, we're only dealing with simple blocks.
         $block = IDs::$list[$blockRef];
         if (!isset($block[2])) {
-            parent::__construct($block[0], $block[1]);
+            $this->setBlockID($block[0]);
+            $this->setBlockData($block[1]);
         } else {
             $blockName = Ref::getNameFor($blockRef);
             if ($blockName !== false) {

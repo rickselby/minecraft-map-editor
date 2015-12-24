@@ -4,12 +4,12 @@ namespace MinecraftMapEditor\Block;
 
 class RedstoneRepeater extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const FACING_NORTH = 0;
-    const FACING_EAST  = 1;
+    const FACING_EAST = 1;
     const FACING_SOUTH = 2;
-    const FACING_WEST  = 3;
+    const FACING_WEST = 3;
 
     const DELAY_1 = 0b0000;
     const DELAY_2 = 0b0100;
@@ -27,11 +27,11 @@ class RedstoneRepeater extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $facing, $delay)
     {
-        $block = $this->checkBlock($blockRef, Ref::getStartsWith('REDSTONE_REPEATER_'));
+        $this->checkBlock($blockRef, Ref::getStartsWith('REDSTONE_REPEATER_'));
 
         $this->checkDataRefValidStartsWith($facing, 'FACING_', 'Invalid facing setting for redstone repeater');
         $this->checkDataRefValidStartsWith($delay, 'DELAY_', 'Invalid delay setting for redstone repeater');
 
-        parent::__construct($block[0], $facing | $delay);
+        $this->setBlockData($facing | $delay);
     }
 }

@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class NetherWart extends Shared\BasicValue
+class NetherWart extends \MinecraftMapEditor\Block
 {
+    use Traits\BasicValue, Traits\Create;
+
     /**
      * Get Nether Wart at the given stage of growth.
      *
@@ -13,6 +15,7 @@ class NetherWart extends Shared\BasicValue
      */
     public function __construct($stage)
     {
-        parent::__construct(Ref::NETHER_WART, $stage, 0, 3, 'Invalid stage for nether wart');
+        $this->setBlockIDFor(Ref::NETHER_WART);
+        $this->checkValue($stage, 0, 3, 'Invalid stage for nether wart');
     }
 }

@@ -2,9 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Sign extends Shared\BannerSign
+class Sign extends \MinecraftMapEditor\Block
 {
-    use Shared\EntityData;
+    use Traits\EntityData, Traits\StandingWall;
 
     /**
      * Get a sign, with the given orientation.
@@ -18,27 +18,32 @@ class Sign extends Shared\BannerSign
      */
     public function __construct($blockRef, $orientation, $textArray, $entityData = null)
     {
-        $this->initEntityData($entityData, 'Sign');
+        $this->verifyStandingWall($blockRef, $orientation, Ref::SIGN_STANDING, Ref::SIGN_WALL);
 
+        $this->initEntityData('Sign', $entityData);
+
+        $this->signAddText($textArray);
+    }
+
+    /**
+     * Add the given text to the sign, if there is no text yet.
+     *
+     * @param string[] $textArray
+     */
+    protected function signAddText($textArray)
+    {
         for ($i = 0; $i < 4; ++$i) {
             if (!isset($textArray[$i])) {
                 $textArray[$i] = '';
             }
 
+            // If there's already text in the entity data, don't overwrite it
             $this->createChildOnly(
-                $entityData,
+                $this->entityData,
                 'Text'.($i + 1),
                 \Nbt\Tag::TAG_STRING,
                 $textArray[$i]
             );
         }
-
-        parent::__construct(
-            $blockRef,
-            $orientation,
-            Ref::SIGN_STANDING,
-            Ref::SIGN_WALL,
-            $entityData
-        );
     }
 }

@@ -2,12 +2,14 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Vines extends Shared\BasicValue
+class Vines extends \MinecraftMapEditor\Block
 {
+    use Traits\BasicValue, Traits\Create;
+
     const SOUTH = 0b0001;
-    const WEST  = 0b0010;
+    const WEST = 0b0010;
     const NORTH = 0b0100;
-    const EAST  = 0b1000;
+    const EAST = 0b1000;
 
     /**
      * Get vines. If vines are on multiple sides, use the | operator
@@ -19,6 +21,7 @@ class Vines extends Shared\BasicValue
      */
     public function __construct($sides)
     {
-        parent::__construct(Ref::VINES, $sides, 1, 15, 'Invalid sides for vines');
+        $this->setBlockIDFor(Ref::VINES);
+        $this->checkValue($sides, 1, 15, 'Invalid sides for vines');
     }
 }

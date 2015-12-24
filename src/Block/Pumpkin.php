@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Pumpkin extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const SOUTH = 0;
     const WEST = 1;
@@ -21,10 +21,10 @@ class Pumpkin extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $direction)
     {
-        $block = $this->checkBlock($blockRef, [Ref::PUMPKIN, Ref::JACK_O_LANTERN]);
+        $this->checkBlock($blockRef, [Ref::PUMPKIN, Ref::JACK_O_LANTERN]);
 
         $this->checkDataRefValidAll($direction, 'Invalid direction for pumpkin');
 
-        parent::__construct($block[0], $direction);
+        $this->setBlockData($direction);
     }
 }

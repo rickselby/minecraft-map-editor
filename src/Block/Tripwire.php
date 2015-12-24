@@ -4,18 +4,18 @@ namespace MinecraftMapEditor\Block;
 
 class Tripwire extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const INACTIVE = 0b0000;
-    const ACTIVE   = 0b0001;
+    const ACTIVE = 0b0001;
 
-    const ON_BLOCK      = 0b0000;
+    const ON_BLOCK = 0b0000;
     const SUSPENDED_AIR = 0b0010;
 
     const NO_VALID_CIRCUIT = 0b0000;
-    const VALID_CIRCUIT    = 0b0100;
+    const VALID_CIRCUIT = 0b0100;
 
-    const ARMED    = 0b0000;
+    const ARMED = 0b0000;
     const DISARMED = 0b1000;
 
     /**
@@ -34,13 +34,13 @@ class Tripwire extends \MinecraftMapEditor\Block
      */
     public function __construct($active, $suspended, $circuit, $armed)
     {
-        $block = IDs::$list[Ref::TRIPWIRE];
+        $this->setBlockIDFor(Ref::TRIPWIRE);
 
         $this->checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for tripwire');
         $this->checkInList($suspended, [self::ON_BLOCK, self::SUSPENDED_AIR], 'Invalid suspended setting for tripwire');
         $this->checkInList($circuit, [self::NO_VALID_CIRCUIT, self::VALID_CIRCUIT], 'Invalid circuit setting for tripwire');
         $this->checkInList($armed, [self::ARMED, self::DISARMED], 'Invalid armed setting for tripwire');
 
-        parent::__construct($block[0], $active | $suspended | $circuit | $armed);
+        $this->setBlockData($active | $suspended | $circuit | $armed);
     }
 }

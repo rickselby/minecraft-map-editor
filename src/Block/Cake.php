@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Cake extends Shared\BasicValue
+class Cake extends \MinecraftMapEditor\Block
 {
+    use Traits\BasicValue, Traits\Create;
+
     /**
      * Get a cake, with the given number of slices eaten.
      *
@@ -13,6 +15,7 @@ class Cake extends Shared\BasicValue
      */
     public function __construct($slicesEaten)
     {
-        parent::__construct(Ref::CAKE, $slicesEaten, 0, 6, 'Invalid slices eaten for cake');
+        $this->setBlockIDFor(Ref::CAKE);
+        $this->checkValue($slicesEaten, 0, 6, 'Invalid slices eaten for cake');
     }
 }

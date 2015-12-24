@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class BrewingStand extends \MinecraftMapEditor\Block
 {
+    use Traits\Create;
+
     /**
      * Get a brewing stand with the given bottles in place.
      *
@@ -13,6 +15,8 @@ class BrewingStand extends \MinecraftMapEditor\Block
      */
     public function __construct($eastBottle, $southWestBottle, $northWestBottle)
     {
+        $this->setBlockIDFor(Ref::BREWING_STAND);
+
         $data = 0;
         if ($eastBottle) {
             $data |= 0b0001;
@@ -24,8 +28,6 @@ class BrewingStand extends \MinecraftMapEditor\Block
             $data |= 0b0100;
         }
 
-        $block = IDs::$list[Ref::BREWING_STAND];
-
-        parent::__construct($block[0], $data);
+        $this->setBlockData($data);
     }
 }

@@ -108,7 +108,7 @@ class Chunk
         $this->setNibbleIn($blockData, $blockCoords, $block->data);
 
         // set block entity data
-        $this->updateBlockEntity($blockCoords, $block->entity);
+        $this->updateBlockEntity($blockCoords, $block->entityData);
     }
 
     /**
@@ -120,24 +120,27 @@ class Chunk
      */
     public function getBlock(Coords\BlockCoords $blockCoords)
     {
+        $block = new Block();
         $chunkCoords = $blockCoords->toChunkCoords();
 
         // Get the block ID
-        $blockID = $this->getBlockID($chunkCoords);
+        $block->setBlockID($this->getBlockID($chunkCoords));
 
         // Block Data
         // Get the nibble for this block
-        $blockData = $this->getNibbleFrom(
+        $block->setBlockData($this->getNibbleFrom(
             $this->getSectionPart($chunkCoords->getSectionRef(), 'Data')->getValue(),
             $chunkCoords->getSectionYZX()
-        );
+        ));
 
         // Block Entity
-        $blockEntity = isset($this->blockEntities[$blockCoords->toKey()])
+        $block->setEntityData(
+            isset($this->blockEntities[$blockCoords->toKey()])
                 ? $this->blockEntities[$blockCoords->toKey()]
-                : null;
+                : null
+        );
 
-        return new Block($blockID, $blockData, $blockEntity);
+        return $block;
     }
 
     public function getBlockID(Coords\ChunkCoords $chunkCoords)

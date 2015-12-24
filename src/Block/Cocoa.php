@@ -4,12 +4,12 @@ namespace MinecraftMapEditor\Block;
 
 class Cocoa extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const ATTACHED_NORTH = 0;
     const ATTACHED_SOUTH = 1;
-    const ATTACHED_EAST  = 2;
-    const ATTACHED_WEST  = 3;
+    const ATTACHED_EAST = 2;
+    const ATTACHED_WEST = 3;
 
     const STAGE_1 = 0b0000;
     const STAGE_2 = 0b0100;
@@ -25,12 +25,11 @@ class Cocoa extends \MinecraftMapEditor\Block
      */
     public function __construct($attached, $stage)
     {
+        $this->setBlockIDFor(Ref::COCOA);
+
         $this->checkDataRefValidStartsWith($attached, 'ATTACHED_', 'Invalid attachment setting for Cocoa');
         $this->checkDataRefValidStartsWith($stage, 'STAGE_', 'Invalid stage setting for Cocoa');
 
-        $block = IDs::$list[Ref::COCOA];
-
-        // Stage is in bits 3 and 4, so shift it
-        parent::__construct($block[0], $attached | $stage);
+        $this->setBlockData($attached | $stage);
     }
 }

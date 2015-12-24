@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Shared;
+namespace MinecraftMapEditor\Block\Traits;
 
 use Nbt\Tag;
 
@@ -9,12 +9,10 @@ trait EntityData
     /**
      * Initialise entity data, if none passed in.
      *
-     * @param \Nbt\Node|null &$entityData
-     * @param string         $id          Tile Entity ID
-     *
-     * @return \Nbt\Node
+     * @param string         $id         Tile Entity ID
+     * @param \Nbt\Node|null $entityData
      */
-    protected function initEntityData(&$entityData, $id)
+    protected function initEntityData($id, $entityData = null)
     {
         if ($entityData === null
             || get_class($entityData) !== \Nbt\Node::class
@@ -23,6 +21,8 @@ trait EntityData
         }
 
         $this->updateChildOrCreate($entityData, 'id', Tag::TAG_STRING, $id);
+
+        $this->setEntityData($entityData);
     }
 
     /**

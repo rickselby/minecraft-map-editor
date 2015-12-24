@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Cactus extends Shared\BasicValue
+class Cactus extends \MinecraftMapEditor\Block
 {
+    use Traits\BasicValue, Traits\Create;
+
     /**
      * Get a cactus with a given age. When the age is 15, it'll grow a new cactus
      * block on top of it (if the total height doesn't exceed 3).
@@ -14,6 +16,7 @@ class Cactus extends Shared\BasicValue
      */
     public function __construct($age)
     {
-        parent::__construct(Ref::CACTUS, $age, 0, 15, 'Invalid age for cactus');
+        $this->setBlockIDFor(Ref::CACTUS);
+        $this->checkValue($age, 0, 15, 'Invalid age for cactus');
     }
 }

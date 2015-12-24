@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Fire extends Shared\BasicValue
+class Fire extends \MinecraftMapEditor\Block
 {
+    use Traits\BasicValue, Traits\Create;
+
     /**
      * Get FIRE! Set the age. If fire is given age 15 and is above a flammable
      * block, it'll never stop burning.
@@ -12,6 +14,7 @@ class Fire extends Shared\BasicValue
      */
     public function __construct($age = 0)
     {
-        parent::__construct(Ref::FIRE, $age, 0, 15, 'Invalid age for fire');
+        $this->setBlockIDFor(Ref::FIRE);
+        $this->checkValue($age, 0, 15, 'Invalid age for fire');
     }
 }

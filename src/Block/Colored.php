@@ -2,15 +2,15 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Colored extends MinecraftMapEditor\Block implements Shared\Colors
+class Colored extends MinecraftMapEditor\Block implements Interfaces\Colors
 {
-    use Shared\Create;
+    use Traits\Create;
 
     /**
-     * Get a colored block
+     * Get a colored block.
      *
      * @param int $blockRef One of the blocks that can be different colors
-     * @param int $color One of the class constants
+     * @param int $color    One of the class constants
      *
      * @throws \Exception
      */
@@ -26,7 +26,6 @@ class Colored extends MinecraftMapEditor\Block implements Shared\Colors
 
         $this->checkDataRefValidAll($color, 'Invalid color for '.Ref::getNameFor($blockRef));
 
-        parent::__construct($block[0], $color);
+        $this->setBlockData($color);
     }
 }
-

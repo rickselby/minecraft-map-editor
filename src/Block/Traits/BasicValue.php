@@ -1,10 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Shared;
+namespace MinecraftMapEditor\Block\Traits;
 
-use MinecraftMapEditor\Block\IDs;
-
-abstract class BasicValue extends \MinecraftMapEditor\Block
+trait BasicValue
 {
     /**
      * Get a block with a basic value for the block data.
@@ -17,14 +15,12 @@ abstract class BasicValue extends \MinecraftMapEditor\Block
      *
      * @throws \Exception
      */
-    public function __construct($blockRef, $value, $min, $max, $exceptionMessage)
+    public function checkValue($value, $min, $max, $exceptionMessage)
     {
         if ($value < $min || $value > $max) {
             throw new \Exception($exceptionMessage, E_ERROR);
         }
 
-        $block = IDs::$list[$blockRef];
-
-        parent::__construct($block[0], $value);
+        $this->setBlockData($value);
     }
 }

@@ -13,7 +13,7 @@ namespace MinecraftMapEditor\Block;
 class IDs
 {
     /** @var array[] Block ID and Data for each block **/
-    static public $list = [
+    public static $list = [
         Ref::AIR => [0, 0],
 
         Ref::STONE             => [1, 0],
@@ -95,23 +95,20 @@ class IDs
         Ref::GRASS      => [31, 1],
         Ref::FERN       => [31, 2],
 
-        Ref::DEAD_BUSH   => [32, 0],
-        Ref::PISTON      => [33, 0, 'Piston'],
-        Ref::PISTON_HEAD => [34, 0, 'PistonHead'],
-
-        Ref::WOOL => [35, 0, 'Colored'],
-
-        Ref::DANDELION    => [37, 0],
-        Ref::POPPY        => [38, 0],
-        Ref::BLUE_ORCHID  => [38, 1],
-        Ref::ALLIUM       => [38, 2],
-        Ref::AZURE_BLUET  => [38, 3],
-        Ref::TULIP_RED    => [38, 4],
-        Ref::TULIP_ORANGE => [38, 5],
-        Ref::TULIP_WHITE  => [38, 6],
-        Ref::TULIP_PINK   => [38, 7],
-        Ref::OXEYE_DAISY  => [38, 8],
-
+        Ref::DEAD_BUSH      => [32, 0],
+        Ref::PISTON         => [33, 0, 'Piston'],
+        Ref::PISTON_HEAD    => [34, 0, 'PistonHead'],
+        Ref::WOOL           => [35, 0, 'Colored'],
+        Ref::DANDELION      => [37, 0],
+        Ref::POPPY          => [38, 0],
+        Ref::BLUE_ORCHID    => [38, 1],
+        Ref::ALLIUM         => [38, 2],
+        Ref::AZURE_BLUET    => [38, 3],
+        Ref::TULIP_RED      => [38, 4],
+        Ref::TULIP_ORANGE   => [38, 5],
+        Ref::TULIP_WHITE    => [38, 6],
+        Ref::TULIP_PINK     => [38, 7],
+        Ref::OXEYE_DAISY    => [38, 8],
         Ref::MUSHROOM_BROWN => [39, 0],
         Ref::MUSHROOM_RED   => [40, 0],
         Ref::GOLD_BLOCK     => [41, 0],
@@ -185,9 +182,8 @@ class IDs
         Ref::CAKE                  => [92, 0, 'Cake'],
         Ref::REDSTONE_REPEATER_OFF => [93, 0, 'RedstoneRepeater'],
         Ref::REDSTONE_REPEATER_ON  => [94, 0, 'RedstoneRepeater'],
-
-        Ref::GLASS_STAINED   => [95, 0, 'Colored'],
-        Ref::TRAPDOOR_WOODEN => [96, 0, 'Trapdoor'],
+        Ref::GLASS_STAINED         => [95, 0, 'Colored'],
+        Ref::TRAPDOOR_WOODEN       => [96, 0, 'Trapdoor'],
 
         Ref::MONSTER_EGG_STONE                => [97, 0],
         Ref::MONSTER_EGG_COBBLESTONE          => [97, 1],
@@ -252,9 +248,8 @@ class IDs
         Ref::STAIRS_WOOD_SPRUCE => [134, 0, 'Stairs'],
         Ref::STAIRS_WOOD_BIRCH  => [135, 0, 'Stairs'],
         Ref::STAIRS_WOOD_JUNGLE => [136, 0, 'Stairs'],
-
-        Ref::COMMAND_BLOCK => [137, 0],
-        Ref::BEACON        => [138, 0],
+        Ref::COMMAND_BLOCK      => [137, 0],
+        Ref::BEACON             => [138, 0],
 
         Ref::COBBLESTONE_WALL       => [139, 0],
         Ref::COBBLESTONE_WALL_MOSSY => [139, 1],
@@ -278,12 +273,10 @@ class IDs
         Ref::QUARTZ_BLOCK_CHISELED => [155, 1],
         Ref::QUARTZ_BLOCK_PILLAR   => [155, 2],
 
-        Ref::STAIRS_QUARTZ  => [156, 0, 'Stairs'],
-        Ref::RAIL_ACTIVATOR => [157, 0, 'RedstoneRail'],
-        Ref::DROPPER        => [158, 0, 'Dropper'],
-
-        Ref::CLAY_STAINED => [159, 0, 'Colored'],
-
+        Ref::STAIRS_QUARTZ      => [156, 0, 'Stairs'],
+        Ref::RAIL_ACTIVATOR     => [157, 0, 'RedstoneRail'],
+        Ref::DROPPER            => [158, 0, 'Dropper'],
+        Ref::CLAY_STAINED       => [159, 0, 'Colored'],
         Ref::GLASS_PANE_STAINED => [160, 0, 'Colored'],
 
         Ref::LEAVES_ACACIA   => [161, 0, 'Leaves'],

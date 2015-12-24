@@ -2,9 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class FlowingLiquid extends Shared\BasicValue
+class FlowingLiquid extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\BasicValue, Traits\Create;
 
     /**
      * Flowing water or lava. Set the level - 0 is the highest, to 7 the lowest.
@@ -22,6 +22,6 @@ class FlowingLiquid extends Shared\BasicValue
             Ref::WATER_FLOWING,
         ]);
 
-        parent::__construct($blockRef, $level, 0, 8, 'Invalid level for '.Ref::getNameFor($blockRef));
+        $this->checkValue($level, 0, 15, 'Invalid level for '.Ref::getNameFor($blockRef));
     }
 }

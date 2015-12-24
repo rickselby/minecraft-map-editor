@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Torch extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const WEST = 1;
     const EAST = 2;
@@ -22,7 +22,7 @@ class Torch extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $attachment)
     {
-        $block = $this->checkBlock($blockRef, [
+        $this->checkBlock($blockRef, [
             Ref::TORCH,
             Ref::REDSTONE_TORCH_OFF,
             Ref::REDSTONE_TORCH_ON,
@@ -31,6 +31,6 @@ class Torch extends \MinecraftMapEditor\Block
         // Check the orientation is valid
         $this->checkDataRefValidAll($attachment, 'Invalid attachment for torch');
 
-        parent::__construct($block[0], $attachment);
+        $this->setBlockData($attachment);
     }
 }

@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class PressurePlate extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const INACTIVE = 0;
     const ACTIVE = 1;
@@ -19,10 +19,10 @@ class PressurePlate extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $active = self::INACTIVE)
     {
-        $block = $this->checkBlock($blockRef, Ref::getStartsWith('PRESSURE_PLATE_'));
+        $this->checkBlock($blockRef, Ref::getStartsWith('PRESSURE_PLATE_'));
 
         $this->checkDataRefValidAll($active, 'Invalid active setting for pressure plate');
 
-        parent::__construct($block[0], $active);
+        $this->setBlockData($active);
     }
 }

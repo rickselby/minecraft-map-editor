@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class SnowLayer extends Shared\BasicValue
+class SnowLayer extends \MinecraftMapEditor\Block
 {
+    use Traits\BasicValue, Traits\Create;
+
     /**
      * Get snow layers, with the given number of layers.
      *
@@ -13,6 +15,7 @@ class SnowLayer extends Shared\BasicValue
      */
     public function __construct($layers = 1)
     {
-        parent::__construct(Ref::SNOW_LAYER, $layers - 1, 0, 7, 'Invalid power for redstone wire');
+        $this->setBlockIDFor(Ref::SNOW_LAYER);
+        $this->checkValue($layers - 1, 0, 7, 'Invalid number of snow layer');
     }
 }

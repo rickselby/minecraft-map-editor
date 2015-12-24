@@ -4,6 +4,8 @@ namespace MinecraftMapEditor\Block;
 
 class Jukebox extends \MinecraftMapEditor\Block
 {
+    use Traits\Create;
+
     /**
      * Get a jukebox, optionally with the given disc inserted.
      *
@@ -11,10 +13,8 @@ class Jukebox extends \MinecraftMapEditor\Block
      */
     public function __construct($disc = null)
     {
-        $data = $disc ? 1 : 0;
+        $this->setBlockIDFor(Ref::JUKEBOX);
 
-        $block = IDs::$list[Ref::JUKEBOX];
-
-        parent::__construct($block[0], $data);
+        $this->setBlockData($disc ? 1 : 0);
     }
 }

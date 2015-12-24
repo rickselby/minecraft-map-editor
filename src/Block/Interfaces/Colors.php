@@ -1,9 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Shared;
-
-// I don't like this being an interface, but I need to get these constants into
-// the banner class somehow, as well as the generic 'coloured block' class...
+namespace MinecraftMapEditor\Block\Interfaces;
 
 interface Colors
 {

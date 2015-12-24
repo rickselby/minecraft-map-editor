@@ -4,16 +4,16 @@ namespace MinecraftMapEditor\Block;
 
 class TripwireHook extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const FACING_SOUTH = 0;
-    const FACING_WEST  = 1;
+    const FACING_WEST = 1;
     const FACING_NORTH = 2;
-    const FACING_EAST  = 3;
+    const FACING_EAST = 3;
 
     const NOT_CONNECTED = 0b0000;
-    const CONNECTED     = 0b0100;
-    const ACTIVATED     = 0b1000;
+    const CONNECTED = 0b0100;
+    const ACTIVATED = 0b1000;
 
     /**
      * Get a tripwire hook facing the given way with the given state.
@@ -26,7 +26,7 @@ class TripwireHook extends \MinecraftMapEditor\Block
      */
     public function __construct($facing, $state)
     {
-        $block = IDs::$list[Ref::TRIPWIRE_HOOK];
+        $this->setBlockIDFor(Ref::TRIPWIRE_HOOK);
 
         $this->checkDataRefValidStartsWith($facing, 'FACING_', 'Invalid facing setting for tripwire hook');
         $this->checkInList(
@@ -35,6 +35,6 @@ class TripwireHook extends \MinecraftMapEditor\Block
             'Invalid state for tripwire hook'
         );
 
-        parent::__construct($block[0], $facing | $state);
+        $this->setBlockData($facing | $state);
     }
 }

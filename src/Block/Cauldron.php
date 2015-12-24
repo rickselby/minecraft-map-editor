@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Cauldron extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const FILL_EMPTY = 0;
     const FILL_THIRD = 1;
@@ -20,10 +20,10 @@ class Cauldron extends \MinecraftMapEditor\Block
      */
     public function __construct($fill)
     {
-        $block = IDs::$list[Ref::CAULDRON];
+        $this->setBlockIDFor(Ref::CAULDRON);
 
         $this->checkDataRefValidAll($fill, 'Invalid fill level for Cauldron');
 
-        parent::__construct($block[0], $fill);
+        $this->setBlockData($fill);
     }
 }

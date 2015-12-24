@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class MobHead extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const FLOOR = 1;
     const WALL_NORTH = 2;
@@ -22,10 +22,10 @@ class MobHead extends \MinecraftMapEditor\Block
      */
     public function __construct($placement)
     {
-        $block = IDs::$list[Ref::MOB_HEAD];
+        $this->setBlockIDFor(Ref::MOB_HEAD);
 
         $this->checkDataRefValidAll($placement, 'Invalid placement for mob head');
 
-        parent::__construct($block[0], $placement);
+        $this->setBlockData($placement);
     }
 }

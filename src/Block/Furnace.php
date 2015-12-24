@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Furnace extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const NORTH = 2;
     const SOUTH = 3;
@@ -21,10 +21,10 @@ class Furnace extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $facing)
     {
-        $block = $this->checkBlock($blockRef, Ref::getStartsWith('FURNACE'));
+        $this->checkBlock($blockRef, Ref::getStartsWith('FURNACE'));
 
         $this->checkDataRefValidAll($facing, 'Invalid facing reference for furnace');
 
-        parent::__construct($block[0], $facing);
+        $this->setBlockData($facing);
     }
 }

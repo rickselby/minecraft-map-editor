@@ -1,40 +1,22 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Shared;
+namespace MinecraftMapEditor\Block\Traits;
 
-abstract class BannerSign extends \MinecraftMapEditor\Block
+trait StandingWall
 {
     use Create;
-
-    const ORIENT_SOUTH          = 0;
-    const ORIENT_SOUTHSOUTHWEST = 1;
-    const ORIENT_SOUTHWEST      = 2;
-    const ORIENT_WESTSOUTHWEST  = 3;
-    const ORIENT_WEST           = 4;
-    const ORIENT_WESTNORTHWEST  = 5;
-    const ORIENT_NORTHWEST      = 6;
-    const ORIENT_NORTHNORTHWEST = 7;
-    const ORIENT_NORTH          = 8;
-    const ORIENT_NORTHNORTHEAST = 9;
-    const ORIENT_NORTHEAST      = 10;
-    const ORIENT_EASTNORTHEAST  = 11;
-    const ORIENT_EAST           = 12;
-    const ORIENT_EASTSOUTHEAST  = 13;
-    const ORIENT_SOUTHEAST      = 14;
-    const ORIENT_SOUTHSOUTHEAST = 15;
 
     /**
      * Get a banner or sign, with the given orientation.
      *
-     * @param int $blockRef    A valid blockRef for this class
-     * @param int $orientation Orientation of the banner; one of the class constants
+     * @param int $blockRef      A valid blockRef for this class
+     * @param int $orientation   Orientation of the banner; one of the class constants
      * @param int $standingBlock The version of the block that is standing (changes the validation)
-     * @param int $wallBlock The version of the block that is the wall (changes the validation)
-     * @param \Nbt\Node|null $entityData Entity data for the block
+     * @param int $wallBlock     The version of the block that is the wall (changes the validation)
      *
      * @throws \Exception
      */
-    public function __construct($blockRef, $orientation, $standingBlock, $wallBlock, $entityData)
+    protected function verifyStandingWall($blockRef, $orientation, $standingBlock, $wallBlock)
     {
         // We still call checkBlock to throw an exception if required
         // and to get the block information
@@ -49,7 +31,8 @@ abstract class BannerSign extends \MinecraftMapEditor\Block
                 break;
         }
 
-        parent::__construct($block[0], $orientation, $entityData);
+        $this->setBlockIDFor($blockRef);
+        $this->setBlockData($orientation);
     }
 
     /**

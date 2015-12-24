@@ -2,9 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Stem extends Shared\BasicValue
+class Stem extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\BasicValue, Traits\Create;
 
     /**
      * Get a stem with the given growth setting (7 = ready to spawn item).
@@ -18,6 +18,6 @@ class Stem extends Shared\BasicValue
     {
         $this->checkBlock($blockRef, Ref::getStartsWith('STEM_'));
 
-        parent::__construct($blockRef, $growth, 0, 7, 'Invalid growth for stem');
+        $this->checkValue($growth, 0, 7, 'Invalid growth for stem');
     }
 }

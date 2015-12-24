@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class DoubleSlab extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const TEXTURE_NORMAL = 0b0000;
     const TEXTURE_TOP = 0b1000;
@@ -25,6 +25,6 @@ class DoubleSlab extends \MinecraftMapEditor\Block
 
         $this->checkDataRefValidStartsWith($topTexture, 'TEXTURE_', 'Invalid texture setting for double slab');
 
-        parent::__construct($block[0], $block[1] | $topTexture);
+        $this->setBlockData($block[1] | $topTexture);
     }
 }

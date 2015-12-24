@@ -4,18 +4,18 @@ namespace MinecraftMapEditor\Block;
 
 class Trapdoor extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const HINGE_SOUTH = 0;
     const HINGE_NORTH = 1;
-    const HINGE_EAST  = 2;
-    const HINGE_WEST  = 3;
+    const HINGE_EAST = 2;
+    const HINGE_WEST = 3;
 
     const DOOR_CLOSED = 0b0000;
-    const DOOR_OPEN   = 0b0100;
+    const DOOR_OPEN = 0b0100;
 
     const ON_BOTTOM = 0b0000;
-    const ON_TOP    = 0b1000;
+    const ON_TOP = 0b1000;
 
     /**
      * Get a trap door, with the given hinge side, top/bottom, and state.
@@ -29,12 +29,12 @@ class Trapdoor extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $hinge, $half, $state = self::DOOR_CLOSED)
     {
-        $block = $this->checkBlock($blockRef, Ref::getStartsWith('TRAPDOOR_'));
+        $this->checkBlock($blockRef, Ref::getStartsWith('TRAPDOOR_'));
 
         $this->checkDataRefValidStartsWith($hinge, 'HINGE_', 'Invalid hinge setting for trapdoor');
         $this->checkDataRefValidStartsWith($half, 'ON_', 'Invalid top/bottom setting for trapdoor');
         $this->checkDataRefValidStartsWith($state, 'DOOR_', 'Invalid state for trapdoor');
 
-        parent::__construct($block[0], $hinge | $half | $state);
+        $this->setBlockData($hinge | $half | $state);
     }
 }

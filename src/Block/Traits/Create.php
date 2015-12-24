@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Shared;
+namespace MinecraftMapEditor\Block\Traits;
 
 use MinecraftMapEditor\Block\IDs;
 
@@ -21,6 +21,7 @@ trait Create
     protected function checkBlock($blockRef, $list)
     {
         $this->checkInList($blockRef, $list, 'Incorrect block type requested');
+        $this->setBlockIDFor($blockRef);
 
         return IDs::$list[$blockRef];
     }
@@ -83,5 +84,28 @@ trait Create
         }
 
         return true;
+    }
+
+    /**
+     * Set just the block ID for the given block reference.
+     *
+     * @param int $blockRef
+     */
+    protected function setBlockIDFor($blockRef)
+    {
+        $block = IDs::$list[$blockRef];
+        $this->setBlockID($block[0]);
+    }
+
+    /**
+     * Set just the block ID for the given block reference.
+     *
+     * @param int $blockRef
+     */
+    protected function setBlockIDAndDataFor($blockRef)
+    {
+        $block = IDs::$list[$blockRef];
+        $this->setBlockID($block[0]);
+        $this->setBlockData($block[1]);
     }
 }

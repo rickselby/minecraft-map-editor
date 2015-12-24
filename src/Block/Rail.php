@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Rail extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const NORTH_SOUTH = 0;
     const EAST_WEST = 1;
@@ -27,10 +27,10 @@ class Rail extends \MinecraftMapEditor\Block
      */
     public function __construct($orientation)
     {
-        $block = IDs::$list[Ref::RAIL];
+        $this->setBlockIDFor(Ref::RAIL);
 
         $this->checkDataRefValidAll($orientation, 'Invalid orientation for rail');
 
-        parent::__construct($block[0], $orientation);
+        $this->setBlockData($orientation);
     }
 }

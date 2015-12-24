@@ -4,10 +4,10 @@ namespace MinecraftMapEditor\Block;
 
 class Leaves extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const NO_DECAY = 0b0000;
-    const DECAY    = 0b0100;
+    const DECAY = 0b0100;
 
     /**
      * Get leaves with decay settings.
@@ -30,6 +30,6 @@ class Leaves extends \MinecraftMapEditor\Block
 
         $this->checkInList($decay, [self::NO_DECAY, self::DECAY], 'Invalid decay setting for leaves');
 
-        parent::__construct($block[0], $block[1] | $decay);
+        $this->setBlockData($block[1] | $decay);
     }
 }

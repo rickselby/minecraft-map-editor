@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Hopper extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const OUTPUT_DOWN = 0;
     const OUTPUT_NORTH = 2;
@@ -25,11 +25,11 @@ class Hopper extends \MinecraftMapEditor\Block
      */
     public function __construct($output, $active = self::ACTIVE)
     {
-        $block = IDs::$list[Ref::HOPPER];
+        $this->setBlockIDFor(Ref::HOPPER);
 
         $this->checkDataRefValidStartsWith($output, 'OUTPUT', 'Invalid output reference for hopper');
         $this->checkInList($active, [self::ACTIVE, self::DISABLED], 'Invalid active reference for hopper');
 
-        parent::__construct($block[0], $output | $active);
+        $this->setBlockData($output | $active);
     }
 }

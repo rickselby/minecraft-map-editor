@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Mushroom extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const ALL_PORES = 0;
     const CAP_TOP_WEST_NORTH = 1;
@@ -28,10 +28,10 @@ class Mushroom extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $texture)
     {
-        $block = $this->checkBlock($blockRef, Ref::getStartsWith('MUSHROOM_BLOCK_'));
+        $this->checkBlock($blockRef, Ref::getStartsWith('MUSHROOM_BLOCK_'));
 
         $this->checkDataRefValidAll($texture, 'Invalid texture setting for mushroom block');
 
-        parent::__construct($block[0], $texture);
+        $this->setBlockData($texture);
     }
 }

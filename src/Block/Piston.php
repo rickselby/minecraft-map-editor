@@ -4,37 +4,37 @@ namespace MinecraftMapEditor\Block;
 
 class Piston extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
-    const UP = 1;
-    const DOWN = 0;
-    const NORTH = 2;
-    const EAST = 5;
-    const SOUTH = 3;
-    const WEST = 4;
+    const FACING_UP = 1;
+    const FACING_DOWN = 0;
+    const FACING_NORTH = 2;
+    const FACING_EAST = 5;
+    const FACING_SOUTH = 3;
+    const FACING_WEST = 4;
+
+    const EXTENDED = 0b1000;
+    const RETRACTED = 0b0000;
 
     /**
-     * Get a piston. If extended, this will only do the piston body, not the head
+     * Get a piston. If extended, this will only do the piston body, not the head.
      *
-     * @param int $blockRef  Which piston
-     * @param int $direction The direction the piston head is pointing; one of the class constants
-     * @param bool $extended [optional] Is the piston extended? TODO CHANGE THIS TO A CONST VALUE
+     * @param int $blockRef Which piston
+     * @param int $facing   The direction the piston head is pointing; one of the class constants
+     * @param int $extended Either Piston::EXTENDED or Piston::RETRACTED
      *
      * @throws \Exception
      */
-    public function __construct($blockRef, $direction, $extended = false)
+    public function __construct($blockRef, $facing, $extended = self::RETRACTED)
     {
-        $block = $this->checkBlock($blockRef, [
+        $this->checkBlock($blockRef, [
             Ref::PISTON,
             Ref::PISTON_STICKY,
         ]);
 
-        $this->checkDataRefValidAll($direction, 'Invalid direction for piston');
+        $this->checkDataRefValidStartsWith($facing, 'FACING_', 'Invalid facing setting for piston');
+        $this->checkInList($extended, [self::EXTENDED, self::RETRACTED], 'Invalid extended setting for piston');
 
-        if ($extended) {
-            $direction |= 8;
-        }
-
-        parent::__construct($block[0], $direction);
+        $this->setBlockData($facing | $extended);
     }
 }

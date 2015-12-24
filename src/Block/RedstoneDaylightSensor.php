@@ -2,9 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class RedstoneDaylightSensor extends Shared\BasicValue
+class RedstoneDaylightSensor extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\BasicValue, Traits\Create;
 
     /**
      * Get a daylight sensor (regular or inverted) with the given power.
@@ -18,6 +18,6 @@ class RedstoneDaylightSensor extends Shared\BasicValue
     {
         $this->checkBlock($blockRef, Ref::getStartsWith('DAYLIGHT_SENSOR'));
 
-        parent::__construct($blockRef, $power, 0, 15, 'Invalid power for Daylight Sensor');
+        $this->checkValue($power, 0, 15, 'Invalid power for Daylight Sensor');
     }
 }

@@ -4,17 +4,17 @@ namespace MinecraftMapEditor\Block;
 
 class Button extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
-    const POSITION_DOWN  = 0;
-    const POSITION_EAST  = 1;
-    const POSITION_WEST  = 2;
+    const POSITION_DOWN = 0;
+    const POSITION_EAST = 1;
+    const POSITION_WEST = 2;
     const POSITION_SOUTH = 3;
     const POSITION_NORTH = 4;
-    const POSITION_UP    = 5;
+    const POSITION_UP = 5;
 
     const INACTIVE = 0b0000;
-    const ACTIVE   = 0b1000;
+    const ACTIVE = 0b1000;
 
     /**
      * Get a button, in the given position.
@@ -27,11 +27,11 @@ class Button extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $position, $active)
     {
-        $block = $this->checkBlock($blockRef, Ref::getStartsWith('BUTTON_'));
+        $this->checkBlock($blockRef, Ref::getStartsWith('BUTTON_'));
 
         $this->checkDataRefValidStartsWith($position, 'POSITION_', 'Invalid position for button');
         $this->checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for button');
 
-        parent::__construct($block[0], $position | $active);
+        $this->setBlockData($position | $active);
     }
 }

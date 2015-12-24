@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class EndPortalFrame extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const DIRECTION_SOUTH = 0;
     const DIRECTION_WEST = 1;
@@ -17,18 +17,18 @@ class EndPortalFrame extends \MinecraftMapEditor\Block
     /**
      * Get an end portal frame block, with the given direction, filled or not.
      *
-     * @param int  $direction Direction the block is facing
+     * @param int $direction Direction the block is facing
      * @param int $filled    [Optional] Is there an eye of ender in the block?
      *
      * @throws \Exception
      */
     public function __construct($direction, $filled = self::NOT_FILLED)
     {
-        $block = IDs::$list[Ref::END_PORTAL_FRAME];
+        $this->setBlockIDFor(Ref::END_PORTAL_FRAME);
 
         $this->checkDataRefValidStartsWith($direction, 'DIRECTION_', 'Invalid direction for end portal frame');
         $this->checkInList($filled, [self::NOT_FILLED, self::FILLED], 'Invalid filled setting for end portal frame');
 
-        parent::__construct($block[0], $direction | $filled);
+        $this->setBlockData($direction | $filled);
     }
 }

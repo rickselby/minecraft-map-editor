@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class PistonHead extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const DIRECTION_DOWN = 0;
     const DIRECTION_UP = 1;
@@ -26,11 +26,11 @@ class PistonHead extends \MinecraftMapEditor\Block
      */
     public function __construct($type, $direction)
     {
-        $block = IDs::$list[Ref::PISTON_HEAD];
+        $this->setBlockIDFor(Ref::PISTON_HEAD);
 
         $this->checkInList($type, [self::STICKY, self::NORMAL], 'Invalid type for piston head');
         $this->checkDataRefValidStartsWith($direction, 'DIRECTION_', 'Invalid direction for piston head');
 
-        parent::__construct($block[0], $type | $direction);
+        $this->setBlockData($type | $direction);
     }
 }

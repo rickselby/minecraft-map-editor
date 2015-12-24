@@ -2,9 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Crops extends Shared\BasicValue
+class Crops extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\BasicValue, Traits\Create;
 
     /**
      * Get a crop (wheat, carrots, potatoes) at the given growth.
@@ -20,6 +20,6 @@ class Crops extends Shared\BasicValue
             Ref::POTATOES,
         ]);
 
-        parent::__construct($blockRef, $growth, 0, 7, 'Invalid growth for crop '.Ref::getNameFor($blockRef));
+        $this->checkValue($growth, 0, 7, 'Invalid growth for crop '.Ref::getNameFor($blockRef));
     }
 }

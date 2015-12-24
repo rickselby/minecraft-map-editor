@@ -4,24 +4,24 @@ namespace MinecraftMapEditor\Block;
 
 class Door extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const HALF_BOTTOM = 0b0000;
-    const HALF_TOP    = 0b1000;
+    const HALF_TOP = 0b1000;
 
     const HINGE_RIGHT = 0;
-    const HINGE_LEFT  = 1;
+    const HINGE_LEFT = 1;
 
     const STATE_CLOSED = 0b0000;
-    const STATE_OPEN   = 0b0100;
+    const STATE_OPEN = 0b0100;
 
-    const FACING_WEST  = 0;
+    const FACING_WEST = 0;
     const FACING_NORTH = 1;
-    const FACING_EAST  = 2;
+    const FACING_EAST = 2;
     const FACING_SOUTH = 3;
 
     const POWER_UNPOWERED = 0b0000;
-    const POWER_POWERED   = 0b0010;
+    const POWER_POWERED = 0b0010;
 
     /**
      * Get half of a door. Certain settings are used on certain halves, but we
@@ -38,7 +38,7 @@ class Door extends \MinecraftMapEditor\Block
      */
     public function __construct($blockRef, $half, $hinge, $state, $facing, $power)
     {
-        $block = $this->checkBlock($blockRef, Ref::getStartsWith('DOOR_'));
+        $this->checkBlock($blockRef, Ref::getStartsWith('DOOR_'));
 
         $this->checkDataRefValidStartsWith($half, 'HALF_', 'Invalid half for door');
         $this->checkDataRefValidStartsWith($hinge, 'HINGE_', 'Invalid hinge for door');
@@ -48,13 +48,11 @@ class Door extends \MinecraftMapEditor\Block
 
         switch ($half) {
             case HALF_BOTTOM:
-                $data = $half | $facing | $state;
+                $this->setBlockData($half | $facing | $state);
                 break;
             case HALF_TOP:
-                $data = $half | $hinge | $power;
+                $this->setBlockData($half | $hinge | $power);
                 break;
         }
-
-        parent::__construct($block[0], $data);
     }
 }

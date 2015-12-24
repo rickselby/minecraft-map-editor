@@ -4,12 +4,12 @@ namespace MinecraftMapEditor\Block;
 
 class Bed extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const DIRECTION_SOUTH = 0;
-    const DIRECTION_WEST  = 1;
+    const DIRECTION_WEST = 1;
     const DIRECTION_NORTH = 2;
-    const DIRECTION_EAST  = 3;
+    const DIRECTION_EAST = 3;
 
     const PART_FOOT = 0b0000;
     const PART_HEAD = 0b1000;
@@ -24,11 +24,11 @@ class Bed extends \MinecraftMapEditor\Block
      */
     public function __construct($direction, $part)
     {
+        $this->setBlockIDFor(Ref::BED);
+
         $this->checkDataRefValidStartsWith($direction, 'DIRECTION_', 'Invalid direction for bed');
         $this->checkDataRefValidStartsWith($part, 'PART_', 'Invalid part for bed');
 
-        $block = IDs::$list[Ref::BED];
-
-        parent::__construct($block[0], $direction | $part);
+        $this->setBlockData($direction | $part);
     }
 }

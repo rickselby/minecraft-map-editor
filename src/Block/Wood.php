@@ -4,12 +4,12 @@ namespace MinecraftMapEditor\Block;
 
 class Wood extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
-    const UP_DOWN     = 0b0000;
-    const EAST_WEST   = 0b0100;
+    const UP_DOWN = 0b0000;
+    const EAST_WEST = 0b0100;
     const NORTH_SOUTH = 0b1000;
-    const BARK_ONLY   = 0b1100;
+    const BARK_ONLY = 0b1100;
 
     /**
      * Get a block of wood, with the given orientation.
@@ -33,6 +33,6 @@ class Wood extends \MinecraftMapEditor\Block
         // Check the orientation is valid
         $this->checkDataRefValidAll($orientation, 'Invalid orientation for wood');
 
-        parent::__construct($block[0], $block[1] | $orientation);
+        $this->setBlockData($block[1] | $orientation);
     }
 }

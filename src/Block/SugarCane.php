@@ -2,8 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class SugarCane extends Shared\BasicValue
+class SugarCane extends \MinecraftMapEditor\Block
 {
+    use Traits\BasicValue, Traits\Create;
+
     /**
      * Get a sugar cane with a given age. When the age is 15, it'll grow a new
      * sugar cane block on top of it (if the total height doesn't exceed 3).
@@ -14,6 +16,7 @@ class SugarCane extends Shared\BasicValue
      */
     public function __construct($age)
     {
-        parent::__construct(Ref::SUGAR_CANE, $age, 0, 15, 'Invalid age for sugar cane');
+        $this->setBlockIDFor(Ref::SUGAR_CANE);
+        $this->checkValue($age, 0, 15, 'Invalid age for sugar cane');
     }
 }

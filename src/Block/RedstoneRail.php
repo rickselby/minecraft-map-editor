@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class RedstoneRail extends \MinecraftMapEditor\Block
 {
-    use Shared\Create;
+    use Traits\Create;
 
     const ORIENT_NORTH_SOUTH = 0;
     const ORIENT_EAST_WEST = 1;
@@ -14,25 +14,25 @@ class RedstoneRail extends \MinecraftMapEditor\Block
     const ORIENT_SLOPED_SOUTH = 5;
 
     const INACTIVE = 0b0000;
-    const ACTIVE   = 0b1000;
+    const ACTIVE = 0b1000;
 
     /**
      * Get a 'redstone rail' (powered, activator, detector), with the given
-     * orientation and active status
+     * orientation and active status.
      *
-     * @param int $blockRef One of the Ref constants
+     * @param int $blockRef    One of the Ref constants
      * @param int $orientation One of the ORIENT_ class constants
-     * @param int $active Either RedstoneRail::INACTIVE or RedstoneRail::ACTIVE
+     * @param int $active      Either RedstoneRail::INACTIVE or RedstoneRail::ACTIVE
      *
      * @throws \Exception
      */
     public function __construct($blockRef, $orientation, $active = self::INACTIVE)
     {
-        $block = $this->checkBlock($blockRef, Ref::getStartsWith('RAIL_'));
+        $this->checkBlock($blockRef, Ref::getStartsWith('RAIL_'));
 
         $this->checkDataRefValidStartsWith($orientation, 'ORIENT_', 'Invalid orientation for redstone rail');
         $this->checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active setting for redstone rail');
 
-        parent::__construct($block[0], $orientation | $active);
+        $this->setBlockData($orientation | $active);
     }
 }
