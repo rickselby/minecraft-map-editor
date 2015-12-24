@@ -249,7 +249,7 @@ class IDs
         Ref::STAIRS_WOOD_BIRCH  => [135, 0, 'Stairs'],
         Ref::STAIRS_WOOD_JUNGLE => [136, 0, 'Stairs'],
         Ref::COMMAND_BLOCK      => [137, 0],
-        Ref::BEACON             => [138, 0],
+        Ref::BEACON             => [138, 0, 'Beacon'],
 
         Ref::COBBLESTONE_WALL       => [139, 0],
         Ref::COBBLESTONE_WALL_MOSSY => [139, 1],
