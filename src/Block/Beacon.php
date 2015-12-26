@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class Beacon extends \MinecraftMapEditor\Block
 {
-    use Traits\Create, Traits\EntityData;
+    use Traits\Create, Traits\EntityData, Traits\CheckValue;
 
     const POWER_NONE = 0;
     const POWER_SPEED = 1;
@@ -12,30 +12,46 @@ class Beacon extends \MinecraftMapEditor\Block
     const POWER_RESISTANCE = 11;
     const POWER_JUMP = 8;
     const POWER_STRENGTH = 5;
-
-    const SECONDARY_NONE = 0;
-    const SECONDARY_DOUBLE = -1;
-    const SECONDARY_REGENERATION = 10;
+    const POWER_REGENERATION = 10;
 
     /**
-     * Get a beacon with the given settings
+     * Get a beacon with the given settings.
      *
-     * @param int $primaryPower
-     * @param int $secondaryPower
-     * @param int $levels
-     * @param string|null $lock
+     * @param int    $primaryPower   Primary power given by the beacon
+     * @param int    $secondaryPower Secondary power given by the beacon
+     * @param int    $levels         Levels provided by the beacon
+     * @param string $lock           Lock the beacon so it can only be opened if the player
+     *                               is holding an item whose name matches this string
      */
-    public function __construct($primaryPower, $secondaryPower, $levels, $lock = null)
+    public function __construct($primaryPower, $secondaryPower, $levels, $lock = '')
     {
         $this->setBlockIDAndDataFor(Ref::BEACON);
 
         $this->initEntityData('Beacon');
 
         // Set primary power
-        $this->checkDataRefValidStartsWith($primaryPower, 'POWER_', 'Invalid primary power for beacon');
+        $this->checkInList($primaryPower, [
+            self::POWER_HASTE,
+            self::POWER_JUMP,
+            self::POWER_NONE,
+            self::POWER_RESISTANCE,
+            self::POWER_SPEED,
+            self::POWER_STRENGTH,
+        ], 'Invalid primary power for beacon');
+
         $this->entityData->addChild(\Nbt\Tag::tagInt('Primary', $primaryPower));
 
-        // Might be worth looking at data for secondary power... how the level 2 thing works
+        $this->checkInList($secondaryPower, [
+            $primaryPower,
+            self::POWER_NONE,
+            self::POWER_REGENERATION,
+        ], 'Invalid secondary power for beacon');
 
+        $this->entityData->addChild(\Nbt\Tag::tagInt('Secondary', $secondaryPower));
+
+        $this->checkValue($levels, 0, 4, 'Invalid levels for beacon');
+        $this->entityData->addChild(\Nbt\Tag::tagInt('Levels', $secondaryPower));
+
+        $this->entityData->addChild(\Nbt\Tag::tagString('Lock', $lock));
     }
 }

@@ -2,12 +2,8 @@
 
 namespace MinecraftMapEditor\Block\Traits;
 
-trait BasicValue
+trait CheckValue
 {
-    use CheckValue {
-        CheckValue::checkValue AS verifyValue;
-    }
-
     /**
      * Get a block with a basic value for the block data.
      *
@@ -20,8 +16,8 @@ trait BasicValue
      */
     public function checkValue($value, $min, $max, $exceptionMessage)
     {
-        $this->verifyValue($value, $min, $max, $exceptionMessage);
-
-        $this->setBlockData($value);
+        if ($value < $min || $value > $max) {
+            throw new \Exception($exceptionMessage, E_ERROR);
+        }
     }
 }
