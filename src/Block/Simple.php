@@ -19,6 +19,7 @@ class Simple extends \MinecraftMapEditor\Block
         if (!isset($block[2])) {
             $this->setBlockID($block[0]);
             $this->setBlockData($block[1]);
+            $this->setBlockRef($blockRef);
         } else {
             $blockName = Ref::getNameFor($blockRef);
             if ($blockName !== false) {

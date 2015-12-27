@@ -19,21 +19,32 @@ class Block
     /** @var \Nbt\Node|null Block Entity - an NBT Compound Tag, if it exists **/
     public $entityData = null;
 
+    /** @var int Local block reference **/
+    public $ref;
+
     public function setBlockID($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
     public function setBlockData($data)
     {
         $this->data = $data;
+
         return $this;
     }
 
     public function setEntityData($entityData)
     {
         $this->entityData = $entityData;
+
         return $this;
+    }
+
+    public function setBlockRef($blockRef)
+    {
+        $this->ref = $blockRef;
     }
 }

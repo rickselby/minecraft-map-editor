@@ -20,7 +20,7 @@ trait StandingWall
     {
         // We still call checkBlock to throw an exception if required
         // and to get the block information
-        $block = $this->checkBlock($blockRef, [$standingBlock, $wallBlock]);
+        $this->checkBlock($blockRef, [$standingBlock, $wallBlock]);
 
         switch ($blockRef) {
             case $standingBlock:

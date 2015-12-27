@@ -4,6 +4,8 @@ namespace MinecraftMapEditor;
 
 class Chunk
 {
+    use Nbt\Helpers;
+
     /** @var \Nbt\Node NBT tree for this chunk **/
     public $nbtNode;
 
@@ -374,12 +376,7 @@ class Chunk
      */
     private function updateChildOrCreateInt(\Nbt\Node $parent, $childName, $newValue)
     {
-        $child = $parent->findChildByName($childName);
-        if ($child) {
-            $child->setValue($newValue);
-        } else {
-            $parent->addChild(\Nbt\Tag::tagInt($childName, $newValue));
-        }
+        $this->updateChildOrCreate($parent, $childName, \Nbt\Tag::TAG_INT, $newValue);
     }
 
     /**

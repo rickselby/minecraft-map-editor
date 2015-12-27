@@ -95,6 +95,7 @@ trait Create
     {
         $block = IDs::$list[$blockRef];
         $this->setBlockID($block[0]);
+        $this->setBlockRef($blockRef);
     }
 
     /**
@@ -107,5 +108,6 @@ trait Create
         $block = IDs::$list[$blockRef];
         $this->setBlockID($block[0]);
         $this->setBlockData($block[1]);
+        $this->setBlockRef($blockRef);
     }
 }
