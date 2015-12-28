@@ -32,21 +32,29 @@ class Chest extends \MinecraftMapEditor\Block
 
         $this->setBlockData($direction);
 
-        $this->initEntityData('Chest');
+        if ($blockRef == Ref::CHEST_ENDER) {
 
-        if (count($items)) {
-            $payload = \Nbt\Tag::TAG_COMPOUND;
+            $this->initEntityData('EnderChest');
+            // No more data for Ender Chests.
+
         } else {
-            $payload = \Nbt\Tag::TAG_END;
-        }
-        $itemsList = \Nbt\Tag::tagList('Items', $payload, []);
-        $this->entityData->addChild($itemsList);
 
-        foreach ($items as $item) {
-            $itemsList->addChild($item->node);
-        }
+            $this->initEntityData('Chest');
 
-        $this->setCustomName($customName);
-        $this->setLock($lock);
+            if (count($items)) {
+                $payload = \Nbt\Tag::TAG_COMPOUND;
+            } else {
+                $payload = \Nbt\Tag::TAG_END;
+            }
+            $itemsList = \Nbt\Tag::tagList('Items', $payload, []);
+            $this->entityData->addChild($itemsList);
+
+            foreach ($items as $item) {
+                $itemsList->addChild($item->node);
+            }
+
+            $this->setCustomName($customName);
+            $this->setLock($lock);
+        }
     }
 }
