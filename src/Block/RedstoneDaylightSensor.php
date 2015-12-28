@@ -4,7 +4,7 @@ namespace MinecraftMapEditor\Block;
 
 class RedstoneDaylightSensor extends \MinecraftMapEditor\Block
 {
-    use Traits\BasicValue, Traits\Create;
+    use Traits\BasicValue, Traits\Create, Traits\EntityData;
 
     /**
      * Get a daylight sensor (regular or inverted) with the given power.
@@ -19,5 +19,7 @@ class RedstoneDaylightSensor extends \MinecraftMapEditor\Block
         $this->checkBlock($blockRef, Ref::getStartsWith('DAYLIGHT_SENSOR'));
 
         $this->checkValue($power, 0, 15, 'Invalid power for Daylight Sensor');
+
+        $this->initEntityData('DLDetector');
     }
 }
