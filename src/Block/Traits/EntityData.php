@@ -26,4 +26,38 @@ trait EntityData
 
         $this->setEntityData($entityData);
     }
+
+    /**
+     * Set a custom name if it isn't null
+     * @param string|null $customName
+     */
+    protected function setCustomName($customName)
+    {
+        $this->addChildIfNotNull('CustomName', \Nbt\Tag::TAG_STRING, $customName);
+    }
+
+    /**
+     * Set the name of the lock item, if not null
+     * @param string|null $lock
+     */
+    protected function setLock($lock)
+    {
+        $this->addChildIfNotNull('Lock', \Nbt\Tag::TAG_STRING, $lock);
+    }
+
+    /**
+     * Add a child to the entity if the value is not null
+     *
+     * @param string $name
+     * @param int $type
+     * @param mixed $value
+     */
+    protected function addChildIfNotNull($name, $type, $value)
+    {
+        if ($value !== null) {
+            $this->entityData->addChild(
+                (new \Nbt\Node())->setType($type)->setName($name)->setValue($value)
+            );
+        }
+    }
 }

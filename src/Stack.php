@@ -82,6 +82,26 @@ class Stack
     }
 
     /**
+     * Get multiple copies of this stack for certain slots.
+     *
+     * @param int[] $slots
+     *
+     * @return \MinecraftMapEditor\Stack[]
+     */
+    public function getForSlots($slots)
+    {
+        $stackList = [];
+        foreach ($slots as $slot) {
+            $x = clone $this;
+            $x->node->addChild(\Nbt\Tag::tagByte('Slot', $slot));
+            $stackList[] = $x;
+            unset($x);
+        }
+
+        return $stackList;
+    }
+
+    /**
      * Add the 'tag' compount tag, if it doesn't already exist.
      */
     protected function addTag()
@@ -89,6 +109,16 @@ class Stack
         if (!isset($this->tag)) {
             $this->tag = \Nbt\Tag::tagCompound('tag', []);
             $this->node->addChild($this->tag);
+        }
+    }
+
+    public function __clone()
+    {
+        if ($this->node !== null) {
+            $this->node = clone $this->node;
+        }
+        if ($this->tag !== null) {
+            $this->tag = clone $this->tag;
         }
     }
 }

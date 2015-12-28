@@ -14,11 +14,11 @@ class BrewingStand extends \MinecraftMapEditor\Block
      * @param \MinecraftMapEditor\Stack|null $northWestItem  Data for the stack in the north west bottle slot
      * @param \MinecraftMapEditor\Stack|null $ingredientItem Data for the stack in the ingredient slot
      * @param int                            $brewTime       The number of ticks the potions have been brewing for
-     * @param string                         $customName     Custom name for the container, shows in GUI
-     * @param string                         $lock           Lock the beacon so it can only be opened if the player
+     * @param string|null                    $customName     Custom name for the container, shows in GUI
+     * @param string|null                    $lock           Lock the beacon so it can only be opened if the player
      *                                                       is holding an item whose name matches this string
      */
-    public function __construct($eastItem, $southWestItem, $northWestItem, $ingredientItem, $brewTime, $customName = '', $lock = '')
+    public function __construct($eastItem, $southWestItem, $northWestItem, $ingredientItem, $brewTime, $customName = null, $lock = null)
     {
         $this->setBlockIDFor(Ref::BREWING_STAND);
 
@@ -39,15 +39,16 @@ class BrewingStand extends \MinecraftMapEditor\Block
         $this->initEntityData('Cauldron');
 
         $this->entityData->addChild(\Nbt\Tag::tagInt('BrewTime', $brewTime));
-        $this->entityData->addChild(\Nbt\Tag::tagString('CustomName', $customName));
-        $this->entityData->addChild(\Nbt\Tag::tagString('Lock', $lock));
+
+        $this->setCustomName($customName);
+        $this->setLock($lock);
 
         // Set up the items list tag. Will be 0 if no items; compound if at least
         // one item is present
-        if (!$eastItem && !$southWestItem && !$northWestItem && !$ingredientItem) {
-            $payload = \Nbt\Tag::TAG_END;
-        } else {
+        if ($eastItem || $southWestItem || $northWestItem || $ingredientItem) {
             $payload = \Nbt\Tag::TAG_COMPOUND;
+        } else {
+            $payload = \Nbt\Tag::TAG_END;
         }
         $itemsList = \Nbt\Tag::tagList('Items', $payload, []);
         $this->entityData->addChild($itemsList);
