@@ -60,4 +60,23 @@ trait EntityData
             );
         }
     }
+
+    /**
+     * Add a list of item stacks to the 'Items' list tag
+     * @param \MinecraftMapEditor\Stack[] $items
+     */
+    protected function addItemStacks($items)
+    {
+        if (count($items)) {
+            $payload = \Nbt\Tag::TAG_COMPOUND;
+        } else {
+            $payload = \Nbt\Tag::TAG_END;
+        }
+        $itemsList = \Nbt\Tag::tagList('Items', $payload, []);
+        $this->entityData->addChild($itemsList);
+
+        foreach ($items as $item) {
+            $itemsList->addChild($item->node);
+        }
+    }
 }

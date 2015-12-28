@@ -15,8 +15,10 @@ class BrewingStand extends \MinecraftMapEditor\Block
      * @param \MinecraftMapEditor\Stack|null $ingredientItem Data for the stack in the ingredient slot
      * @param int                            $brewTime       The number of ticks the potions have been brewing for
      * @param string|null                    $customName     Custom name for the container, shows in GUI
-     * @param string|null                    $lock           Lock the beacon so it can only be opened if the player
+     * @param string|null                    $lock           Lock the brewing stand so it can only be opened if the player
      *                                                       is holding an item whose name matches this string
+     *
+     * @throws \Exception
      */
     public function __construct($eastItem, $southWestItem, $northWestItem, $ingredientItem, $brewTime, $customName = null, $lock = null)
     {
@@ -43,17 +45,8 @@ class BrewingStand extends \MinecraftMapEditor\Block
         $this->setCustomName($customName);
         $this->setLock($lock);
 
-        // Set up the items list tag. Will be 0 if no items; compound if at least
-        // one item is present
-        if ($eastItem || $southWestItem || $northWestItem || $ingredientItem) {
-            $payload = \Nbt\Tag::TAG_COMPOUND;
-        } else {
-            $payload = \Nbt\Tag::TAG_END;
-        }
-        $itemsList = \Nbt\Tag::tagList('Items', $payload, []);
-        $this->entityData->addChild($itemsList);
-
         // Process each item for the given slot
+        $items = [];
         foreach ([
             ['item' => $eastItem,       'slot' => 0],
             ['item' => $northWestItem,  'slot' => 1],
@@ -61,10 +54,11 @@ class BrewingStand extends \MinecraftMapEditor\Block
             ['item' => $ingredientItem, 'slot' => 3],
         ] as $item) {
             if ($item['item']) {
-                $tree = $item['item']->node;
-                $this->updateChildOrCreate($tree, 'Slot', \Nbt\Tag::TAG_INT, $item['slot']);
-                $itemsList->addChild($tree);
+                $this->updateChildOrCreate($item['item']->node, 'Slot', \Nbt\Tag::TAG_INT, $item['slot']);
+                $items[] = $item['item'];
             }
         }
+
+        $this->addItemStacks($items);
     }
 }
