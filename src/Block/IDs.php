@@ -216,7 +216,7 @@ class IDs
         Ref::FENCE_NETHER_BRICK   => [113, 0],
         Ref::STAIRS_NETHER_BRICK  => [114, 0, 'Stairs'],
         Ref::NETHER_WART          => [115, 0, 'NetherWart'],
-        Ref::ENCHANTMENT_TABLE    => [116, 0],
+        Ref::ENCHANTMENT_TABLE    => [116, 0, 'EnchantingTable'],
         Ref::BREWING_STAND        => [117, 0, 'BrewingStand'],
         Ref::CAULDRON             => [118, 0, 'Cauldron'],
         Ref::END_PORTAL           => [119, 0, 'EndPortal'],
