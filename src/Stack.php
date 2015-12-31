@@ -31,6 +31,11 @@ class Stack
         $this->node = \Nbt\Tag::tagCompound($name, []);
     }
 
+    public function setName($name)
+    {
+        $this->node->setName($name);
+    }
+
     /**
      * Set the number of items in the stack.
      *
