@@ -28,7 +28,8 @@ trait EntityData
     }
 
     /**
-     * Set a custom name if it isn't null
+     * Set a custom name if it isn't null.
+     *
      * @param string|null $customName
      */
     protected function setCustomName($customName)
@@ -37,7 +38,8 @@ trait EntityData
     }
 
     /**
-     * Set the name of the lock item, if not null
+     * Set the name of the lock item, if not null.
+     *
      * @param string|null $lock
      */
     protected function setLock($lock)
@@ -46,11 +48,11 @@ trait EntityData
     }
 
     /**
-     * Add a child to the entity if the value is not null
+     * Add a child to the entity if the value is not null.
      *
      * @param string $name
-     * @param int $type
-     * @param mixed $value
+     * @param int    $type
+     * @param mixed  $value
      */
     protected function addChildIfNotNull($name, $type, $value)
     {
@@ -62,7 +64,8 @@ trait EntityData
     }
 
     /**
-     * Add a list of item stacks to the 'Items' list tag
+     * Add a list of item stacks to the 'Items' list tag.
+     *
      * @param \MinecraftMapEditor\Stack[] $items
      */
     protected function addItemStacks($items)
@@ -78,5 +81,26 @@ trait EntityData
         foreach ($items as $item) {
             $itemsList->addChild($item->node);
         }
+    }
+
+    /**
+     * Add slots to a list of items, keyed by their slot numbers.
+     *
+     * @param mixed[] $items Array of items, either Stacks or nulls
+     *
+     * @return mixed[]
+     */
+    protected function addItemsForSlots($items)
+    {
+        // Process each item for the given slot
+        $itemList = [];
+        foreach ($items as $slot => $item) {
+            if ($item) {
+                $this->updateChildOrCreate($item->node, 'Slot', \Nbt\Tag::TAG_INT, $slot);
+                $itemList[] = $item;
+            }
+        }
+
+        $this->addItemStacks($itemList);
     }
 }

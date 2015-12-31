@@ -45,20 +45,11 @@ class BrewingStand extends \MinecraftMapEditor\Block
         $this->setCustomName($customName);
         $this->setLock($lock);
 
-        // Process each item for the given slot
-        $items = [];
-        foreach ([
-            ['item' => $eastItem,       'slot' => 0],
-            ['item' => $northWestItem,  'slot' => 1],
-            ['item' => $southWestItem,  'slot' => 2],
-            ['item' => $ingredientItem, 'slot' => 3],
-        ] as $item) {
-            if ($item['item']) {
-                $this->updateChildOrCreate($item['item']->node, 'Slot', \Nbt\Tag::TAG_INT, $item['slot']);
-                $items[] = $item['item'];
-            }
-        }
-
-        $this->addItemStacks($items);
+        $this->addItemsForSlots([
+            0 => $eastItem,
+            1 => $northWestItem,
+            2 => $southWestItem,
+            3 => $ingredientItem,
+        ]);
     }
 }
