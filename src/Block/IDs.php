@@ -84,7 +84,7 @@ class IDs
         Ref::SANDSTONE_CHISELED => [24, 1],
         Ref::SANDSTONE_SMOOTH   => [24, 2],
 
-        Ref::NOTE_BLOCK    => [25, 0],
+        Ref::NOTE_BLOCK    => [25, 0, 'NoteBlock'],
         Ref::BED           => [26, 0, 'Bed'],
         Ref::RAIL_POWERED  => [27, 0, 'RedstoneRail'],
         Ref::RAIL_DETECTOR => [28, 0, 'RedstoneRail'],

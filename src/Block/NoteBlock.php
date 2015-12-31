@@ -1,0 +1,23 @@
+<?php
+
+namespace MinecraftMapEditor\Block;
+
+class NoteBlock extends \MinecraftMapEditor\Block
+{
+    use Traits\Create, Traits\EntityData, Traits\CheckValue;
+
+    /**
+     * Get Nether Wart at the given stage of growth.
+     *
+     * @param int $note Note the block should play
+     *
+     * @throws \Exception
+     */
+    public function __construct($note)
+    {
+        $this->setBlockIDAndDataFor(Ref::NOTE_BLOCK);
+        $this->checkValue($note, 0, 15, 'Invalid note for note block');
+        $this->initEntityData('Music');
+        $this->entityData->addChild(\Nbt\Tag::tagByte('note', $note));
+    }
+}
