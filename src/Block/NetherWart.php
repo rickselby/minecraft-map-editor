@@ -9,7 +9,7 @@ class NetherWart extends \MinecraftMapEditor\Block
     /**
      * Get Nether Wart at the given stage of growth.
      *
-     * @param type $stage
+     * @param int $stage Stage of growth; 0-3
      *
      * @throws \Exception
      */
