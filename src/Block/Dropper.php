@@ -42,7 +42,15 @@ class Dropper extends \MinecraftMapEditor\Block
 
         $this->setBlockData($direction | $activated);
 
-        $this->initEntityData('Dropper');
+        switch($blockRef) {
+            case Ref::DISPENSER:
+                $entityDataName = 'Trap';
+                break;
+            case Ref::DROPPER:
+                $entityDataName = 'Dropper';
+                break;
+        }
+        $this->initEntityData($entityDataName);
         $this->addItemStacks($items);
         $this->setCustomName($customName);
         $this->setLock($lock);
