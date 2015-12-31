@@ -141,7 +141,7 @@ class IDs
         Ref::OBSIDIAN              => [49, 0],
         Ref::TORCH                 => [50, 0, 'Torch'],
         Ref::FIRE                  => [51, 0, 'Fire'],
-        Ref::MOB_SPAWNER           => [52, 0],
+        Ref::MOB_SPAWNER           => [52, 0, 'MobSpawner'],
         Ref::STAIRS_WOOD_OAK       => [53, 0, 'Stairs'],
         Ref::CHEST                 => [54, 0, 'Chest'],
         Ref::REDSTONE_WIRE         => [55, 0, 'RedstoneWire'],
