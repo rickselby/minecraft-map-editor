@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Lever extends \MinecraftMapEditor\Block
+class Lever extends \MinecraftMapEditor\Block implements Interfaces\ActiveBit8
 {
     use Traits\Create;
 
@@ -14,9 +14,6 @@ class Lever extends \MinecraftMapEditor\Block
     const SIDE_TOP_SOUTH = 5;
     const SIDE_TOP_EAST = 6;
     const SIDE_BOTTOM_SOUTH = 7;
-
-    const INACTIVE = 0b0000;
-    const ACTIVE = 0b1000;
 
     /**
      * Get a lever, with the given orientation, active or not.

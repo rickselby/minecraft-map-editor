@@ -2,12 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Tripwire extends \MinecraftMapEditor\Block
+class Tripwire extends \MinecraftMapEditor\Block implements Interfaces\ActiveBit1
 {
     use Traits\Create;
-
-    const INACTIVE = 0b0000;
-    const ACTIVE = 0b0001;
 
     const ON_BLOCK = 0b0000;
     const SUSPENDED_AIR = 0b0010;

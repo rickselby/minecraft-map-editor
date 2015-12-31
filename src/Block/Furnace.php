@@ -2,14 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Furnace extends \MinecraftMapEditor\Block
+class Furnace extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth3
 {
     use Traits\Create, Traits\EntityData;
-
-    const NORTH = 2;
-    const SOUTH = 3;
-    const WEST = 4;
-    const EAST = 5;
 
     /**
      * Get a furnace facing in the given direction.

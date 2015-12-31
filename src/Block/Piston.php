@@ -2,16 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Piston extends \MinecraftMapEditor\Block
+class Piston extends \MinecraftMapEditor\Block implements Interfaces\OutputFull
 {
     use Traits\Create;
-
-    const FACING_UP = 1;
-    const FACING_DOWN = 0;
-    const FACING_NORTH = 2;
-    const FACING_EAST = 5;
-    const FACING_SOUTH = 3;
-    const FACING_WEST = 4;
 
     const EXTENDED = 0b1000;
     const RETRACTED = 0b0000;
@@ -20,7 +13,7 @@ class Piston extends \MinecraftMapEditor\Block
      * Get a piston. If extended, this will only do the piston body, not the head.
      *
      * @param int $blockRef Which piston
-     * @param int $facing   The direction the piston head is pointing; one of the class constants
+     * @param int $facing   The direction the piston head is pointing; one of the OUTPUT_ class constants
      * @param int $extended Either Piston::EXTENDED or Piston::RETRACTED
      *
      * @throws \Exception
@@ -32,7 +25,7 @@ class Piston extends \MinecraftMapEditor\Block
             Ref::PISTON_STICKY,
         ]);
 
-        $this->checkDataRefValidStartsWith($facing, 'FACING_', 'Invalid facing setting for piston');
+        $this->checkDataRefValidStartsWith($facing, 'OUTPUT_', 'Invalid facing setting for piston');
         $this->checkInList($extended, [self::EXTENDED, self::RETRACTED], 'Invalid extended setting for piston');
 
         $this->setBlockData($facing | $extended);

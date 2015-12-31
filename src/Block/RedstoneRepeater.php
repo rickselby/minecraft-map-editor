@@ -2,14 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class RedstoneRepeater extends \MinecraftMapEditor\Block
+class RedstoneRepeater extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth2
 {
     use Traits\Create;
-
-    const FACING_NORTH = 0;
-    const FACING_EAST = 1;
-    const FACING_SOUTH = 2;
-    const FACING_WEST = 3;
 
     const DELAY_1 = 0b0000;
     const DELAY_2 = 0b0100;

@@ -2,14 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Chest extends \MinecraftMapEditor\Block
+class Chest extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth3
 {
     use Traits\Create, Traits\EntityData;
-
-    const NORTH = 2;
-    const SOUTH = 3;
-    const EAST = 4;
-    const WEST = 5;
 
     /**
      * Get a chest, facing in the given direction.

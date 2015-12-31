@@ -2,14 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class TripwireHook extends \MinecraftMapEditor\Block
+class TripwireHook extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth0
 {
     use Traits\Create;
-
-    const FACING_SOUTH = 0;
-    const FACING_WEST = 1;
-    const FACING_NORTH = 2;
-    const FACING_EAST = 3;
 
     const NOT_CONNECTED = 0b0000;
     const CONNECTED = 0b0100;

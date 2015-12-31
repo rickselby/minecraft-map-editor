@@ -3,25 +3,16 @@
 namespace MinecraftMapEditor\Block;
 
 class RedstoneRail extends \MinecraftMapEditor\Block
+    implements Interfaces\ActiveBit8, Interfaces\StraightRail
 {
     use Traits\Create;
-
-    const ORIENT_NORTH_SOUTH = 0;
-    const ORIENT_EAST_WEST = 1;
-    const ORIENT_SLOPED_EAST = 2;
-    const ORIENT_SLOPED_WEST = 3;
-    const ORIENT_SLOPED_NORTH = 4;
-    const ORIENT_SLOPED_SOUTH = 5;
-
-    const INACTIVE = 0b0000;
-    const ACTIVE = 0b1000;
 
     /**
      * Get a 'redstone rail' (powered, activator, detector), with the given
      * orientation and active status.
      *
      * @param int $blockRef    One of the Ref constants
-     * @param int $orientation One of the ORIENT_ class constants
+     * @param int $orientation One of the ORIENT_ class constants (in StraightRail)
      * @param int $active      Either RedstoneRail::INACTIVE or RedstoneRail::ACTIVE
      *
      * @throws \Exception

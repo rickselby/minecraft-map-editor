@@ -2,12 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class PressurePlate extends \MinecraftMapEditor\Block
+class PressurePlate extends \MinecraftMapEditor\Block implements Interfaces\ActiveBit1
 {
     use Traits\Create;
-
-    const INACTIVE = 0;
-    const ACTIVE = 1;
 
     /**
      * Get the given pressure plate, active or not.

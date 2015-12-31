@@ -2,15 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Hopper extends \MinecraftMapEditor\Block
+class Hopper extends \MinecraftMapEditor\Block implements Interfaces\Output
 {
     use Traits\Create;
-
-    const OUTPUT_DOWN = 0;
-    const OUTPUT_NORTH = 2;
-    const OUTPUT_SOUTH = 3;
-    const OUTPUT_WEST = 4;
-    const OUTPUT_EAST = 5;
 
     const ACTIVE = 0b0000;
     const DISABLED = 0b1000;
@@ -33,7 +27,7 @@ class Hopper extends \MinecraftMapEditor\Block
     {
         $this->setBlockIDFor(Ref::HOPPER);
 
-        $this->checkDataRefValidStartsWith($output, 'OUTPUT', 'Invalid output reference for hopper');
+        $this->checkDataRefValidStartsWith($output, 'OUTPUT_', 'Invalid output reference for hopper');
         $this->checkInList($active, [self::ACTIVE, self::DISABLED], 'Invalid active reference for hopper');
 
         $this->setBlockData($output | $active);

@@ -2,14 +2,10 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Pumpkin extends \MinecraftMapEditor\Block
+class Pumpkin extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth0
 {
     use Traits\Create;
 
-    const SOUTH = 0;
-    const WEST = 1;
-    const NORTH = 2;
-    const EAST = 3;
     const NO_FACE = 4;
 
     /**

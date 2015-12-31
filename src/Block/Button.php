@@ -2,7 +2,7 @@
 
 namespace MinecraftMapEditor\Block;
 
-class Button extends \MinecraftMapEditor\Block
+class Button extends \MinecraftMapEditor\Block implements Interfaces\ActiveBit8
 {
     use Traits\Create;
 
@@ -12,9 +12,6 @@ class Button extends \MinecraftMapEditor\Block
     const POSITION_SOUTH = 3;
     const POSITION_NORTH = 4;
     const POSITION_UP = 5;
-
-    const INACTIVE = 0b0000;
-    const ACTIVE = 0b1000;
 
     /**
      * Get a button, in the given position.

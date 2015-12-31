@@ -2,14 +2,9 @@
 
 namespace MinecraftMapEditor\Block;
 
-class RedstoneComparator extends \MinecraftMapEditor\Block
+class RedstoneComparator extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth2
 {
     use Traits\Create, Traits\EntityData, Traits\CheckValue;
-
-    const FACING_NORTH = 1;
-    const FACING_EAST = 2;
-    const FACING_SOUTH = 3;
-    const FACING_WEST = 4;
 
     const MODE_NORMAL = 0b0000;
     const MODE_SUBTRACTION = 0b0100;
