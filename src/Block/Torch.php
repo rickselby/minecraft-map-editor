@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Torch extends \MinecraftMapEditor\Block
+class Torch extends \MME\Block
 {
     use Traits\Create;
 

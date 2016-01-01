@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class MobSpawner extends \MinecraftMapEditor\Block
+class MobSpawner extends \MME\Block
 {
     use Traits\Create, Traits\EntityData;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor;
+namespace MME;
 
 class Chunk
 {

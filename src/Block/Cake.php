@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Cake extends \MinecraftMapEditor\Block
+class Cake extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

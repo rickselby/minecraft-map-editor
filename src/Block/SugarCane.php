@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class SugarCane extends \MinecraftMapEditor\Block
+class SugarCane extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

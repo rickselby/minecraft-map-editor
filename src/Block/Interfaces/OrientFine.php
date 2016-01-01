@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Interfaces;
+namespace MME\Block\Interfaces;
 
 interface OrientFine
 {

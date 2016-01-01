@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class PressurePlate extends \MinecraftMapEditor\Block implements Interfaces\ActiveBit1
+class PressurePlate extends \MME\Block implements Interfaces\ActiveBit1
 {
     use Traits\Create;
 

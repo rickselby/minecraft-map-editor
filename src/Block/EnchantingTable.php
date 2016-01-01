@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class EnchantingTable extends \MinecraftMapEditor\Block
+class EnchantingTable extends \MME\Block
 {
     use Traits\Create, Traits\EntityData;
 

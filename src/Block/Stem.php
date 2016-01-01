@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Stem extends \MinecraftMapEditor\Block
+class Stem extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

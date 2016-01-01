@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Nbt;
+namespace MME\Nbt;
 
 trait Helpers
 {

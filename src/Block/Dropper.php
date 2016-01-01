@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Dropper extends \MinecraftMapEditor\Block
+class Dropper extends \MME\Block
     implements Interfaces\OutputFull, Interfaces\ActiveBit8
 {
     use Traits\Create, Traits\EntityData;
@@ -12,7 +12,7 @@ class Dropper extends \MinecraftMapEditor\Block
      *
      * @param int                         $blockRef   BlockRef for dropper or dispenser
      * @param int                         $direction  Direction the block is facing; one of the OUTPUT_ class consants
-     * @param \MinecraftMapEditor\Stack[] $items      Items in the dropper, with pre-set slots (0-8).
+     * @param \MME\Stack[] $items      Items in the dropper, with pre-set slots (0-8).
      *                                                0 is the top-left corner.
      * @param int                         $activated  [Optional] Either Dropper:INACTIVE or Dropper::ACTIVE
      * @param string                      $customName Custom name for the chest, appears in GUI

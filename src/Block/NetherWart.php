@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class NetherWart extends \MinecraftMapEditor\Block
+class NetherWart extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

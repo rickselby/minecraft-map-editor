@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Traits;
+namespace MME\Block\Traits;
 
-use MinecraftMapEditor\Block\IDs;
+use MME\Block\IDs;
 
 trait Create
 {

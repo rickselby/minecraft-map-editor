@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Sign extends \MinecraftMapEditor\Block
+class Sign extends \MME\Block
 {
     use Traits\EntityData, Traits\StandingWall;
 

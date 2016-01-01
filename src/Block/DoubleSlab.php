@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class DoubleSlab extends \MinecraftMapEditor\Block
+class DoubleSlab extends \MME\Block
 {
     use Traits\Create;
 

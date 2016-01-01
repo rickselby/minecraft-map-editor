@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Rail extends \MinecraftMapEditor\Block
+class Rail extends \MME\Block
 {
     use Traits\Create;
 

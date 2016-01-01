@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Fire extends \MinecraftMapEditor\Block
+class Fire extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

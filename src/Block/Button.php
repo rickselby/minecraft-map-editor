@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Button extends \MinecraftMapEditor\Block implements Interfaces\ActiveBit8
+class Button extends \MME\Block implements Interfaces\ActiveBit8
 {
     use Traits\Create;
 

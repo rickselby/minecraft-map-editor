@@ -1,13 +1,13 @@
 <?php
 
-namespace MinecraftMapEditor\Coords;
+namespace MME\Coords;
 
 class BlockCoords extends XYZCoords
 {
     /**
      * Calculate which region file these co-ordinates are in.
      *
-     * @return \MinecraftMapEditor\Coords\RegionRef
+     * @return \MME\Coords\RegionRef
      */
     public function toRegionRef()
     {
@@ -21,7 +21,7 @@ class BlockCoords extends XYZCoords
      * Calculate which chunk within a region file these co-ordinates are in
      * Each region has 32x32 chunks.
      *
-     * @return \MinecraftMapEditor\Coords\ChunkRef
+     * @return \MME\Coords\ChunkRef
      */
     public function toChunkRef()
     {
@@ -34,7 +34,7 @@ class BlockCoords extends XYZCoords
     /**
      * Convert the block co-ordinates to co-ordinates within a chunk.
      *
-     * @return \MinecraftMapEditor\Coords\ChunkCoords
+     * @return \MME\Coords\ChunkCoords
      */
     public function toChunkCoords()
     {

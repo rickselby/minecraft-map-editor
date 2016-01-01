@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Interfaces;
+namespace MME\Block\Interfaces;
 /**
  * Hopper doesn't use UP; use OutputFull if UP is required
  */

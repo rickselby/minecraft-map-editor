@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Chest extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth3
+class Chest extends \MME\Block implements Interfaces\FacingSouth3
 {
     use Traits\Create, Traits\EntityData;
 
@@ -11,7 +11,7 @@ class Chest extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth3
      *
      * @param int                         $blockRef   Chest block reference
      * @param int                         $direction  Direction the chest is facing; one of the class constants
-     * @param \MinecraftMapEditor\Stack[] $items      Items in the chest, with pre-set slots (0-26).
+     * @param \MME\Stack[] $items      Items in the chest, with pre-set slots (0-26).
      *                                                0 is the top-left corner.
      * @param string                      $customName Custom name for the chest, appears in GUI
      * @param string                      $lock       Lock the chest so it can only be opened if the player

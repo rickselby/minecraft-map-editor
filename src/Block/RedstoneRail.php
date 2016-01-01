@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class RedstoneRail extends \MinecraftMapEditor\Block
+class RedstoneRail extends \MME\Block
     implements Interfaces\ActiveBit8, Interfaces\StraightRail
 {
     use Traits\Create;

@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Beacon extends \MinecraftMapEditor\Block
+class Beacon extends \MME\Block
 {
     use Traits\Create, Traits\EntityData, Traits\CheckValue;
 

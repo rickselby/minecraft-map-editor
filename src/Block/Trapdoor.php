@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Trapdoor extends \MinecraftMapEditor\Block implements Interfaces\DoorOpen
+class Trapdoor extends \MME\Block implements Interfaces\DoorOpen
 {
     use Traits\Create;
 

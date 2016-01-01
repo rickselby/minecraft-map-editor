@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Simple extends \MinecraftMapEditor\Block
+class Simple extends \MME\Block
 {
     /**
      * Get a simple block - one with no fancy settings.

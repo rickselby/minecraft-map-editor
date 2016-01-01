@@ -1,15 +1,15 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class FlowerPot extends \MinecraftMapEditor\Block
+class FlowerPot extends \MME\Block
 {
     use Traits\Create, Traits\EntityData;
 
     /**
      * A flower pot, optionally containing a flower
      *
-     * @param \MinecraftMapEditor\Block $contains The flower the block contains
+     * @param \MME\Block $contains The flower the block contains
      */
     public function __construct($contains = null)
     {

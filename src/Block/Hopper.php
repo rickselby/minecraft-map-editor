@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Hopper extends \MinecraftMapEditor\Block implements Interfaces\Output
+class Hopper extends \MME\Block implements Interfaces\Output
 {
     use Traits\Create;
 
@@ -13,7 +13,7 @@ class Hopper extends \MinecraftMapEditor\Block implements Interfaces\Output
      * Get a hopper, with the output in the given direction.
      *
      * @param int                         $output           Output direction; one of the OUTPUT_ class constants
-     * @param \MinecraftMapEditor\Stack[] $items            Items in the dropper, with pre-set slots (0-8).
+     * @param \MME\Stack[] $items            Items in the dropper, with pre-set slots (0-8).
      *                                                      0 is the top-left corner.
      * @param int                         $active           [Optional] Either Hopper:INACTIVE or Hopper::ACTIVE
      * @param string                      $customName       Custom name for the chest, appears in GUI

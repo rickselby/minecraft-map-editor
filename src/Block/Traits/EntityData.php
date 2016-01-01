@@ -1,12 +1,12 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Traits;
+namespace MME\Block\Traits;
 
 use Nbt\Tag;
 
 trait EntityData
 {
-    use \MinecraftMapEditor\Nbt\Helpers;
+    use \MME\Nbt\Helpers;
 
     /**
      * Initialise entity data, if none passed in.
@@ -66,7 +66,7 @@ trait EntityData
     /**
      * Add a list of item stacks to the 'Items' list tag.
      *
-     * @param \MinecraftMapEditor\Stack[] $items
+     * @param \MME\Stack[] $items
      */
     protected function addItemStacks($items)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
 /**
  * This is a list of references for each unique block, used elsewhere.

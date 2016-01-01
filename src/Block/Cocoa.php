@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Cocoa extends \MinecraftMapEditor\Block
+class Cocoa extends \MME\Block
 {
     use Traits\Create;
 

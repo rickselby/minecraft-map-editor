@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class RedstoneDaylightSensor extends \MinecraftMapEditor\Block
+class RedstoneDaylightSensor extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create, Traits\EntityData;
 

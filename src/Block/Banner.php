@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Banner extends \MinecraftMapEditor\Block implements
+class Banner extends \MME\Block implements
     Interfaces\Colors,
     Interfaces\OrientFine,
     Interfaces\Patterns

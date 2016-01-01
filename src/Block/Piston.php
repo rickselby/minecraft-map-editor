@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Piston extends \MinecraftMapEditor\Block implements Interfaces\OutputFull
+class Piston extends \MME\Block implements Interfaces\OutputFull
 {
     use Traits\Create;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Bed extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth0
+class Bed extends \MME\Block implements Interfaces\FacingSouth0
 {
     use Traits\Create;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Vines extends \MinecraftMapEditor\Block
+class Vines extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

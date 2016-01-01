@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Block\Traits;
+namespace MME\Block\Traits;
 
 trait BasicValue
 {

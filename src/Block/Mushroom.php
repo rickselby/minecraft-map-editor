@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Mushroom extends \MinecraftMapEditor\Block
+class Mushroom extends \MME\Block
 {
     use Traits\Create;
 

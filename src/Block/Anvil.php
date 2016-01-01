@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Anvil extends \MinecraftMapEditor\Block
+class Anvil extends \MME\Block
 {
     use Traits\Create;
 

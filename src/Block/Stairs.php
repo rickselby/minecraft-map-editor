@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Stairs extends \MinecraftMapEditor\Block
+class Stairs extends \MME\Block
 {
     use Traits\Create;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Furnace extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth3
+class Furnace extends \MME\Block implements Interfaces\FacingSouth3
 {
     use Traits\Create, Traits\EntityData;
 

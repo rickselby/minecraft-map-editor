@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor;
+namespace MME;
 
 /**
  * This is an early implementation of a stack of items, that will just set
@@ -41,7 +41,7 @@ class Stack
      *
      * @param int $count
      *
-     * @return \MinecraftMapEditor\Stack
+     * @return \MME\Stack
      */
     public function setCount($count)
     {
@@ -53,9 +53,9 @@ class Stack
     /**
      * Set block data for this stack.
      *
-     * @param \MinecraftMapEditor\Block $block
+     * @param \MME\Block $block
      *
-     * @return \MinecraftMapEditor\Stack
+     * @return \MME\Stack
      */
     public function setBlock(Block $block)
     {
@@ -76,7 +76,7 @@ class Stack
      *
      * @param int $slot
      *
-     * @return \MinecraftMapEditor\Stack
+     * @return \MME\Stack
      */
     public function getForSlot($slot)
     {
@@ -91,7 +91,7 @@ class Stack
      *
      * @param int[] $slots
      *
-     * @return \MinecraftMapEditor\Stack[]
+     * @return \MME\Stack[]
      */
     public function getForSlots($slots)
     {

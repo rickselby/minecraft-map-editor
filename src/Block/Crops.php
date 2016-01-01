@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Crops extends \MinecraftMapEditor\Block
+class Crops extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

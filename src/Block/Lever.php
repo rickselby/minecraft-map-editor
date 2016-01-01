@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Lever extends \MinecraftMapEditor\Block implements Interfaces\ActiveBit8
+class Lever extends \MME\Block implements Interfaces\ActiveBit8
 {
     use Traits\Create;
 

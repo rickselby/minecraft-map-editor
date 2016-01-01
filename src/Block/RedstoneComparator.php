@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class RedstoneComparator extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth2
+class RedstoneComparator extends \MME\Block implements Interfaces\FacingSouth2
 {
     use Traits\Create, Traits\EntityData, Traits\CheckValue;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class SnowLayer extends \MinecraftMapEditor\Block
+class SnowLayer extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor;
+namespace MME;
 
 /**
  * NB. Some 2-block items need some clever way of helping put them into the world:

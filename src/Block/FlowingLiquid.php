@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class FlowingLiquid extends \MinecraftMapEditor\Block
+class FlowingLiquid extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

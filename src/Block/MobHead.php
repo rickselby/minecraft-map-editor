@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class MobHead extends \MinecraftMapEditor\Block implements Interfaces\OrientFine
+class MobHead extends \MME\Block implements Interfaces\OrientFine
 {
     use Traits\Create, Traits\EntityData;
 

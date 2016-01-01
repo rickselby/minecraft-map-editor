@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class NoteBlock extends \MinecraftMapEditor\Block
+class NoteBlock extends \MME\Block
 {
     use Traits\Create, Traits\EntityData, Traits\CheckValue;
 

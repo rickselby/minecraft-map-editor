@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor;
+namespace MME;
 
 /**
  * The main class through which we interact with a world.

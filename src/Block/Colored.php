@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Colored extends MinecraftMapEditor\Block implements Interfaces\Colors
+class Colored extends MME\Block implements Interfaces\Colors
 {
     use Traits\Create;
 

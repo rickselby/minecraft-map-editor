@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class PistonHead extends \MinecraftMapEditor\Block
+class PistonHead extends \MME\Block
 {
     use Traits\Create;
 

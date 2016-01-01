@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class CommandBlock extends \MinecraftMapEditor\Block
+class CommandBlock extends \MME\Block
 {
     use Traits\Create, Traits\EntityData;
 

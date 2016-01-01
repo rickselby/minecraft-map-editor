@@ -1,15 +1,15 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Jukebox extends \MinecraftMapEditor\Block
+class Jukebox extends \MME\Block
 {
     use Traits\Create, Traits\EntityData;
 
     /**
      * Get a jukebox, optionally with the given disc inserted.
      *
-     * @param \MinecraftMapEditor\Stack|null $disc [optional] Stack, probably containing a single disc, but could be anything.
+     * @param \MME\Stack|null $disc [optional] Stack, probably containing a single disc, but could be anything.
      */
     public function __construct($disc = null)
     {

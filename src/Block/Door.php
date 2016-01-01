@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Door extends \MinecraftMapEditor\Block
+class Door extends \MME\Block
 {
     use Traits\Create;
 

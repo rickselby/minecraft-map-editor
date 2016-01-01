@@ -1,18 +1,18 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class BrewingStand extends \MinecraftMapEditor\Block
+class BrewingStand extends \MME\Block
 {
     use Traits\Create, Traits\EntityData;
 
     /**
      * Get a brewing stand with the given bottles in place.
      *
-     * @param \MinecraftMapEditor\Stack|null $eastItem       Data for the stack in the east bottle slot
-     * @param \MinecraftMapEditor\Stack|null $southWestItem  Data for the stack in the south west bottle slot
-     * @param \MinecraftMapEditor\Stack|null $northWestItem  Data for the stack in the north west bottle slot
-     * @param \MinecraftMapEditor\Stack|null $ingredientItem Data for the stack in the ingredient slot
+     * @param \MME\Stack|null $eastItem       Data for the stack in the east bottle slot
+     * @param \MME\Stack|null $southWestItem  Data for the stack in the south west bottle slot
+     * @param \MME\Stack|null $northWestItem  Data for the stack in the north west bottle slot
+     * @param \MME\Stack|null $ingredientItem Data for the stack in the ingredient slot
      * @param int                            $brewTime       The number of ticks the potions have been brewing for
      * @param string|null                    $customName     Custom name for the container, shows in GUI
      * @param string|null                    $lock           Lock the brewing stand so it can only be opened if the player

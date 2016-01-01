@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Cactus extends \MinecraftMapEditor\Block
+class Cactus extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

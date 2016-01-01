@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Ladder extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth3
+class Ladder extends \MME\Block implements Interfaces\FacingSouth3
 {
     use Traits\Create;
 

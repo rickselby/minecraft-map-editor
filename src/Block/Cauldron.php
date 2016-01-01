@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Cauldron extends \MinecraftMapEditor\Block
+class Cauldron extends \MME\Block
 {
     use Traits\Create;
 

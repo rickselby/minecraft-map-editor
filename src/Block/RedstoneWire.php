@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class RedstoneWire extends \MinecraftMapEditor\Block
+class RedstoneWire extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class RedstoneRepeater extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth2
+class RedstoneRepeater extends \MME\Block implements Interfaces\FacingSouth2
 {
     use Traits\Create;
 

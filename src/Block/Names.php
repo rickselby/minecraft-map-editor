@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
 /**
  * A list of Block IDs and Block Data for all blocks.

@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Tripwire extends \MinecraftMapEditor\Block implements Interfaces\ActiveBit1
+class Tripwire extends \MME\Block implements Interfaces\ActiveBit1
 {
     use Traits\Create;
 

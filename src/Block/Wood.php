@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Wood extends \MinecraftMapEditor\Block
+class Wood extends \MME\Block
 {
     use Traits\Create;
 

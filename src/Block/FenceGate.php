@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class FenceGate extends \MinecraftMapEditor\Block implements Interfaces\FacingSouth0
+class FenceGate extends \MME\Block implements Interfaces\FacingSouth0
 {
     use Traits\Create;
 

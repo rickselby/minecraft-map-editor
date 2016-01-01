@@ -1,8 +1,8 @@
 <?php
 
-namespace MinecraftMapEditor\Block;
+namespace MME\Block;
 
-class Farmland extends \MinecraftMapEditor\Block
+class Farmland extends \MME\Block
 {
     use Traits\BasicValue, Traits\Create;
 
