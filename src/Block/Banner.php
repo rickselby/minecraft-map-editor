@@ -19,7 +19,7 @@ class Banner extends \MME\Block implements
      *
      * @throws \Exception
      */
-    public function __construct($blockRef, $orientation, $baseColor, $patterns)
+    public function __construct($blockRef, $orientation, $baseColor, $patterns = [])
     {
         $this->verifyStandingWall(
             $blockRef,
@@ -61,19 +61,21 @@ class Banner extends \MME\Block implements
      */
     protected function bannerPatterns($patterns)
     {
-        // Set up the pattern list
-        $patternList = \Nbt\Tag::tagList('Patterns', \Nbt\Tag::TAG_COMPOUND, []);
-        $this->entityData->addChild($patternList);
+        if (count($patterns)) {
+            // Set up the pattern list
+            $patternList = \Nbt\Tag::tagList('Patterns', \Nbt\Tag::TAG_COMPOUND, []);
+            $this->entityData->addChild($patternList);
 
-        foreach ($patterns as $pattern) {
-            // Check the pattern details are valid
-            $this->checkDataRefValidStartsWith($pattern['color'], 'COLOR_', 'Invalid base color for banner pattern');
-            $this->checkDataRefValidStartsWith($pattern['pattern'], 'PATTERN_', 'Invalid pattern reference for banner pattern');
-            // Add the pattern to the list
-            $patternList->addChild(\Nbt\Tag::tagCompound('', [
-                \Nbt\Tag::tagInt('Color', $this->bannerConvertColor($pattern['color'])),
-                \Nbt\Tag::tagString('Pattern', $pattern['pattern']),
-            ]));
+            foreach ($patterns as $pattern) {
+                // Check the pattern details are valid
+                $this->checkDataRefValidStartsWith($pattern['color'], 'COLOR_', 'Invalid base color for banner pattern');
+                $this->checkDataRefValidStartsWith($pattern['pattern'], 'PATTERN_', 'Invalid pattern reference for banner pattern');
+                // Add the pattern to the list
+                $patternList->addChild(\Nbt\Tag::tagCompound('', [
+                    \Nbt\Tag::tagInt('Color', $this->bannerConvertColor($pattern['color'])),
+                    \Nbt\Tag::tagString('Pattern', $pattern['pattern']),
+                ]));
+            }
         }
     }
 
