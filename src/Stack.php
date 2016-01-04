@@ -13,8 +13,6 @@ namespace MME;
  */
 class Stack
 {
-    #    use Nbt\Helpers;
-
     /** @var \Nbt\Node **/
     public $node;
 
@@ -71,6 +69,34 @@ class Stack
     }
 
     /**
+     * Set options in the display properties compound tag.
+     *
+     * @param string $name  Name of the item
+     * @param string $lore  List of strings to display as lore for the item
+     * @param int    $color Color, for leather armour.
+     */
+    public function setDisplayProperties($name, $lore = '', $color = null)
+    {
+        $this->addTag();
+        $display = \Nbt\Tag::tagCompound('display', []);
+        if ($name) {
+            $display->addChild(\Nbt\Tag::tagString('Name', $name));
+        }
+        if ($lore) {
+            $loreTag = \Nbt\Tag::tagList('Lore', \Nbt\Tag::TAG_STRING, []);
+            foreach ($lore as $line) {
+                $loreTag->addChild(\Nbt\Tag::tagString('', $line));
+            }
+            $display->addChild($loreTag);
+        }
+        if ($color) {
+            $display->addChild(\Nbt\Tag::tagInt('color', $color));
+        }
+
+        $this->tag->addChild($display);
+    }
+
+    /**
      * Get a copy of this stack, set for a certain slot.
      * Allows a stack to be 'duplicated' across stacks without rebuilding.
      *
@@ -117,6 +143,9 @@ class Stack
         }
     }
 
+    /**
+     * Clone the object correctly.
+     */
     public function __clone()
     {
         if ($this->node !== null) {

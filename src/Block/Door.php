@@ -2,7 +2,7 @@
 
 namespace MME\Block;
 
-class Door extends \MME\Block
+class Door extends \MME\Block implements Interfaces\DoorOpen
 {
     use Traits\Create;
 
@@ -44,10 +44,10 @@ class Door extends \MME\Block
         $this->checkDataRefValidStartsWith($power, 'POWER_', 'Invalid power for door');
 
         switch ($half) {
-            case HALF_BOTTOM:
+            case self::HALF_BOTTOM:
                 $this->setBlockData($half | $facing | $state);
                 break;
-            case HALF_TOP:
+            case self::HALF_TOP:
                 $this->setBlockData($half | $hinge | $power);
                 break;
         }

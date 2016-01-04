@@ -2,7 +2,7 @@
 
 namespace MME\Block;
 
-class Colored extends MME\Block implements Interfaces\Colors
+class Colored extends \MME\Block implements Interfaces\Colors
 {
     use Traits\Create;
 

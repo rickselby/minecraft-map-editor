@@ -7,7 +7,7 @@ class EnchantingTable extends \MME\Block
     use Traits\Create, Traits\EntityData;
 
     /**
-     * Get an end portal block.
+     * Get an enchanting table
      */
     public function __construct()
     {

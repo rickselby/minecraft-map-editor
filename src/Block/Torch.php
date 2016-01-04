@@ -13,7 +13,7 @@ class Torch extends \MME\Block
     const STANDING = 5;
 
     /**
-     * Get a torch with a given attatchment.
+     * Get a torch with a given attachment.
      *
      * @param int $blockRef   Block reference from Block\Ref
      * @param int $attachment Attachment direction; one of the class constants

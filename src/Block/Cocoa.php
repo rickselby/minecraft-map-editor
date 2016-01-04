@@ -7,8 +7,8 @@ class Cocoa extends \MME\Block
     use Traits\Create;
 
     const ATTACHED_NORTH = 0;
-    const ATTACHED_SOUTH = 1;
-    const ATTACHED_EAST = 2;
+    const ATTACHED_EAST = 1;
+    const ATTACHED_SOUTH = 2;
     const ATTACHED_WEST = 3;
 
     const STAGE_1 = 0b0000;

@@ -4,7 +4,7 @@ namespace MME\Block;
 
 class Hopper extends \MME\Block implements Interfaces\Output
 {
-    use Traits\Create;
+    use Traits\Create, Traits\EntityData;
 
     const ACTIVE = 0b0000;
     const DISABLED = 0b1000;

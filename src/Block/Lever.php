@@ -6,14 +6,14 @@ class Lever extends \MME\Block implements Interfaces\ActiveBit8
 {
     use Traits\Create;
 
-    const SIDE_BOTTOM_EAST = 0;
-    const SIDE_EAST = 1;
-    const SIDE_WEST = 2;
-    const SIDE_SOUTH = 3;
-    const SIDE_NORTH = 4;
-    const SIDE_TOP_SOUTH = 5;
-    const SIDE_TOP_EAST = 6;
-    const SIDE_BOTTOM_SOUTH = 7;
+    const ATTACH_TOP_EAST = 0;
+    const ATTACH_WEST = 1;
+    const ATTACH_EAST = 2;
+    const ATTACH_NORTH = 3;
+    const ATTACH_SOUTH = 4;
+    const ATTACH_BOTTOM_SOUTH = 5;
+    const ATTACH_BOTTOM_EAST = 6;
+    const ATTACH_TOP_SOUTH = 7;
 
     /**
      * Get a lever, with the given orientation, active or not.
@@ -29,7 +29,7 @@ class Lever extends \MME\Block implements Interfaces\ActiveBit8
     {
         $this->setBlockIDFor(Ref::LEVER);
 
-        $this->checkDataRefValidStartsWith($orientation, 'SIDE_', 'Invalid orientation for lever');
+        $this->checkDataRefValidStartsWith($orientation, 'ATTACH_', 'Invalid orientation for lever');
         $this->checkInList($active, [self::INACTIVE, self::ACTIVE], 'Invalid active status for lever');
 
         $this->setBlockData($orientation | $active);

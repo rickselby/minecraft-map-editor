@@ -9,8 +9,14 @@ class Furnace extends \MME\Block implements Interfaces\FacingSouth3
     /**
      * Get a furnace facing in the given direction.
      *
-     * @param int $blockRef Which furnace to use
-     * @param int $facing   The direction it faces; one of the class constants
+     * @param int             $blockRef      Which furnace to use
+     * @param int             $facing        The direction it faces; one of the class constants
+     * @param \MME\Stack|null $input         Data for the stack in the input slot
+     * @param \MME\Stack|null $fuel          Data for the stack in the fuel slot
+     * @param \MME\Stack|null $output        Data for the stack in the output slot
+     * @param int             $burnTime      Time left for fuel to burn
+     * @param int             $cookTime      Time left for item to finish cooking
+     * @param int             $cookTimeTotal Total time for item to cook
      *
      * @throws \Exception
      */

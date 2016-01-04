@@ -9,7 +9,7 @@ class NoteBlock extends \MME\Block
     /**
      * Get Nether Wart at the given stage of growth.
      *
-     * @param int $note Note the block should play
+     * @param int $note Note the block should play (0-15)
      *
      * @throws \Exception
      */
