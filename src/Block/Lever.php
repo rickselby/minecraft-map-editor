@@ -2,15 +2,11 @@
 
 namespace MME\Block;
 
-class Lever extends \MME\Block implements Interfaces\ActiveBit8
+class Lever extends \MME\Block implements Interfaces\ActiveBit8, Interfaces\AttachSouth4
 {
     use Traits\Create;
 
     const ATTACH_TOP_EAST = 0;
-    const ATTACH_WEST = 1;
-    const ATTACH_EAST = 2;
-    const ATTACH_NORTH = 3;
-    const ATTACH_SOUTH = 4;
     const ATTACH_BOTTOM_SOUTH = 5;
     const ATTACH_BOTTOM_EAST = 6;
     const ATTACH_TOP_SOUTH = 7;

@@ -6,6 +6,7 @@ class Ladder extends \MME\Block implements Interfaces\FacingSouth3
 {
     use Traits\Create;
 
+    // Different to AttatchSouth2
     const ATTACH_SOUTH = 2;
     const ATTACH_NORTH = 3;
     const ATTACH_EAST = 4;

@@ -2,15 +2,11 @@
 
 namespace MME\Block;
 
-class Button extends \MME\Block implements Interfaces\ActiveBit8
+class Button extends \MME\Block implements Interfaces\ActiveBit8, Interfaces\AttachSouth4
 {
     use Traits\Create;
 
     const ATTACH_TOP = 0;
-    const ATTACH_WEST = 1;
-    const ATTACH_EAST = 2;
-    const ATTACH_NORTH = 3;
-    const ATTACH_SOUTH = 4;
     const ATTACH_BOTTOM = 5;
 
     /**

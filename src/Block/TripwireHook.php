@@ -2,18 +2,13 @@
 
 namespace MME\Block;
 
-class TripwireHook extends \MME\Block
+class TripwireHook extends \MME\Block implements Interfaces\AttachSouth2
 {
     use Traits\Create;
 
     const NOT_CONNECTED = 0b0000;
     const CONNECTED = 0b0100;
     const ACTIVATED = 0b1000;
-
-    const ATTACH_NORTH = 0;
-    const ATTACH_EAST = 1;
-    const ATTACH_SOUTH = 2;
-    const ATTACH_WEST = 3;
 
     /**
      * Get a tripwire hook facing the given way with the given state.
