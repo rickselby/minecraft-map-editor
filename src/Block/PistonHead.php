@@ -2,7 +2,7 @@
 
 namespace MME\Block;
 
-class PistonHead extends \MME\Block
+class PistonHead extends \MME\Block implements Interfaces\OutputFull
 {
     use Traits\Create;
 

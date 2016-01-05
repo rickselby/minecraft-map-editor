@@ -22,6 +22,13 @@ class Vines extends \MME\Block
     public function __construct($sides)
     {
         $this->setBlockIDFor(Ref::VINES);
+        if (is_array($sides)) {
+            $newSides = 0;
+            foreach($sides AS $side) {
+                $newSides |= $side;
+            }
+            $sides = $newSides;
+        }
         $this->checkValue($sides, 1, 15, 'Invalid sides for vines');
     }
 }

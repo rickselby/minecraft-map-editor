@@ -2,7 +2,7 @@
 
 namespace MME\Block;
 
-class Rail extends \MME\Block
+class Rail extends \MME\Block implements Interfaces\StraightRail
 {
     use Traits\Create;
 

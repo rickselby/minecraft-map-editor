@@ -2,7 +2,7 @@
 
 namespace MME\Block;
 
-class Sign extends \MME\Block
+class Sign extends \MME\Block implements Interfaces\OrientFine
 {
     use Traits\EntityData, Traits\StandingWall;
 

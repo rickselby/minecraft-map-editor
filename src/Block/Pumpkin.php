@@ -6,8 +6,6 @@ class Pumpkin extends \MME\Block implements Interfaces\FacingSouth0
 {
     use Traits\Create;
 
-    const NO_FACE = 4;
-
     /**
      * Get a pumpkin or a jack o' lantern, facing the given direction
      * (or with no face at all).

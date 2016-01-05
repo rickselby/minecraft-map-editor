@@ -24,7 +24,7 @@ class Trapdoor extends \MME\Block implements Interfaces\DoorOpen
      *
      * @throws \Exception
      */
-    public function __construct($blockRef, $hinge, $half, $state = self::DOOR_CLOSED)
+    public function __construct($blockRef, $hinge, $half, $state = self::STATE_CLOSED)
     {
         $this->checkBlock($blockRef, Ref::getStartsWith('TRAPDOOR_'));
 
