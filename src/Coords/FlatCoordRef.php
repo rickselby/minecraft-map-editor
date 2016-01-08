@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Coords;
+namespace MME\Coords;
 
 /**
  * A ZX reference for actual co-ordinates, used in Height Maps and such.

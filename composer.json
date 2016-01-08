@@ -1,6 +1,7 @@
 {
     "name": "rickselby/minecraft-map-editor",
     "description": "Minecraft Map Editor",
+    "license": "MIT",
     "authors": [
         {
             "name": "Rick Selby",
@@ -15,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MinecraftMapEditor\\": "src/"
+            "MME\\": "src/"
         }
     }
 }

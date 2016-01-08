@@ -1,9 +1,11 @@
 <?php
 
-namespace MinecraftMapEditor;
+namespace MME;
 
 class Chunk
 {
+    use Nbt\Helpers;
+
     /** @var \Nbt\Node NBT tree for this chunk **/
     public $nbtNode;
 
@@ -28,6 +30,9 @@ class Chunk
     /** @var \Nbt\Node[] Array of Block Entity Information, keyed on co-ordinates **/
     private $blockEntities = [];
 
+    /** @var \Nbt\Service **/
+    private $nbtService;
+
     /**
      * Initialise a chunk based on NBT data.
      *
@@ -35,8 +40,10 @@ class Chunk
      */
     public function __construct($nbtString)
     {
-        if ($nbtString != null) {
-            $this->nbtNode = (new \Nbt\Service())->readString($nbtString);
+        $this->nbtService = new \Nbt\Service(new \Nbt\DataHandler());
+
+        if ($nbtString !== null) {
+            $this->nbtNode = $this->nbtService->readString($nbtString);
             // Cache the sections tag so we don't need to look for it every time
             $this->sectionsTag = $this->nbtNode->findChildByName('Sections');
             // Organise the block entities
@@ -68,16 +75,16 @@ class Chunk
      */
     public function getNBTstring()
     {
-        return (new \Nbt\Service())->writeString($this->nbtNode);
+        return $this->nbtService->writeString($this->nbtNode);
     }
 
     /**
      * Set a block in the world. Will overwrite a block if one exists at the co-ordinates.
      *
      * @param Coords\BlockCoords $blockCoords Co-ordinates of the block
-     * @param array              $block       Information about the new block
+     * @param Block              $block       Information about the new block
      */
-    public function setBlock($blockCoords, $block)
+    public function setBlock(Coords\BlockCoords $blockCoords, Block $block)
     {
         $chunkCoords = $blockCoords->toChunkCoords();
         $yRef = $chunkCoords->getSectionRef();
@@ -87,9 +94,9 @@ class Chunk
         $blockRef = $chunkCoords->getSectionYZX();
 
         $blockIDList = $blocks->getValue();
-        if ($block['blockID'] <= 255) {
-            if ($blockIDList[$blockRef] != $block['blockID']) {
-                $blockIDList[$blockRef] = $block['blockID'];
+        if ($block->id <= 255) {
+            if ($blockIDList[$blockRef] != $block->id) {
+                $blockIDList[$blockRef] = $block->id;
                 $this->setChanged($blockCoords);
                 $blocks->setValue($blockIDList);
             }
@@ -100,13 +107,10 @@ class Chunk
 
         // set block data
         $blockData = $this->getSectionPart($yRef, 'Data');
-        $this->setNibbleIn($blockData, $blockCoords, $block['blockData']);
+        $this->setNibbleIn($blockData, $blockCoords, $block->data);
 
         // set block entity data
-        $this->updateBlockEntity(
-            $blockCoords,
-            isset($block['blockEntity']) ? $block['blockEntity'] : null
-        );
+        $this->updateBlockEntity($blockCoords, $block->entityData);
     }
 
     /**
@@ -116,33 +120,32 @@ class Chunk
      *
      * @return array
      */
-    public function getBlock($blockCoords)
+    public function getBlock(Coords\BlockCoords $blockCoords)
     {
+        $block = new Block();
         $chunkCoords = $blockCoords->toChunkCoords();
 
         // Get the block ID
-        $blockID = $this->getBlockID($chunkCoords);
+        $block->setBlockID($this->getBlockID($chunkCoords));
 
         // Block Data
         // Get the nibble for this block
-        $thisBlockData = $this->getNibbleFrom(
+        $block->setBlockData($this->getNibbleFrom(
             $this->getSectionPart($chunkCoords->getSectionRef(), 'Data')->getValue(),
             $chunkCoords->getSectionYZX()
-        );
+        ));
 
         // Block Entity
-        $blockEntity = isset($this->blockEntities[$blockCoords->toKey()])
+        $block->setEntityData(
+            isset($this->blockEntities[$blockCoords->toKey()])
                 ? $this->blockEntities[$blockCoords->toKey()]
-                : null;
+                : null
+        );
 
-        return [
-            'blockID' => $blockID,
-            'blockData' => $thisBlockData,
-            'blockEntity' => $blockEntity,
-            ];
+        return $block;
     }
 
-    public function getBlockID($chunkCoords)
+    public function getBlockID(Coords\ChunkCoords $chunkCoords)
     {
         $yRef = $chunkCoords->getSectionRef();
 
@@ -177,8 +180,7 @@ class Chunk
     /**
      * Get the correct section from within the Sections tag (based on Y index).
      *
-     * @param \Nbt\Node $node
-     * @param int       $yRef
+     * @param int $yRef
      *
      * @return \Nbt\Node
      */
@@ -202,10 +204,10 @@ class Chunk
         // Doesn't need a name, it's part of a list
         $newY = \Nbt\Tag::tagCompound('', [
             \Nbt\Tag::tagByte('Y', $yRef),
-            \Nbt\Tag::tagByteArray('Blocks',     array_fill(0, 4096, 0x0)),
-            \Nbt\Tag::tagByteArray('Data',       array_fill(0, 2048, 0x0)),
-            \Nbt\Tag::tagByteArray('BlockLight', array_fill(0, 2048, 0x0)),
-            \Nbt\Tag::tagByteArray('SkyLight',   array_fill(0, 2048, 0x0)),
+            \Nbt\Tag::tagByteArray('Blocks',     array_fill(0, 4096, 0)),
+            \Nbt\Tag::tagByteArray('Data',       array_fill(0, 2048, 0)),
+            \Nbt\Tag::tagByteArray('BlockLight', array_fill(0, 2048, 0)),
+            \Nbt\Tag::tagByteArray('SkyLight',   array_fill(0, 2048, 0)),
         ]);
 
         // Add it to the list
@@ -220,7 +222,7 @@ class Chunk
      *
      * @param \Nbt\Node $node
      */
-    private function prepareSection($node)
+    private function prepareSection(\Nbt\Node $node)
     {
         // Alter the block data to be unsigned bytes
         $this->signedToUnsignedByteValue(
@@ -252,7 +254,7 @@ class Chunk
      * @param Coords\BlockCoords $blockCoords
      * @param int                $value
      */
-    private function setNibbleIn($node, $blockCoords, $value)
+    private function setNibbleIn(\Nbt\Node $node, Coords\BlockCoords $blockCoords, $value)
     {
         $blockRef = $blockCoords->toChunkCoords()->getSectionYZX();
         // This function should check if it's changing anything, and call setChanged if it does
@@ -284,7 +286,7 @@ class Chunk
     public function prepareForSaving()
     {
         // Set Lightpopulated to zero to force a lighting update
-        $this->nbtNode->findChildByName('LightPopulated')->setValue(0x00);
+        $this->nbtNode->findChildByName('LightPopulated')->setValue(0);
         // Set the last update time
         $this->nbtNode->findChildByName('LastUpdate')->setValue(time());
         // Update the height map
@@ -315,7 +317,7 @@ class Chunk
                 $heightMapArray[$zxVal] = 0;
                 for ($y = (max($yRefs) * 16) + 15; $y >= 0; --$y) {
                     $block = $this->getBlockID(new Coords\ChunkCoords($zxRef->x, $y, $zxRef->z));
-                    if ($block != 0x00) {
+                    if ($block != 0) {
                         $heightMapArray[$zxVal] = $y;
                         break;
                     }
@@ -332,7 +334,7 @@ class Chunk
      *
      * @param Coords\BlockCoords $coords
      */
-    private function setChanged($coords)
+    private function setChanged(Coords\BlockCoords $coords)
     {
         $this->changed = true;
 
@@ -347,7 +349,7 @@ class Chunk
      * @param Coords\BlockCoords $blockCoords
      * @param \Nbt\Node|null     $blockEntity
      */
-    public function updateBlockEntity($blockCoords, $blockEntity)
+    public function updateBlockEntity(Coords\BlockCoords $blockCoords, $blockEntity)
     {
         if ($blockEntity === null) {
             if (isset($this->blockEntities[$blockCoords->toKey()])) {
@@ -357,24 +359,24 @@ class Chunk
         } else {
             $this->setChanged($blockCoords);
             // Add the co-ordinates to the block entity
-            if ($blockEntity->findChildByName('x')) {
-                $blockEntity->findChildByName('x')->setValue($blockCoords->x);
-            } else {
-                $blockEntity->addChild(\Nbt\Tag::tagInt('x', $blockCoords->x));
-            }
-            if ($blockEntity->findChildByName('y')) {
-                $blockEntity->findChildByName('y')->setValue($blockCoords->y);
-            } else {
-                $blockEntity->addChild(\Nbt\Tag::tagInt('y', $blockCoords->y));
-            }
-            if ($blockEntity->findChildByName('z')) {
-                $blockEntity->findChildByName('z')->setValue($blockCoords->z);
-            } else {
-                $blockEntity->addChild(\Nbt\Tag::tagInt('z', $blockCoords->z));
-            }
+            $this->updateChildOrCreateInt($blockEntity, 'x', $blockCoords->x);
+            $this->updateChildOrCreateInt($blockEntity, 'y', $blockCoords->y);
+            $this->updateChildOrCreateInt($blockEntity, 'z', $blockCoords->z);
 
             $this->blockEntities[$blockCoords->toKey()] = $blockEntity;
         }
+    }
+
+    /**
+     * Try to update a child value of a node; if it doesn't exist, create it.
+     *
+     * @param \Nbt\Node $parent
+     * @param string    $childName
+     * @param int       $newValue
+     */
+    private function updateChildOrCreateInt(\Nbt\Node $parent, $childName, $newValue)
+    {
+        $this->updateChildOrCreate($parent, $childName, \Nbt\Tag::TAG_INT, $newValue);
     }
 
     /**
@@ -387,7 +389,7 @@ class Chunk
 
         if (count($this->blockEntities) == 0) {
             // When empty, lists have a zero payload type
-            $this->blockEntitiesTag->setPayloadType(0x00);
+            $this->blockEntitiesTag->setPayloadType(0);
         } else {
             $this->blockEntitiesTag->setPayloadType(\Nbt\Tag::TAG_COMPOUND);
             foreach ($this->blockEntities as $blockEntity) {
@@ -403,7 +405,7 @@ class Chunk
      *
      * @param \Nbt\Node $node
      */
-    private function signedToUnsignedByteValue($node)
+    private function signedToUnsignedByteValue(\Nbt\Node $node)
     {
         $value = $node->getValue();
         if (is_array($value)) {

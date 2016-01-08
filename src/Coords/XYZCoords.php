@@ -1,6 +1,6 @@
 <?php
 
-namespace MinecraftMapEditor\Coords;
+namespace MME\Coords;
 
 abstract class XYZCoords extends RefCoords
 {
